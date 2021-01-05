@@ -6,27 +6,21 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./services/auth";
+import { useDispatch } from 'react-redux';
+import * as sessionActions from './store/actions/session';
 
 function App() {
+  const dispatch = useDispatch()
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
-      setLoaded(true);
-    })();
-  }, []);
+    dispatch(sessionActions.restoreUser()).then(setLoaded(true))
+      .catch(error => console.error(error))
+    setAuthenticated(true)
+  }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
+  return loaded && (
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
       <Route path="/login" exact={true}>
@@ -39,7 +33,7 @@ function App() {
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
       <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-        <UsersList/>
+        <UsersList />
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
