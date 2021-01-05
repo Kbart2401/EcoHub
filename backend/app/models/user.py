@@ -1,6 +1,18 @@
 from .db import db
+# from .friends import Friend
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+
+friends_table = db.Table(
+    'friends',
+    db.Model.metadata,
+    db.Column('user_id', db.Integer, db.ForeignKey(
+        'users.id'), primary_key=True),
+    db.Column('friend_id', db.Integer, db.ForeignKey(
+        'users.id'), primary_key=True),
+    db.Column('message', db.String(255))
+
+)
 
 
 class User(db.Model, UserMixin):
@@ -9,7 +21,17 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    city = db.Column(db.String(255))
+    state = db.Column(db.String(255))
+    country = db.Column(db.String(100))
+    xp = db.Column(db.Integer, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    posts = db.relationship('Post', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
+    likes = db.relationship('Like', back_populates='user')
+    friends = db.relationship('User', secondary=friends_table, primaryjoin=id ==
+                              friends_table.c.user_id, secondaryjoin=id ==
+                              friends_table.c.friend_id)
 
     @property
     def password(self):
@@ -26,5 +48,9 @@ class User(db.Model, UserMixin):
         return {
             "id": self.id,
             "username": self.username,
-            "email": self.email
+            "email": self.email,
+            "city": self.city,
+            "state": self.state,
+            "country": self.country,
+            "xp": self.xp
         }
