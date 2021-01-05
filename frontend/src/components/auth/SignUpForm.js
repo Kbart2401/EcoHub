@@ -5,13 +5,16 @@ import { signUp } from '../../services/auth';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, city, state, country, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -59,6 +62,33 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div>
+        <label>City</label>
+        <input
+          type="text"
+          name="city"
+          onChange={e => setCity(e.target.value)}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State</label>
+        <input
+          type="text"
+          name="state"
+          onChange={e => setState(e.target.value)}
+          value={state}
+        ></input>
+      </div>
+      <div>
+        <label>Country</label>
+        <input
+          type="text"
+          name="country"
+          onChange={e => setCountry(e.target.value)}
+          value={country}
+        ></input>
+      </div>
+      <div>
         <label>Password</label>
         <input
           type="password"
@@ -68,7 +98,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Confirm Password</label>
         <input
           type="password"
           name="repeat_password"
