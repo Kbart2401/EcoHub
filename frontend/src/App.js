@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NavBar from "./components/sections/NavBar";
 import Base from './components/layouts/Base';
-import User from "./components/User";
+import Landing from './components/layouts/Landing';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from './store/actions/session';
 
@@ -21,17 +19,11 @@ function App() {
 
   return loaded && (
     <BrowserRouter>
+    <Switch>
       <NavBar setAuthenticated={setAuthenticated} />
-      <Route path="/login" exact={true}>
-        <LoginForm
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route path="/sign-up" exact={true}>
-        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      </Route>
-      <Route path="/" exact={true} component={Base} />
+      <Route path='/' component={Landing} />
+      <Route path="/home" exact={true} component={Base} />
+      </Switch>
     </BrowserRouter>
   );
 }
