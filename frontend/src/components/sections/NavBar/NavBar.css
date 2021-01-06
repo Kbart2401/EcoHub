@@ -1,0 +1,33 @@
+.nav-container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+}
+
+.navbar-main {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+}
+
+.navbar-main ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-main li {
+  list-style: none;
+  padding: 0 50px 0 50px;
+}
+
+.navbar-left {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}

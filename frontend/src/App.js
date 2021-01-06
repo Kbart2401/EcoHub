@@ -5,6 +5,7 @@ import Base from './components/layouts/Base';
 import Landing from './components/layouts/Landing';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from './store/actions/session';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   const dispatch = useDispatch()
@@ -14,17 +15,16 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(setLoaded(true))
       .catch(error => console.error(error))
-    setAuthenticated(false)
   }, [dispatch]);
 
   return loaded && (
-    <BrowserRouter>
-    <Switch>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Route path='/' component={Landing} />
-      <Route path="/home" exact={true} component={Base} />
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+          <NavBar />
+        <Switch>
+          <Route path='/' exact={true} component={Landing} />
+          <ProtectedRoute path="/home" component={Base} />
+        </Switch>
+      </BrowserRouter>
   );
 }
 

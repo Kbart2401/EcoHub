@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/actions/session'
+import {Button, Input} from '@chakra-ui/react';
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
@@ -29,7 +30,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <div>
         <label htmlFor="username">Username</label>
-        <input
+        <Input
           name="username"
           type="text"
           placeholder="Username"
@@ -39,14 +40,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input
+        <Input
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <Button type='submit'>Submit</Button>
       </div>
     </form>
   );
