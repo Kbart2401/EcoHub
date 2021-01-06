@@ -5,6 +5,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
+import Base from './components/Base';
 import User from "./components/User";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from './store/actions/session';
@@ -17,7 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(setLoaded(true))
       .catch(error => console.error(error))
-    setAuthenticated(true)
+    setAuthenticated(false)
   }, [dispatch]);
 
   return loaded && (
@@ -38,9 +39,7 @@ function App() {
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-        <h1>My Home Page</h1>
-      </ProtectedRoute>
+      <Route path="/" exact={true} component={Base} />
     </BrowserRouter>
   );
 }
