@@ -4,7 +4,6 @@ import {useSelector} from 'react-redux';
 
 const ProtectedRoute = (props) => {
   const authenticated = useSelector(state => state.session.user);
-debugger
   if (!authenticated) {
     return <Redirect to="/"/>
   }

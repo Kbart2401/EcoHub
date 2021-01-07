@@ -1,10 +1,16 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
+import {useSelector } from 'react-redux';
 import { Box, Image, AspectRatio } from '@chakra-ui/react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../stylesheets/landing.css'
 
 const Landing = () => {
+  const user = useSelector(state => state.session.user)
+  if (user && !user.errors) {
+    return <Redirect to="/home" />;
+  }
   return (
     <>
         <AspectRatio maxW="1200px">

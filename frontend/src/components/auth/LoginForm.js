@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/actions/session'
 import { Button, Input } from '@chakra-ui/react';
 
 const LoginForm = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,13 +14,8 @@ const LoginForm = () => {
     e.preventDefault();
     dispatch(sessionActions.logUserIn(username, password))
       .catch(res => {
-        if (res.errors) setErrors(res.errors);
+        if (res.errors) return setErrors(res.errors)
       })
-    return history.push('/home')
-  }
-
-  if (user && !user.errors) {
-    return <Redirect to="/home" />;
   }
 
   return (

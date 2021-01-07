@@ -1,25 +1,31 @@
 import React, { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Feed from '../sections/Feed';
 import HomeDrawer from '../modals/HomeDrawer';
+import WeatherBar from '../sections/WeatherBar';
+import '../../stylesheets/homePage.css';
 
 const Home = () => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
-    debugger
     if (!user || user.errors) {
-      return <Redirect to="/" />;
+      return history.push('/')
     }
   }, [dispatch])
 
   return (
     <>
+    <div className='home-outer'>
+    <div className='home-container'>
+      <WeatherBar />
       <HomeDrawer />
-      <h1>Home </h1>
       <Feed />
+      </div>
+      </div>
     </>
   )
 }

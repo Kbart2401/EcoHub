@@ -1,0 +1,11 @@
+.home-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.home-container {
+  max-width: 1200px;
+  min-width: 1000px;
+  border-right: 3px solid #718096;
+  border-left: 3px solid #718096;
+}
