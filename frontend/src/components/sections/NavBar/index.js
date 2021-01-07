@@ -16,7 +16,7 @@ const NavBar = ({ setAuthenticated }) => {
         <div className='navbar-left'>
           <ul>
             <li>Logo</li>
-            {user &&
+            {user && !user.errors &&
               <li>
                 <NavLink to="/" exact={true} activeClassName="active">
                   Home
@@ -27,17 +27,17 @@ const NavBar = ({ setAuthenticated }) => {
         </div>
         <div className='navbar-right'>
           <ul>
-            {!user &&
+            {!user || user.errors &&
               <li>
                 <LoginModal />
               </li>
             }
-            {!user &&
+            {!user || user.errors &&
               <li>
                 <SignUpModal />
               </li>
             }
-            {user &&
+            {user && !user.errors &&
               <li>
                 <LogoutButton setAuthenticated={setAuthenticated} />
               </li>

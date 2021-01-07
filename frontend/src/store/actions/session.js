@@ -10,6 +10,7 @@ const removeUser = user => ({ type: REMOVE_USER, payload: user })
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
+  debugger
     let res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {

@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     likes = db.relationship('Like', back_populates='user')
     friends = db.relationship('User', secondary='friends', primaryjoin=id ==
                               Friend.user_id, secondaryjoin=id ==
-                              Friend.friend_id, backref='friends')
+                              Friend.friend_id)
 
     @property
     def password(self):
