@@ -10,7 +10,7 @@ const removeUser = user => ({ type: REMOVE_USER, payload: user })
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
-  try {
+    debugger
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
@@ -21,11 +21,12 @@ export const logUserIn = (username, password) => async dispatch => {
         password
       })
     });
+    if(res.ok) {
     const user = await res.json()
     dispatch(setUser(user))
-  } catch (e) {
-    console.error(e)
-  }
+    }
+  
+  return res;
 }
 
 export const logUserOut = () => async dispatch => {

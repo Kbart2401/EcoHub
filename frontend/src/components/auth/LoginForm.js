@@ -12,22 +12,23 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user)
 
   const onLogin = async (e) => {
+    // debugger
     e.preventDefault();
     dispatch(sessionActions.logUserIn(username, password))
-      .catch(e => setErrors(e))
+      .catch(res => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      })
   }
 
-  if (user) {
-    return <Redirect to="/" />;
+  if (user && !user.errors) {
+    return <Redirect to="/home" />;
   }
 
   return (
     <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <div>
         <label htmlFor="username">Username</label>
         <Input

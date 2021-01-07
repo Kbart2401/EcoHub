@@ -21,8 +21,8 @@ function App() {
       <BrowserRouter>
           <NavBar />
         <Switch>
-          <Route path='/' exact={true} component={Landing} />
-          <ProtectedRoute path="/home" component={Base} />
+          <Route path='/' exact component={Landing} />
+          <Route path="/home" component={Base} />
         </Switch>
       </BrowserRouter>
   );
