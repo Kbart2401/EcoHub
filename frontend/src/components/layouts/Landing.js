@@ -7,7 +7,6 @@ import '../../stylesheets/landing.css'
 const Landing = () => {
   return (
     <>
-      {/* <Box display='flex' justifyContent='center'> */}
         <AspectRatio maxW="1200px">
           <Box height="400px" width='100vw' display='flex' justifyContent='center'>
             <AliceCarousel autoPlay infinite autoPlayInterval="10000" >
@@ -21,7 +20,6 @@ const Landing = () => {
           </Box>
         </AspectRatio>
         This is the landing page
-        {/* </Box> */}
     </>
   )
 }
