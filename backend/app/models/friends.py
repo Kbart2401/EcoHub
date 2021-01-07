@@ -5,9 +5,9 @@ class Friend(db.Model):
     __tablename__ = 'friends',
 
     user_id = db.Column(db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True),
+        'users.id'), primary_key=True)
     friend_id = db.Column(db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True),
+        'users.id'), primary_key=True)
     message = db.Column(db.String(255))
 
     @property
@@ -18,7 +18,7 @@ class Friend(db.Model):
     def set_message(self, message):
         self.message = message
  
-    def to_dict:
+    def to_dict():
         return {
             "user_id": self.user_id,
             "friend_id": self.friend_id,
