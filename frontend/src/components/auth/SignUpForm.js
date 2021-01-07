@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
+const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
@@ -12,23 +12,28 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      dispatch(sessionActions.signUserUp(username, email, city, state, country, password));
-      setAuthenticated(true);
-
+      dispatch(sessionActions.signUserUp(username, email, city, state, country, password))
+        .catch(res => {
+          if(res.errors) setErrors(res.errors)
+        })
     }
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  // if (authenticated) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <form onSubmit={onSignUp}>
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <div>
         <label>User Name</label>
         <Input

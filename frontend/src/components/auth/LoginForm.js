@@ -12,11 +12,10 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user)
 
   const onLogin = async (e) => {
-    // debugger
     e.preventDefault();
     dispatch(sessionActions.logUserIn(username, password))
       .catch(res => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
+        if (res.errors) setErrors(res.errors);
       })
   }
 

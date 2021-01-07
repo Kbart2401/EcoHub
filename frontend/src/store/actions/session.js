@@ -10,8 +10,7 @@ const removeUser = user => ({ type: REMOVE_USER, payload: user })
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
-    debugger
-    const res = await fetch('/api/auth/login', {
+    let res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,8 +24,11 @@ export const logUserIn = (username, password) => async dispatch => {
     const user = await res.json()
     dispatch(setUser(user))
     }
-  
-  return res;
+    else {
+      res = await res.json()
+      throw res;
+    }
+  return res
 }
 
 export const logUserOut = () => async dispatch => {
@@ -56,8 +58,7 @@ export const restoreUser = () => async (dispatch) => {
 export const signUserUp = (username, email, city, state, country, password) =>
   async dispatch => {
     debugger
-    try {
-      const res = await fetch("/api/auth/signup", {
+      let res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,9 +72,13 @@ export const signUserUp = (username, email, city, state, country, password) =>
           password,
         }),
       });
-      const user = await res.json();
+    if (res.ok) {
+      const user = await res.json()
       dispatch(setUser(user))
-    } catch (e) {
-      console.error(e)
     }
+    else {
+      res = await res.json()
+      throw res;
+    }
+    return res
   }
