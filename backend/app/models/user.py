@@ -43,3 +43,16 @@ class User(db.Model, UserMixin):
             "country": self.country,
             "xp": self.xp
         }
+
+    def to_dict_full(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "city": self.city,
+            "state": self.state,
+            "country": self.country,
+            "xp": self.xp,
+            "posts": [post.to_dict() for post in self.posts],
+            "friends": [friend.to_dict() for friend in self.friends]
+        }

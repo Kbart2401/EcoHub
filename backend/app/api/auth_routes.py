@@ -25,7 +25,7 @@ def authenticate():
     """
     if current_user.is_authenticated:
         user = current_user
-        return user.to_dict()
+        return user.to_dict_full()
     return {'errors': ['Unauthorized']}, 401
 
 

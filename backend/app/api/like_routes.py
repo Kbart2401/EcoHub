@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.db import Like, db
+from app.models import Like, db
 from flask_login import login_required, current_user
 
 like_routes = Blueprint('likes', __name__)
@@ -34,4 +34,11 @@ def remove_like():
 @login_required
 def get_post_likes(id):
     likes = Like.query.filter_by(post_id=id).all()
-    return likes.count()
+    return {"count": len(likes)}
+
+
+@like_routes.route('/comment/<int:id>')
+@login_required
+def get_comment_likes(id):
+    likes = Like.query.filter_by(comment_id=id).all()
+    return {"count": len(likes)}

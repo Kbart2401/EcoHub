@@ -17,19 +17,19 @@ const Home = () => {
   // function error(err) {
   //   console.log(`ERROR(${err.code}): ${err.message}`);
   // };
-  function success(pos) {
+  const success = (pos) => {
     const crd = pos.coords;
    console.log('HELLO WORKD', crd)
   };
 
-  function error(err) {
-    alert(`ERROR(${err.code}): ${err.message}`);
+  const error = (err) => {
+    // alert(`ERROR(${err.code}): ${err.message}`);
   };
 
   useEffect(() => {
     // debugger
     navigator.geolocation.getCurrentPosition(success, error, {
-      timeout: 10000, maximumAge: 1000*60*60
+      timeout: 5000, maximumAge: 1000*60*60
     });
   }, [])
 
