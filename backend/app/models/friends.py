@@ -18,7 +18,7 @@ class Friend(db.Model):
     def set_message(self, message):
         self.message = message
  
-    def to_dict():
+    def to_dict(self):
         return {
             "user_id": self.user_id,
             "friend_id": self.friend_id,

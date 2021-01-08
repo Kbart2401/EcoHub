@@ -10,7 +10,7 @@ class Like(db.Model):
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     user = db.relationship('User', back_populates='likes')
 
-    def to_dict():
+    def to_dict(self):
         return {
           "id": self.id,
           "user_id": self.user_id,

@@ -12,7 +12,7 @@ class Post(db.Model):
     created_date = db.Column(db.Date, default=datetime.datetime.today())
     user = db.relationship('User', back_populates='posts')
 
-    def to_dict():
+    def to_dict(self):
         return {
           "id": self.id,
           "user_id": self.user_id,
