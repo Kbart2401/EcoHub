@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Post, User, db
+from sqlalchemy import desc
 
 
 post_routes = Blueprint('posts', __name__)
@@ -39,3 +40,18 @@ def get_posts(id):
     user = User.query.get(id)
     posts = Post.query.filter_by(user_id=user.id).all()
     return {'posts': [post.to_dict() for post in posts]}
+
+
+@post_routes.route('/')
+@login_required
+def recent_posts():
+    posts = Post.query.filter_by(user_id=current_user.id).order_by(
+        desc(Post.created_date)).all()
+    posts = [post.to_dict() for post in posts]
+    if current_user.friends:
+        for friend in current_user.friends:
+            friend_posts = Post.query.filter_by(user_id=friend.id).order_by(
+                desc(Post.created_date)).all()
+            friend_posts = [post.to_dict() for post in friend_posts]
+            posts = [*posts, *friend_posts]
+    return {'posts': posts}
