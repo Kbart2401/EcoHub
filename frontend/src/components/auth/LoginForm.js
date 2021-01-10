@@ -30,8 +30,7 @@ const LoginForm = () => {
           type="text"
           placeholder="Username"
           value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
+          onChange={e => setUsername(e.target.value)} />
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -40,10 +39,9 @@ const LoginForm = () => {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <Button type='submit'>Submit</Button>
+          onChange={e => setPassword(e.target.value)} />
       </div>
+      <Button type='submit'>Submit</Button>
     </form>
   );
 };

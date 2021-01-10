@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Feed from '../sections/Feed';
 import HomeDrawer from '../modals/HomeDrawer';
 import WeatherBar from '../sections/WeatherBar';
+import TaskModal from '../modals/TaskModal';
 import '../../stylesheets/homePage.css';
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
     <div className='home-container'>
       <WeatherBar />
       <HomeDrawer />
+      <TaskModal />
       <Feed />
       </div>
       </div>
