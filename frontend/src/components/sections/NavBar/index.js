@@ -2,12 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../../auth/LogoutButton';
 import { useSelector } from 'react-redux';
-import { useDisclosure, Button } from '@chakra-ui/react';
-import './NavBar.css';
 import LoginModal from '../../modals/LoginModal';
 import SignUpModal from '../../modals/SignupModal';
+import './NavBar.css';
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = () => {
   const user = useSelector(state => state.session.user)
 
   return (
@@ -16,7 +15,7 @@ const NavBar = ({ setAuthenticated }) => {
         <div className='navbar-left'>
           <ul>
             <li>Logo</li>
-            {user && !user.errors &&
+            {user &&
               <li>
                 <NavLink to="/" exact={true} activeClassName="active">
                   Home
@@ -27,19 +26,19 @@ const NavBar = ({ setAuthenticated }) => {
         </div>
         <div className='navbar-right'>
           <ul>
-            {!user || user.errors &&
+            {!user &&
               <li>
                 <LoginModal />
               </li>
             }
-            {!user || user.errors &&
+            {!user &&
               <li>
                 <SignUpModal />
               </li>
             }
-            {user && !user.errors &&
+            {user &&
               <li>
-                <LogoutButton setAuthenticated={setAuthenticated} />
+                <LogoutButton  />
               </li>
             }
           </ul>

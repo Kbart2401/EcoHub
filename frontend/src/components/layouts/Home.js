@@ -16,7 +16,7 @@ const Home = () => {
     if (!user || user.errors) {
       return history.push('/')
     }
-  }, [dispatch])
+  })
 
 
   return (

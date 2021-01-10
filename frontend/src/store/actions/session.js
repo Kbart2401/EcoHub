@@ -49,6 +49,7 @@ export const restoreUser = () => async (dispatch) => {
   try {
     const res = await fetch('/api/auth/')
     const user = await res.json();
+    if (user.errors) user = null;
     dispatch(setUser(user))
   } catch (e) {
     console.error(e)
