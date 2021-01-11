@@ -21,13 +21,20 @@ const Home = () => {
 
   return (
     <>
-    <div className='home-outer'>
-    <div className='home-container'>
-      <WeatherBar />
-      <HomeDrawer />
-      <TaskModal />
-      <Feed />
-      </div>
+      <div className='home-outer'>
+        <div className='home-left-container'>
+          <div className='slide-out-panel'>
+            <HomeDrawer />
+          </div>
+        </div>
+        <div className='home-center-container'>
+          <WeatherBar />
+          <TaskModal />
+          <Feed />
+        </div>
+        <div className='home-right-container'>
+          <div>Top Contributors</div>
+        </div>
       </div>
     </>
   )

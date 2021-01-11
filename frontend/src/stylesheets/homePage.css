@@ -3,9 +3,23 @@
   justify-content: center;
 }
 
-.home-container {
+.home-center-container {
   max-width: 1200px;
   min-width: 1000px;
   border-right: 3px solid #718096;
   border-left: 3px solid #718096;
+}
+
+.home-left-container {
+  flex-grow: 1;
+}
+
+.slide-out-panel {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.home-right-container {
+  flex-grow: 1;
 }
