@@ -1,11 +1,13 @@
 /*******Action Types*******/
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
+export const SET_FEED = 'SET_FEED';
 
 
 /********Action Creators*******/
 const setUser = user => ({ type: SET_USER, payload: user });
 const removeUser = user => ({ type: REMOVE_USER, payload: user })
+const setFeed = posts => ({type: SET_FEED, payload: posts})
 
 
 /********Thunks*******/
@@ -46,14 +48,14 @@ export const logUserOut = () => async dispatch => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  try {
     const res = await fetch('/api/auth/')
     const user = await res.json();
     if (user.errors) user = null;
+    const result = await fetch('/api/posts/')
+    const posts = await result.json()
     dispatch(setUser(user))
-  } catch (e) {
-    console.error(e)
-  }
+    dispatch(setFeed(posts))
+
 }
 
 export const signUserUp = (username, email, city, state, country, password) =>
