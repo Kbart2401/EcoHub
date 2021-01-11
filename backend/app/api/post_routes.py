@@ -47,11 +47,11 @@ def get_posts(id):
 def recent_posts():
     posts = Post.query.filter_by(user_id=current_user.id).order_by(
         desc(Post.created_date)).all()
-    posts = [post.to_dict() for post in posts]
+    posts = [post.to_dict_full() for post in posts]
     if current_user.friends:
         for friend in current_user.friends:
             friend_posts = Post.query.filter_by(user_id=friend.id).order_by(
                 desc(Post.created_date)).all()
-            friend_posts = [post.to_dict() for post in friend_posts]
+            friend_posts = [post.to_dict_full() for post in friend_posts]
             posts = [*posts, *friend_posts]
     return {'posts': posts}
