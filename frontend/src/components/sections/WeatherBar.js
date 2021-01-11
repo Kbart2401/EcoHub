@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Box } from '@chakra-ui/react';
+import '../../stylesheets/weatherLoad.css';
+import '../../stylesheets/weatherBar.css';
 
 
 const WeatherBar = () => {
@@ -6,6 +9,7 @@ const WeatherBar = () => {
   const [base, setBase] = useState({})
   const [air, setAir] = useState('')
   const [airQuality, setAirQuality] = useState('')
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getWeather, (err => {
@@ -55,16 +59,21 @@ const WeatherBar = () => {
     setAir(data.air.list[0].main.aqi)
   }
 
-
   return (
-    <div className="weather-container">
-      <h2>{base.name}</h2>
+    <Box  className="weather-container" align='center'>
+      {!air &&
+        <div class="lds-roller"><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div></div>
+      }
+      {air &&
+        <h2>Current Location: {base.name}</h2>}
       {weather.map((weather, idx) => {
-        return <div key={idx}>{weather.description}</div>
+        return <div key={idx}>Weather: {weather.description}</div>
       })}
-      <div>{airQuality}</div>
+      {air &&
+        <div>Air Quality: {airQuality}</div>}
 
-    </div>
+    </Box>
   )
 }
 

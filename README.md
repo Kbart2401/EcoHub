@@ -74,3 +74,10 @@ This app is designed to make its users more environmentally-minded citizens, whe
 
 #### Report an issue modal
 1. Report an issue form
+
+
+## Points Logic
+- Complete a task: 5 points
+- Get a like: 1 point
+- Report an issue: 10 points
+- Make a comment: 1 point

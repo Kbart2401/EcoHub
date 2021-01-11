@@ -18,7 +18,9 @@ def add_post():
         category=category,
         content=content
     )
+    current_user.xp += 5
     db.session.add(post)
+    db.session.add(current_user)
     db.session.commit()
     return post.to_dict()
 
