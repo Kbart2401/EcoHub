@@ -1,0 +1,14 @@
+.weather-container {
+  min-height: 185px;
+}
+
+.weather-container h2 {
+text-shadow: 
+-2px 2px 0 #000,
+2px 2px 0 #000,
+2px -2px 0 #000,
+-2px -2px 0 #000;
+color: white;
+font-size: 25px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

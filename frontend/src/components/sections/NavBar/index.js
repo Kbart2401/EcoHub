@@ -4,6 +4,7 @@ import LogoutButton from '../../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import LoginModal from '../../modals/LoginModal';
 import SignUpModal from '../../modals/SignupModal';
+import { AiTwotoneHome} from 'react-icons/ai'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -18,7 +19,7 @@ const NavBar = () => {
             {user &&
               <li>
                 <NavLink to="/" exact={true} activeClassName="active">
-                  Home
+               <AiTwotoneHome />
           </NavLink>
               </li>
             }
