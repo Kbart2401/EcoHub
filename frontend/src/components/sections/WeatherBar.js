@@ -6,7 +6,7 @@ import '../../stylesheets/weatherBar.css';
 
 const WeatherBar = () => {
   const [weather, setWeather] = useState([])
-  const [base, setBase] = useState({})
+  const [region, setRegion] = useState({})
   const [air, setAir] = useState('')
   const [airQuality, setAirQuality] = useState('')
   const [image, setImage] = useState('');
@@ -44,6 +44,7 @@ const WeatherBar = () => {
   })
 
   async function getWeather(location) {
+    debugger
     const res = await fetch('/api/api/weather', {
       method: 'POST',
       headers: {
@@ -54,7 +55,9 @@ const WeatherBar = () => {
       })
     })
     const data = await res.json()
-    setBase(data.weather)
+    const img = `http://openweathermap.org/img/wn/${data.weather.weather[0].icon}@2x.png`
+    setImage(img)
+    setRegion(data.weather)
     setWeather(data.weather.weather)
     setAir(data.air.list[0].main.aqi)
   }
@@ -66,9 +69,9 @@ const WeatherBar = () => {
           <div></div><div></div><div></div><div></div></div>
       }
       {air &&
-        <h2>Current Location: {base.name}</h2>}
+        <h2>Current Location: {region.name}</h2>}
       {weather.map((weather, idx) => {
-        return <div key={idx}>Weather: {weather.description}</div>
+        return <div key={idx}>Weather: {weather.description} <img src={image} /> </div>
       })}
       {air &&
         <div>Air Quality: {airQuality}</div>}
