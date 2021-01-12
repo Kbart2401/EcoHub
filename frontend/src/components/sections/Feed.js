@@ -19,7 +19,7 @@ const Feed = () => {
   return (
     <>
       <VStack divider={<StackDivider borderColor='gray.200' />}>
-        <div>Feed</div>
+        <div>Recent Activity</div>
         {posts && posts.map((post, idx) => {
           return (
             <Box minHeight='40px' w='60%' align='center'>
