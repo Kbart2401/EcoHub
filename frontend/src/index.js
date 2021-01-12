@@ -12,9 +12,9 @@ const store = configureStore();
 const theme = extendTheme({
   colors: {
     brand:{
-      50: '#718096',
-      100: '#C05621',
-      500: '#276749'
+      50: '#718096',   //Gray 
+      100: 'tomato',  
+      500: '#276749'   //Green
     },
   }
 })

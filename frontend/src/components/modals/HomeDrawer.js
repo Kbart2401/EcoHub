@@ -12,7 +12,7 @@ const HomeDrawer = () => {
 
   return (
     <>
-      <Button height='auto' size='sm' colorScheme="orange" onClick={onOpen}>
+      <Button height='auto' size='sm' bgColor='tomato' color='white' onClick={onOpen}>
         P <br /> R <br /> O <br /> F <br /> I <br /> L <br /> E
       </Button>
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
