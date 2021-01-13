@@ -6,6 +6,7 @@ import HomeDrawer from '../modals/HomeDrawer';
 import WeatherBar from '../sections/WeatherBar';
 import TaskModal from '../modals/TaskModal';
 import '../../stylesheets/homePage.css';
+import IssueModal from '../modals/IssueModal';
 
 const Home = () => {
   const user = useSelector(state => state.session.user)
@@ -30,6 +31,7 @@ const Home = () => {
         <div className='home-center-container'>
           <WeatherBar />
           <TaskModal />
+          <IssueModal />
           <Feed />
         </div>
         <div className='home-right-container'>
