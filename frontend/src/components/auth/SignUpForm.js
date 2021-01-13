@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
+import PhotoUpload from '../sections/PhotoUpload';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -24,10 +25,6 @@ const SignUpForm = () => {
         })
     }
   };
-
-  // if (authenticated) {
-  //   return <Redirect to="/" />;
-  // }
 
   return (
     <form onSubmit={onSignUp}>
@@ -98,6 +95,7 @@ const SignUpForm = () => {
           required={true}
         />
       </div>
+      <PhotoUpload />
       <Button type='submit'>Submit</Button>
     </form>
   );
