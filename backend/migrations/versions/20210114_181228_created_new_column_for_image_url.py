@@ -1,8 +1,8 @@
-"""create tables
+"""created new column for image url
 
-Revision ID: 9869d94deffc
+Revision ID: 15ca7c610a7a
 Revises: 
-Create Date: 2021-01-07 12:49:56.869323
+Create Date: 2021-01-14 18:12:28.954894
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9869d94deffc'
+revision = '15ca7c610a7a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,6 +26,7 @@ def upgrade():
     sa.Column('state', sa.String(length=255), nullable=True),
     sa.Column('country', sa.String(length=100), nullable=True),
     sa.Column('xp', sa.Integer(), nullable=False),
+    sa.Column('img_url', sa.String(length=255), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),

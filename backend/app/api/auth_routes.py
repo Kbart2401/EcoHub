@@ -15,11 +15,6 @@ BUCKET_NAME = 'ecohub-bucket'
 auth_routes = Blueprint('auth', __name__)
 
 
-def spaceRemover(filename):
-    list_filename = filename.split(' ')
-    return '+'.join(list_filename)
-
-
 def upload_file_to_s3(file, bucket_name, acl='public-read'):
     s3.upload_fileobj(
         file, bucket_name, file.filename, ExtraArgs={
@@ -27,8 +22,8 @@ def upload_file_to_s3(file, bucket_name, acl='public-read'):
             "ContentType": file.content_type
         }
     )
-    return f'https://s3.amazonaws.com/{bucket_name}/{file.filename}'
-    # return "{}{}".format('https://ecohub-bucket.s3.amazonaws.com/', spaceRemover(file.filename))
+    filename = file.filename.replace(' ', '+')
+    return f'https://{bucket_name}.s3.us-east-2.amazonaws.com/{filename}'
 
 
 def validation_errors_to_error_messages(validation_errors):
@@ -92,12 +87,6 @@ def sign_up():
     if form.validate_on_submit():
         if request.files:
             image_url = upload_file_to_s3(request.files['image'], BUCKET_NAME)
-            # img = request.fiiles['image']
-            # img_name = secure_filename(img.filename)
-            # mime_type = mimetypes.guess_type(img_name)
-            # s3 = boto3.resource('s3')
-            # uploaded_image = s3.Bucket('ecohub-images').put_object(
-            #     Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
 
         user = User(
             username=form.data['username'],
@@ -106,6 +95,7 @@ def sign_up():
             state=form.data['state'],
             country=form.data['country'],
             xp=0,
+            img_url=image_url,
             password=form.data['password']
         )
         db.session.add(user)

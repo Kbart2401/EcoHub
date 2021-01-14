@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(255))
     country = db.Column(db.String(100))
     xp = db.Column(db.Integer, nullable=False)
+    img_url = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
     posts = db.relationship('Post', back_populates='user')
     comments = db.relationship('Comment', back_populates='user')
@@ -41,7 +42,8 @@ class User(db.Model, UserMixin):
             "city": self.city,
             "state": self.state,
             "country": self.country,
-            "xp": self.xp
+            "xp": self.xp,
+            "image": self.img_url
         }
 
     def to_dict_full(self):
@@ -53,6 +55,7 @@ class User(db.Model, UserMixin):
             "state": self.state,
             "country": self.country,
             "xp": self.xp,
+            "image": self.img_url,
             "posts": [post.to_dict() for post in self.posts],
             "friends": [friend.to_dict() for friend in self.friends]
         }
