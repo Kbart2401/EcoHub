@@ -45,3 +45,5 @@ def confirm_friend():
     db.session.add(current_user)
     db.session.commit()
     return current_user.to_dict_full()
+
+

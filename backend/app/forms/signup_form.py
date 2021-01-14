@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, FileField
 from wtforms.validators import DataRequired, Email, ValidationError, Optional
+from flask_wtf.file import FileAllowed
 from app.models import User
 
 
@@ -19,3 +20,4 @@ class SignUpForm(FlaskForm):
     state = StringField('state', validators=[Optional()])
     country = StringField('country', validators=[Optional()])
     password = StringField('password', validators=[DataRequired()])
+    image = FileField('image', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])

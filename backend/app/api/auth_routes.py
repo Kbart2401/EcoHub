@@ -3,6 +3,11 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+import boto3
+import mimetypes
+from werkzeug.utils import secure_filename
+
+s3 = boto3.resource('s3')
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -41,7 +46,8 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.username == form.data['username']).first()
+        user = User.query.filter(
+            User.username == form.data['username']).first()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -64,6 +70,14 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if request.files:
+            img = request.fiiles['image']
+            img_name = secure_filename(img.filename)
+            mime_type = mimetypes.guess_type(img_name)
+            s3 = boto3.resource('s3')
+            uploaded_image = s3.Bucket('ecohub-images').put_object(
+                Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
+                
         user = User(
             username=form.data['username'],
             email=form.data['email'],
