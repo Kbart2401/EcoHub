@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
-import PhotoUpload from '../sections/PhotoUpload';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -13,17 +12,27 @@ const SignUpForm = () => {
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      dispatch(sessionActions.signUserUp(username, email, city, state, country, password))
+      const form = new FormData()
+      form.append('username', username)
+      form.append('email', email)
+      form.append('city', city)
+      form.append('state', state)
+      form.append('country', country)
+      form.append('password', password)
+      form.append('image', image)
+      dispatch(sessionActions.signUserUp(form))
         .catch(res => {
-          if(res.errors) setErrors(res.errors)
+          if (res.errors) setErrors(res.errors)
         })
     }
+    else setErrors(['Passwords do not match'])
   };
 
   return (
@@ -95,7 +104,9 @@ const SignUpForm = () => {
           required={true}
         />
       </div>
-      <PhotoUpload />
+      <label>Upload Image</label>
+      <Input name='image' type='file' onChange={e => setImage(e.target.files[0])}/>
+      <progress max='100' value='0'></progress>
       <Button type='submit'>Submit</Button>
     </form>
   );

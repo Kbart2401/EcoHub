@@ -55,24 +55,13 @@ export const restoreUser = () => async (dispatch) => {
     const posts = await result.json()
     dispatch(setUser(user))
     dispatch(setFeed(posts))
-
 }
-
-export const signUserUp = (username, email, city, state, country, password) =>
+  //Make a note of this, No content headers when doing a request with a file!
+export const signUserUp = (payload) =>
   async dispatch => {
       let res = await fetch("/api/auth/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          city,
-          state,
-          country,
-          password,
-        }),
+        body: payload,
       });
     if (res.ok) {
       const user = await res.json()

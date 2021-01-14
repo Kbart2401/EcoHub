@@ -1,15 +1,34 @@
+import os
+import boto3
+import mimetypes
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-import boto3
-import mimetypes
 from werkzeug.utils import secure_filename
 
-s3 = boto3.resource('s3')
+s3 = boto3.client('s3', aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+                  aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'))
+BUCKET_NAME = 'ecohub-bucket'
 
 auth_routes = Blueprint('auth', __name__)
+
+
+def spaceRemover(filename):
+    list_filename = filename.split(' ')
+    return '+'.join(list_filename)
+
+
+def upload_file_to_s3(file, bucket_name, acl='public-read'):
+    s3.upload_fileobj(
+        file, bucket_name, file.filename, ExtraArgs={
+            'ACL': acl,
+            "ContentType": file.content_type
+        }
+    )
+    return f'https://s3.amazonaws.com/{bucket_name}/{file.filename}'
+    # return "{}{}".format('https://ecohub-bucket.s3.amazonaws.com/', spaceRemover(file.filename))
 
 
 def validation_errors_to_error_messages(validation_errors):
@@ -69,15 +88,17 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    requests = request.files
     if form.validate_on_submit():
         if request.files:
-            img = request.fiiles['image']
-            img_name = secure_filename(img.filename)
-            mime_type = mimetypes.guess_type(img_name)
-            s3 = boto3.resource('s3')
-            uploaded_image = s3.Bucket('ecohub-images').put_object(
-                Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
-                
+            image_url = upload_file_to_s3(request.files['image'], BUCKET_NAME)
+            # img = request.fiiles['image']
+            # img_name = secure_filename(img.filename)
+            # mime_type = mimetypes.guess_type(img_name)
+            # s3 = boto3.resource('s3')
+            # uploaded_image = s3.Bucket('ecohub-images').put_object(
+            #     Key=img_name, Body=img, ACL='public-read', ContentType=mime_type[0])
+
         user = User(
             username=form.data['username'],
             email=form.data['email'],
