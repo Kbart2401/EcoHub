@@ -15,6 +15,7 @@ const Comments = ({ post }) => {
   const handleCommentSubmit = (postId) => (e) => {
     e.preventDefault();
     dispatch(sessionActions.addComment(comment, postId))
+    setComment('')
   }
 
   function postComments() {
@@ -34,7 +35,7 @@ const Comments = ({ post }) => {
       <Box>
         <form onSubmit={handleCommentSubmit(post.id)}>
           <Input type='text' name='comment' placeholder='Enter a comment'
-            onChange={e => setComment(e.target.value)} />
+            value={comment}onChange={e => setComment(e.target.value)} />
         </form>
         <GoComment /></Box>
     </>
