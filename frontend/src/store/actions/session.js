@@ -2,12 +2,14 @@
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 export const SET_FEED = 'SET_FEED';
+export const SET_COMMENT = 'SET_COMMENT';
 
 
 /********Action Creators*******/
 const setUser = user => ({ type: SET_USER, payload: user });
 const removeUser = user => ({ type: REMOVE_USER, payload: user })
 const setFeed = posts => ({type: SET_FEED, payload: posts})
+const setComment = comment => ({type: SET_COMMENT, payload: comment})
 
 
 /********Thunks*******/
@@ -56,7 +58,7 @@ export const restoreUser = () => async (dispatch) => {
     dispatch(setUser(user))
     dispatch(setFeed(posts))
 }
-  //Make a note of this, No content headers when doing a request with a file!
+  
 export const signUserUp = (payload) =>
   async dispatch => {
       let res = await fetch("/api/auth/signup", {
@@ -73,3 +75,24 @@ export const signUserUp = (payload) =>
     }
     return res
   }
+
+export const addComment = (content, post_id) => async (dispatch) => {
+    let res = await fetch('/api/comments/', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        content, post_id
+      })
+    })
+    if (res.ok) {
+      const comment = await res.json()
+      dispatch(setComment(comment))
+    }
+    else {
+      res = await res.json()
+      throw res;
+    }
+    return res
+}
