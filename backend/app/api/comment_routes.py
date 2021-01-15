@@ -17,7 +17,7 @@ def create_comment():
     )
     db.session.add(comment)
     db.session.commit()
-    return comment.to_dict()
+    return comment.to_dict_full()
 
 
 @comment_routes.route('/', methods=['DELETE'])
