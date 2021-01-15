@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Grid, GridItem, VStack, StackDivider, Box, Flex, Input } from '@chakra-ui/react';
 import Comments from './Comments';
-import * as sessionActions from '../../store/actions/session';
-
 
 const Feed = () => {
-  const dispatch = useDispatch()
   const posts = useSelector(state => state.session.posts)
   
-
-
-
-  
-
   return (
     <>
       <VStack divider={<StackDivider borderColor='gray.200' />}>
