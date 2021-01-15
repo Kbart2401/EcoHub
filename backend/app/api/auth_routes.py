@@ -83,7 +83,6 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    requests = request.files
     if form.validate_on_submit():
         if request.files:
             image_url = upload_file_to_s3(request.files['image'], BUCKET_NAME)

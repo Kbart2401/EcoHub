@@ -27,8 +27,6 @@ const Home = () => {
           <div className='slide-out-panel'>
             <HomeDrawer />
           </div>
-          {user &&
-          <img src={user.image} alt='profile-pic' />}
         </div>
         <div className='home-center-container'>
           <WeatherBar />

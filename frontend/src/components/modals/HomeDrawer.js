@@ -19,7 +19,9 @@ const HomeDrawer = () => {
         <DrawerOverlay>
           <DrawerContent>
             {user &&
-              <DrawerHeader borderBottomWidth="1px">{user.username}</DrawerHeader>
+              <DrawerHeader borderBottomWidth="1px">
+                {user.username} <img src={user.image} />
+              </DrawerHeader>
             }
             <DrawerBody>
               {user &&

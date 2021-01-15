@@ -23,3 +23,15 @@
 .home-right-container {
   flex-grow: 1;
 }
+
+.chakra-modal__header {
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+
+.chakra-modal__header img {
+  height: 5em;
+  width: 5em;
+  border-radius: 100%;
+}
