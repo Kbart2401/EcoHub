@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import {
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
   ModalCloseButton, Button, useDisclosure, Select, Input
 } from "@chakra-ui/react";
+import * as sessionActions from '../../store/actions/session';
 
 const IssueModal = () => {
+  const dispatch = useDispatch()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [content, setContent] = useState('')
   const [issue, setIssue] = useState('')
@@ -15,17 +18,7 @@ const IssueModal = () => {
     let sendIssue;
     if (customIssue && issue === 'Enter') sendIssue = customIssue
     else sendIssue = issue
-    const res = await fetch('api/posts/', {
-      headers: {
-        'Content-type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        category: sendIssue,
-        content
-      })
-    })
-    const data = await res.json()
+    dispatch(sessionActions.addPost(sendIssue, content))
   }
 
   return (

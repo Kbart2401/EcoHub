@@ -11,7 +11,7 @@ const sessionReducer = (state = inititalState, action) => {
       newState = Object.assign({ ...state }, { user: action.payload })
       return newState;
     case REMOVE_USER:
-      newState = Object.assign({ ...state }, { user: null })
+      newState = Object.assign({ ...state }, { user: null, posts: null })
       return newState;
     case SET_FEED:
       newState = Object.assign({ ...state }, { ...action.payload })
@@ -28,7 +28,6 @@ const sessionReducer = (state = inititalState, action) => {
       }
       return newState;
     case REMOVE_COMMENT:
-      debugger
       for (let i = 0; i < state.posts.length; i++) {
           if (state.posts[i].id === action.postId) {
             for (let j = 0; j < state.posts[i].comments.length; j++) {
