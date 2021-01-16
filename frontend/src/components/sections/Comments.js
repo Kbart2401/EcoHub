@@ -31,7 +31,7 @@ const Comments = ({ post }) => {
             <>
               <Box key={idx} bg='#E2E8F0'>{comment.content}
             &nbsp; {comment.user.username}</Box>
-            {user.id === comment.user.id &&
+            {user && user.id === comment.user.id &&
             <Button type='button' onClick={handleClick(comment)}>Delete</Button>
             }
             </>)
