@@ -1,6 +1,6 @@
 import {
   SET_USER, REMOVE_USER, SET_FEED,
-  SET_COMMENT, SET_POST
+  SET_COMMENT, SET_POST, REMOVE_COMMENT
 } from '../actions/session'
 
 const inititalState = { user: null };
@@ -25,6 +25,20 @@ const sessionReducer = (state = inititalState, action) => {
           newState = {...state}
           newState.posts[i].comments = [...newState.posts[i].comments, action.payload]
         }
+      }
+      return newState;
+    case REMOVE_COMMENT:
+      debugger
+      for (let i = 0; i < state.posts.length; i++) {
+          if (state.posts[i].id === action.postId) {
+            for (let j = 0; j < state.posts[i].comments.length; j++) {
+              let comment = state.posts[i].comments[j]
+              if (comment.id === action.payload.id) {
+                newState = {...state}
+                newState.posts[i].comments.splice(j, 1)
+              }
+            }
+          }
       }
       return newState;
     default:

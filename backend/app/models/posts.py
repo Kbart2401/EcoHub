@@ -9,7 +9,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     category = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text)
-    created_date = db.Column(db.Date, default=datetime.datetime.today())
+    created_date = db.Column(db.Date, default=datetime.datetime.now())
     user = db.relationship('User', back_populates='posts')
     comments = db.relationship('Comment', back_populates='post')
 

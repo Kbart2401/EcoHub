@@ -1,8 +1,8 @@
-"""created new column for image url
+"""updated column on post model
 
-Revision ID: 15ca7c610a7a
+Revision ID: 65d365123c0e
 Revises: 
-Create Date: 2021-01-14 18:12:28.954894
+Create Date: 2021-01-15 23:27:33.487854
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '15ca7c610a7a'
+revision = '65d365123c0e'
 down_revision = None
 branch_labels = None
 depends_on = None

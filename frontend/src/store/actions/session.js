@@ -4,6 +4,8 @@ export const REMOVE_USER = 'REMOVE_USER';
 export const SET_FEED = 'SET_FEED';
 export const SET_COMMENT = 'SET_COMMENT';
 export const SET_POST = 'SET_POST';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+
 
 /********Action Creators*******/
 const setUser = user => ({ type: SET_USER, payload: user });
@@ -11,6 +13,7 @@ const removeUser = user => ({ type: REMOVE_USER, payload: user })
 const setFeed = posts => ({type: SET_FEED, payload: posts})
 const setComment = comment => ({type: SET_COMMENT, payload: comment})
 const setPost = post => ({type: SET_POST, payload: post})
+const removeComment = (comment, postId) => ({type: REMOVE_COMMENT, payload: comment, postId})
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
@@ -109,4 +112,17 @@ export const addComment = (content, post_id) => async (dispatch) => {
       throw res;
     }
     return res
+}
+
+export const deleteComment = (comment, postId) => async (dispatch) => {
+  const res = await fetch('api/comments/', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'DELETE',
+    body: JSON.stringify({
+      id: comment.id
+    })
+  })
+  dispatch(removeComment(comment, postId))
 }
