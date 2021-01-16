@@ -3,14 +3,14 @@ export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 export const SET_FEED = 'SET_FEED';
 export const SET_COMMENT = 'SET_COMMENT';
-
+export const SET_POST = 'SET_POST';
 
 /********Action Creators*******/
 const setUser = user => ({ type: SET_USER, payload: user });
 const removeUser = user => ({ type: REMOVE_USER, payload: user })
 const setFeed = posts => ({type: SET_FEED, payload: posts})
 const setComment = comment => ({type: SET_COMMENT, payload: comment})
-
+const setPost = post => ({type: SET_POST, payload: post})
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
@@ -75,6 +75,20 @@ export const signUserUp = (payload) =>
     }
     return res
   }
+
+export const addPost = (category, content) => async (dispatch) => {
+  const res = await fetch('api/posts/', {
+    headers: {
+      'Content-type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      category, content
+    })
+  })
+  const data = await res.json()
+  dispatch(setPost(data))
+}
 
 export const addComment = (content, post_id) => async (dispatch) => {
     let res = await fetch('/api/comments/', {

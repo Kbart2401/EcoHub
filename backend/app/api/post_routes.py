@@ -22,7 +22,7 @@ def add_post():
     db.session.add(post)
     db.session.add(current_user)
     db.session.commit()
-    return post.to_dict()
+    return post.to_dict_full()
 
 
 @post_routes.route('/', methods=['DELETE'])

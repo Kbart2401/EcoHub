@@ -1,7 +1,6 @@
-import produce from 'immer';
 import {
   SET_USER, REMOVE_USER, SET_FEED,
-  SET_COMMENT
+  SET_COMMENT, SET_POST
 } from '../actions/session'
 
 const inititalState = { user: null };
@@ -16,6 +15,9 @@ const sessionReducer = (state = inititalState, action) => {
       return newState;
     case SET_FEED:
       newState = Object.assign({ ...state }, { ...action.payload })
+      return newState;
+    case SET_POST:
+      newState = Object.assign({...state}, {posts: [action.payload, ...state.posts]})
       return newState;
     case SET_COMMENT:
       for (let i = 0; i < state.posts.length; i++) {

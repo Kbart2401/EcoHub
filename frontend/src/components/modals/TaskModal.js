@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
   ModalCloseButton, Button, useDisclosure, Select, Input
 } from "@chakra-ui/react";
+import * as sessionActions from '../../store/actions/session';
 
 const TaskModal = () => {
+  const dispatch = useDispatch()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [content, setContent] = useState('')
   const [task, setTask] = useState('')
@@ -15,17 +18,7 @@ const TaskModal = () => {
     let sendTask;
     if (customTask && task === 'Enter') sendTask = customTask
     else sendTask = task
-      const res = await fetch('api/posts/', {
-        headers: {
-          'Content-type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          category: sendTask,
-          content
-        })
-      })
-    const data = await res.json()
+    dispatch(sessionActions.addPost(sendTask, content))
   }
 
   return (
