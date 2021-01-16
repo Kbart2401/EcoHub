@@ -6,8 +6,8 @@
 .home-center-container {
   max-width: 1200px;
   min-width: 1000px;
-  border-right: 3px solid #718096;
-  border-left: 3px solid #718096;
+  border-right: 2px solid #718096;
+  border-left: 2px solid #718096;
 }
 
 .home-left-container {
@@ -34,4 +34,12 @@ align-items: center;
   height: 5em;
   width: 5em;
   border-radius: 100%;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: space-around;
+  border-top: 2px solid #718096;
+  border-bottom: 2px solid #718096;
+  background-color: #C6F6D5;
 }

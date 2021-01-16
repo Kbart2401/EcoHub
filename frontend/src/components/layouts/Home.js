@@ -30,8 +30,10 @@ const Home = () => {
         </div>
         <div className='home-center-container'>
           <WeatherBar />
-          <TaskModal />
-          <IssueModal />
+          <div className='post-buttons'>
+            <TaskModal />
+            <IssueModal />
+          </div>
           <Feed />
         </div>
         <div className='home-right-container'>
