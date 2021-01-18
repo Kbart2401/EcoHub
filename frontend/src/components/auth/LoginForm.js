@@ -4,7 +4,7 @@ import { Button, Input } from '@chakra-ui/react';
 const LoginForm = ({errors, onLogin, setPassword, setUsername}) => {
 
   return (
-    <form>
+    <form onSubmit={onLogin}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>

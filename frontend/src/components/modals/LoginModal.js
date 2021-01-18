@@ -26,6 +26,15 @@ const LoginModal = () => {
         if (res.errors) return setErrors(res.errors)
       })
   }
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logUserIn('Demo', 'password'))
+      .catch(res => {
+        if (res.errors) return setErrors(res.errors)
+      })
+  }
+
+
   return (
     <>
       <Link onClick={onOpen}>Login</Link>
@@ -41,6 +50,7 @@ const LoginModal = () => {
           </ModalBody>
 
           <ModalFooter>
+            <Button type='submit' onClick={demoLogin}>Login As Demo User</Button>
             <Button type='submit' onClick={onLogin}>Submit</Button>
             <Button colorScheme="orange" mr={3} onClick={onClose}>
               Close
