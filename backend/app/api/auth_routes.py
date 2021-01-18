@@ -1,6 +1,5 @@
 import os
 import boto3
-import mimetypes
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
@@ -63,7 +62,7 @@ def login():
         user = User.query.filter(
             User.username == form.data['username']).first()
         login_user(user)
-        return user.to_dict()
+        return user.to_dict_full()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

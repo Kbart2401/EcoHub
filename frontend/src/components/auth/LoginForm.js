@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Button, Input } from '@chakra-ui/react';
+import React from "react";
+import { Input } from '@chakra-ui/react';
 
-const LoginForm = ({errors, onLogin, setPassword, setUsername}) => {
+const LoginForm = ({ errors, onLogin, setPassword, setUsername }) => {
 
   return (
     <form onSubmit={onLogin}>

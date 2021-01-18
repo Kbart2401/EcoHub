@@ -9,13 +9,13 @@ const HomeDrawer = () => {
   const user = useSelector(state => state.session.user)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = React.useState("left")
-  const [friends, setFriends] = useState(0)
+  const [friendCount, setFriendCount] = useState(0)
 
 
   useEffect(() => {
     let num = 0;
     if (user) user.friends.forEach(friend => num++)
-    setFriends(num)
+    setFriendCount(num)
   },[])
 
   return (
@@ -36,7 +36,7 @@ const HomeDrawer = () => {
                 <>
                 <h1>Profile</h1>
                   <p>XP: {user.xp}</p>
-                  <p>Friends: {friends}</p>
+                  <p>Friends: {friendCount}</p>
                   <p>City: {user.city}</p>
                   <p>State: {user.state}</p>
                   <p>Country: {user.country}</p>
