@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, Friend, db
+from sqlalchemy import func, or_
 
 user_routes = Blueprint('users', __name__)
 
@@ -15,8 +16,10 @@ def users():
 @user_routes.route('/<user>')
 @login_required
 def user(user):
-    search_user = f'%{user}%'
-    users = User.query.filter(User.username.like(search_user)).all()
+    search_user = f'%{user.lower()}%'
+    users = User.query.filter(or_(func.lower(User.username).like(
+        search_user), (func.lower(User.city)).like(search_user),
+        (func.lower(User.state)).like(search_user))).all()
     return {"users": [user.to_dict() for user in users]}
 
 
@@ -39,12 +42,10 @@ def add_friend():
 @user_routes.route('/confirm', methods=['POST'])
 @login_required
 def confirm_friend():
-    user_id = current_user.id 
+    user_id = current_user.id
     friend_id = request.get_json().get('id')
     friend = User.query.get(friend_id)
     current_user.friends.append(friend)
     db.session.add(current_user)
     db.session.commit()
     return current_user.to_dict_full()
-
-
