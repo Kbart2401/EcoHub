@@ -1,14 +1,24 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import LoginModal from '../../modals/LoginModal';
 import SignUpModal from '../../modals/SignupModal';
-import { AiTwotoneHome} from 'react-icons/ai'
+import { AiTwotoneHome} from 'react-icons/ai';
+import {Input} from '@chakra-ui/react';
 import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
+  const [search, setSearch] = useState('')
+
+  const onSearch = async (e) => {
+    e.preventDefault()
+    const res = await fetch('/api/users/')
+    const users = await res.json()
+    return history.push('/users')
+  }
 
   return (
     <div className='nav-container'>
@@ -17,11 +27,18 @@ const NavBar = () => {
           <ul>
             <li>Logo</li>
             {user &&
+            <>
               <li>
                 <NavLink to="/" exact={true} activeClassName="active">
                <AiTwotoneHome />
           </NavLink>
               </li>
+              <li>
+                <form onSubmit={onSearch}>
+                  <Input placeholder='search EcoHub users' ></Input>
+                </form>
+              </li>
+              </>
             }
           </ul>
         </div>
