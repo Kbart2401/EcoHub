@@ -1,25 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/actions/session'
+import React, { useEffect, useState } from "react";
 import { Button, Input } from '@chakra-ui/react';
 
-const LoginForm = () => {
-  const dispatch = useDispatch()
-  const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const user = useSelector(state => state.session.user)
-
-  const onLogin = async (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logUserIn(username, password))
-      .catch(res => {
-        if (res.errors) return setErrors(res.errors)
-      })
-  }
+const LoginForm = ({errors, onLogin, setPassword, setUsername}) => {
 
   return (
-    <form onSubmit={onLogin}>
+    <form>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
@@ -29,7 +14,6 @@ const LoginForm = () => {
           name="username"
           type="text"
           placeholder="Username"
-          value={username}
           onChange={e => setUsername(e.target.value)} />
       </div>
       <div>
@@ -38,10 +22,8 @@ const LoginForm = () => {
           name="password"
           type="password"
           placeholder="Password"
-          value={password}
           onChange={e => setPassword(e.target.value)} />
       </div>
-      <Button type='submit'>Submit</Button>
     </form>
   );
 };
