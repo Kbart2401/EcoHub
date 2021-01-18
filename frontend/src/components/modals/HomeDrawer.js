@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Drawer, DrawerBody, DrawerFooter, DrawerHeader,
   DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button
@@ -9,6 +9,14 @@ const HomeDrawer = () => {
   const user = useSelector(state => state.session.user)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = React.useState("left")
+  const [friends, setFriends] = useState(0)
+
+
+  useEffect(() => {
+    let num = 0;
+    if (user) user.friends.forEach(friend => num++)
+    setFriends(num)
+  },[])
 
   return (
     <>
@@ -26,10 +34,12 @@ const HomeDrawer = () => {
             <DrawerBody>
               {user &&
                 <>
+                <h1>Profile</h1>
                   <p>XP: {user.xp}</p>
-                  <p>{user.city}</p>
-                  <p>{user.state}</p>
-                  <p>{user.country}</p>
+                  <p>Friends: {friends}</p>
+                  <p>City: {user.city}</p>
+                  <p>State: {user.state}</p>
+                  <p>Country: {user.country}</p>
                 </>}
             </DrawerBody>
           </DrawerContent>
