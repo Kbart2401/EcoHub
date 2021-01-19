@@ -34,9 +34,12 @@ const IssueModal = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <Select placeholder='Select option' value={issue} onChange={e => setIssue(e.target.value)}>
-                  <option value='Recycle'>Recycle</option>
-                  <option value='Plant tree'>Plant tree</option>
-                  <option value='Enter'>Enter your own</option>
+                  <option value='Wild animal traffic'>Wild animal traffic</option>
+                  <option value='Indiscriminate logging'>Indiscriminate logging</option>
+                  <option value='Electronic waste mismanagement'>Electronic waste mismanagement</option>
+                  <option value='Finning'>Finning</option>
+                  <option value='Dumping in rivers and aquifers'>Dumping in rivers and aquifers</option>
+                  <option value='Enter your own'>Enter your own</option>
                 </Select>
                 {issue==='Enter' &&
                 <Input type='text' onChange={e => setCustomIssue(e.target.value)}/>}

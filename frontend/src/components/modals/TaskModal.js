@@ -36,7 +36,11 @@ const TaskModal = () => {
                 <label htmlFor='category'>Category</label>
                 <Select placeholder='Select option' value={task} onChange={e => setTask(e.target.value)}>
                   <option value='Recycle'>Recycle</option>
+                  <option value='Compost'>Compost</option>
+                  <option value='Cut out plastics'>Cut out plastics</option>
+                  <option value='Used LED lights'>Used LED lights</option>
                   <option value='Plant tree'>Plant tree</option>
+                  <option value='Grow your own food'>Grow your own food</option>
                   <option value='Enter'>Enter your own</option>
                 </Select>
                 {task === 'Enter' &&

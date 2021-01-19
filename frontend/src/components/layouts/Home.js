@@ -36,7 +36,7 @@ const Home = () => {
           <Feed />
         </div>
         <div className='home-right-container'>
-          <div>Top Contributors</div>
+          {/* <div>Top Contributors</div> */}
         </div>
       </div>
     </>
