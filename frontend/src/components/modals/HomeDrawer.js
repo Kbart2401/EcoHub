@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
   Drawer, DrawerBody, DrawerFooter, DrawerHeader,
-  DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button
+  DrawerOverlay, DrawerContent, useDisclosure, Button,
+  Table, Thead, Tbody, Tr, Th, Td, TableCaption
 } from "@chakra-ui/react";
 import { useSelector } from 'react-redux';
 
@@ -16,7 +17,7 @@ const HomeDrawer = () => {
     let num = 0;
     if (user) user.friends.forEach(friend => num++)
     setFriendCount(num)
-  },[])
+  }, [])
 
   return (
     <>
@@ -34,12 +35,43 @@ const HomeDrawer = () => {
             <DrawerBody>
               {user &&
                 <>
-                <h1>Profile</h1>
-                  <p>XP: {user.xp}</p>
-                  <p>Friends: {friendCount}</p>
-                  <p>City: {user.city}</p>
-                  <p>State: {user.state}</p>
-                  <p>Country: {user.country}</p>
+                  <Table variant="striped" colorScheme="green">
+                    <TableCaption placement='top'>Profile</TableCaption>
+                    {/* <Thead>
+                    <Tr>
+                      <Th>Value</Th>
+                      <Th>Rating</Th>
+                    </Tr>
+                  </Thead> */}
+                    <Tbody>
+                      <Tr>
+                        <Td>XP</Td>
+                        <Td>{user.xp}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Friends</Td>
+                        <Td>{friendCount}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>City</Td>
+                        <Td>{user.city}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>State</Td>
+                        <Td>{user.state}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Country</Td>
+                        <Td>{user.country}</Td>
+                      </Tr>
+                    </Tbody>
+                  </Table>
+                  {/* <h1>Profile</h1> */}
+                  {/* <p>XP: {user.xp}</p> */}
+                  {/* <p>Friends: {friendCount}</p> */}
+                  {/* <p>City: {user.city}</p> */}
+                  {/* <p>State: {user.state}</p>
+                  <p>Country: {user.country}</p> */}
                 </>}
             </DrawerBody>
           </DrawerContent>
