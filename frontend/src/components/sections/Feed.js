@@ -15,7 +15,7 @@ const Feed = () => {
     <>
       <VStack divider={<StackDivider borderColor='gray.200' />}>
         <div className='feed-caps'>Recent Activity</div>
-        {posts && posts.map((post, idx) => {
+        {posts?.map((post, idx) => {
           return (
             <>
               <Grid key={idx} minH='120px' width='75%' templateRows='repeat(2, 1fr)'

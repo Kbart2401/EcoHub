@@ -32,7 +32,7 @@ const Comments = ({ post }) => {
             <>
               <Box borderRadius='5px' marginBottom='10px' key={idx} bg='#E2E8F0'><div className='comment-text'>{comment.content}
                 <br /> <div className='comment-username'>{comment.user.username}</div></div>
-                {user && user.id === comment.user.id &&
+                {user?.id === comment.user.id &&
                   <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
                 }</Box>
 
