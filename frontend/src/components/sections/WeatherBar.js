@@ -51,16 +51,24 @@ const WeatherBar = () => {
   useEffect(() => {
     if (bgImage) {
       switch (bgImage) {
-        case 'haze' || 'mist':
+        case 'haze':
+        case 'mist':
           setBgUrl("url(/images/fog.jpg)")
           break;
-        case 'light snow' || 'heavy snow':
+        case 'light snow':
+        case 'heavy snow':
           setBgUrl("url(/images/snowfall.jpg)")
           break;
-        case 'few clouds' || 'scattered clouds' || 'broken clouds':
+        case 'few clouds':
+        case 'scattered clouds':
+        case 'broken clouds':
           setBgUrl("url(/images/clouds.jpg)")
           break;
-        case 'rain' || 'shower rain':
+        case 'overcast clouds':
+          setBgUrl("url(/images/overcast.jpg)")
+          break;
+        case 'rain':
+        case 'shower rain':
           setBgUrl("url(/images/raindrops.jpg)")
           break;
         case 'thunderstorm':

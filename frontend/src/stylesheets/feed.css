@@ -3,3 +3,19 @@
   width: 4em;
   border-radius: 100%;
 }
+
+.feed-caps {
+  font-family: Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feed-username {
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+.feed-username-container span {
+  padding-right: 10px;
+}

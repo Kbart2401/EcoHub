@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, GridItem, VStack, StackDivider, Flex, Button } from '@chakra-ui/react';
 import * as sessionActions from '../../store/actions/session';
+import '../../stylesheets/feed.css';
 
 
 const UserSearch = (props) => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user)
-  // const currentFriends = useSelector(state => state.session.user.friends)
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const UserSearch = (props) => {
   return (
     <>
       <VStack divider={<StackDivider borderColor='gray.200' />}>
-        <div>Search Results</div>
+        <div className='feed-caps'>Search Results</div>
         {users.map((user, idx) => {
           return (
             <>

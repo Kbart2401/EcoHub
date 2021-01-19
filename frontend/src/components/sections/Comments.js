@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoComment } from 'react-icons/go';
-import { Input, Box, Button } from '@chakra-ui/react';
+import { Input, Box, Button, Flex } from '@chakra-ui/react';
 import * as sessionActions from '../../store/actions/session';
 
 
@@ -29,11 +29,12 @@ const Comments = ({ post }) => {
         post.comments.map((comment, idx) => {
           return (
             <>
-              <Box key={idx} bg='#E2E8F0'>{comment.content}
-            &nbsp; {comment.user.username}</Box>
-            {user && user.id === comment.user.id &&
-            <Button type='button' onClick={handleClick(comment)}>Delete</Button>
-            }
+              <Box borderRadius='5px' marginBottom='10px' key={idx} bg='#E2E8F0'>{comment.user.username}
+            <br /> {comment.content}
+                {user && user.id === comment.user.id &&
+                  <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
+                }</Box>
+
             </>)
         })
       )
@@ -42,13 +43,15 @@ const Comments = ({ post }) => {
 
   return (
     <>
-      <Box>{postComments()}</Box>
-      <Box>
-        <form onSubmit={handleCommentSubmit(post.id)}>
-          <Input type='text' name='comment' placeholder='Enter a comment'
-            value={comment} onChange={e => setComment(e.target.value)} />
-        </form>
-        <GoComment /></Box>
+      <Flex flexDirection='column' width='100%'>
+        <Box>{postComments()}</Box>
+        <Box>
+          <form onSubmit={handleCommentSubmit(post.id)}>
+            <Input type='text' name='comment' placeholder='Leave a comment!'
+              value={comment} onChange={e => setComment(e.target.value)} />
+          </form>
+         </Box>
+      </Flex>
     </>
   )
 }
