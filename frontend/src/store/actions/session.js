@@ -5,6 +5,7 @@ export const SET_FEED = 'SET_FEED';
 export const SET_COMMENT = 'SET_COMMENT';
 export const SET_POST = 'SET_POST';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const SET_FRIEND = 'SET_FRIEND';
 
 
 /********Action Creators*******/
@@ -14,6 +15,7 @@ const setFeed = posts => ({ type: SET_FEED, payload: posts })
 const setComment = comment => ({ type: SET_COMMENT, payload: comment })
 const setPost = post => ({ type: SET_POST, payload: post })
 const removeComment = (comment, postId) => ({ type: REMOVE_COMMENT, payload: comment, postId })
+const setFriend = (friend) => ({type: SET_FRIEND, payload: friend})
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
@@ -128,4 +130,18 @@ export const deleteComment = (comment, postId) => async (dispatch) => {
     })
   })
   dispatch(removeComment(comment, postId))
+}
+
+export const addFriend = (id, message) => async (dispatch) => {
+  const res = await fetch('api/users/add', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      id, message
+    })
+  })
+  const data = await res.json()
+  dispatch(setFriend(data))
 }

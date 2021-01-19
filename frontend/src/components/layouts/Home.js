@@ -10,7 +10,6 @@ import IssueModal from '../modals/IssueModal';
 
 const Home = () => {
   const user = useSelector(state => state.session.user)
-  const dispatch = useDispatch()
   const history = useHistory()
 
   useEffect(() => {

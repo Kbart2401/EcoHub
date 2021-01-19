@@ -20,7 +20,9 @@ def user(user):
     users = User.query.filter(or_(func.lower(User.username).like(
         search_user), (func.lower(User.city)).like(search_user),
         (func.lower(User.state)).like(search_user))).all()
-    return {"users": [user.to_dict() for user in users]}
+    # users = filter(lambda user: user['id'] != current_user.id, users)
+    print('CURRENT USER', current_user)
+    return {"users": [user.to_dict() for user in users ]}
 
 
 @user_routes.route('/add', methods=['POST'])
@@ -28,6 +30,7 @@ def user(user):
 def add_friend():
     user_id = current_user.id
     friend_id = request.get_json().get('id')
+    friend = User.query.get(friend_id)
     message = request.get_json().get('message')
     friendship = Friend(
         user_id=user_id,
@@ -36,7 +39,7 @@ def add_friend():
     )
     db.session.add(friendship)
     db.session.commit()
-    return friendship.to_dict()
+    return friend.to_dict()
 
 
 @user_routes.route('/confirm', methods=['POST'])
