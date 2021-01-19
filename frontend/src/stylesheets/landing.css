@@ -6,3 +6,24 @@
 .css-1nydx6f {
   background-color: #276749;
 }
+
+.landing-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.landing-list li {
+  list-style: none;
+  font-size: 50px;
+  font-family: cursive;
+  color: tomato;
+}
+
+.carousel-container {
+  height: 400px;
+}
+
+.lower-landing {
+  background-color: #EDF2F7;
+  height: 50vh;
+}

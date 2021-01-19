@@ -12,6 +12,7 @@
 
 .home-left-container {
   flex-grow: 1;
+  background-color: #EDF2F7;
 }
 
 .slide-out-panel {
@@ -22,6 +23,7 @@
 
 .home-right-container {
   flex-grow: 1;
+  background-color: #EDF2F7;
 }
 
 .chakra-modal__header {

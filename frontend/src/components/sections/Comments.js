@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GoComment } from 'react-icons/go';
 import { Input, Box, Button, Flex } from '@chakra-ui/react';
 import * as sessionActions from '../../store/actions/session';
+import '../../stylesheets/comments.css';
 
 
 const Comments = ({ post }) => {
@@ -29,8 +30,8 @@ const Comments = ({ post }) => {
         post.comments.map((comment, idx) => {
           return (
             <>
-              <Box borderRadius='5px' marginBottom='10px' key={idx} bg='#E2E8F0'>{comment.user.username}
-            <br /> {comment.content}
+              <Box borderRadius='5px' marginBottom='10px' key={idx} bg='#E2E8F0'><div className='comment-text'>{comment.content}
+                <br /> <div className='comment-username'>{comment.user.username}</div></div>
                 {user && user.id === comment.user.id &&
                   <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
                 }</Box>

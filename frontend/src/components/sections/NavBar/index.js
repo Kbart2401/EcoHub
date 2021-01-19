@@ -27,12 +27,12 @@ const NavBar = () => {
       <nav className='navbar-main'>
         <div className='navbar-left'>
           <ul>
-            <li>Logo</li>
+            <li className='logo'><span id='one'>Eco</span><span id='two'>Hub</span></li>
             {user &&
               <>
                 <li>
                   <NavLink to="/" exact={true} activeClassName="active">
-                    <AiTwotoneHome />
+                    <AiTwotoneHome size='30px'/>
                   </NavLink>
                 </li>
                 <li>

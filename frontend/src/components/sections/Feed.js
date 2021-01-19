@@ -28,10 +28,13 @@ const Feed = () => {
                     <br /><span>{postCreated(post.created_date)}</span>
                   </Flex>
                 </GridItem>
-                <GridItem borderRadius='10px' colSpan={2} bg='papayawhip'>{post.user.username} completed a task!
-                <div>--------{post.category}--------</div>
+                <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='papayawhip'>
+                  <div className='post-text-header'>{post.user.username} completed a task!</div>
+                  <div className='post-task'>{post.category}</div>
                 </GridItem>
-                <GridItem borderRadius='10px' colSpan={2} bg='tomato'>{post.content}</GridItem>
+                <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='tomato'>
+                  <div className='post-text-header'>Here's what they did:</div>
+                  <div className='post-text'>{post.content}</div></GridItem>
               </Grid>
               <Flex width='40%' >
                 <Comments post={post} />

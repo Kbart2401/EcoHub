@@ -25,6 +25,15 @@
   width: 50%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-left li {
+  align-self: center;
+}
+
+.navbar-left svg {
+  height: 50px;
 }
 
 .navbar-right {
@@ -32,3 +41,20 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.logo {
+  font-family: Helvetica,Arial,sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.logo #one {
+  color: #276749;
+}
+
+.logo #two {
+  color: #718096;
+}
+
+
