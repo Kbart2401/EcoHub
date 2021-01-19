@@ -3,12 +3,24 @@
 }
 
 .weather-container h2 {
-text-shadow: 
--2px 2px 0 #000,
-2px 2px 0 #000,
-2px -2px 0 #000,
--2px -2px 0 #000;
-color: white;
-font-size: 25px;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: 
+  -2px 2px 0 #000,
+  2px 2px 0 #000,
+  2px -2px 0 #000,
+  -2px -2px 0 #000;
+  color: white;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.weather-container div, a {
+  color: black;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.weather-container p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
 }

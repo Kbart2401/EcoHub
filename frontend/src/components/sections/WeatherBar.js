@@ -54,6 +54,18 @@ const WeatherBar = () => {
         case 'haze' || 'mist':
           setBgUrl("url(/images/fog.jpg)")
           break;
+        case 'light snow' || 'heavy snow':
+          setBgUrl("url(/images/snowfall.jpg)")
+          break;
+        case 'few clouds' || 'scattered clouds' || 'broken clouds':
+          setBgUrl("url(/images/clouds.jpg)")
+          break;
+        case 'rain' || 'shower rain':
+          setBgUrl("url(/images/raindrops.jpg)")
+          break;
+        case 'thunderstorm':
+          setBgUrl("url(/images/thunderstorm.jpg)")
+          break;
         default:
           setBgUrl("url('/images/clear-sky.jpg')")
       }
@@ -74,7 +86,7 @@ const WeatherBar = () => {
     const img = `http://openweathermap.org/img/wn/${data.weather.weather[0].icon}@2x.png`
     setImage(img)
     setRegion(data.weather)
-    setWeather(data.weather.weather)
+    setWeather(data.weather.weather[0])
     setAir(data.air.list[0].main.aqi)
     setParticles(data.air.list[0].components)
     setBgImage(data.weather.weather[0].description)
@@ -86,6 +98,10 @@ const WeatherBar = () => {
     setTemp(Math.floor(f));
   }
 
+  function weatherDescription(str) {
+    return str[0].toUpperCase() + str.slice(1)
+  }
+
   return (
     <Box className="weather-container" align='center' bgImage={bgUrl}>
       {!air &&
@@ -94,13 +110,15 @@ const WeatherBar = () => {
       }
 
       {air &&
-        <h2>Current Location: {region.name}</h2>}
-      {weather.map((weather, idx) => {
-        return <div key={idx}>Weather: {weather.description} <img src={image} />
-        Temp: {temp}°</div>
-      })}
+        <h2>{region.name}</h2>}
+      {weather && air &&
+        <div>{weatherDescription(weather.description)} <img src={image} />
+        Temp: {temp}°</div>}
       {air &&
-        <AirModal airQuality={airQuality} particles={particles} />}
+        <>
+          <AirModal airQuality={airQuality} particles={particles} />
+          <p>(click for more details)</p>
+        </>}
 
     </Box>
   )
