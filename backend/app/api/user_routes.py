@@ -52,3 +52,13 @@ def confirm_friend():
     db.session.add(current_user)
     db.session.commit()
     return current_user.to_dict_full()
+
+
+# Check if user has any friend requests waiting
+@user_routes.route('/friend-requests')
+@login_required
+def friend_requests():
+    # check if user id = a friend id
+    friends_added_user = Friend.query.filter_by(friend_id=current_user.id).all()
+    user_added_friends = Friend.query.filter_by(user_id=current_user.id).all()
+    for user in friends_added_user
