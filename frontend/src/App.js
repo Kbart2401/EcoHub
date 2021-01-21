@@ -17,6 +17,10 @@ function App() {
       .catch(error => console.error(error))
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(sessionActions.checkFriendReqs())
+  }, [])
+
 
   return loaded && (
     <BrowserRouter>

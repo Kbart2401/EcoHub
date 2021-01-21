@@ -6,6 +6,7 @@ export const SET_COMMENT = 'SET_COMMENT';
 export const SET_POST = 'SET_POST';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const SET_FRIEND = 'SET_FRIEND';
+export const SET_FRIENDREQS = 'SET_FRIENDREQS';
 
 
 /********Action Creators*******/
@@ -16,6 +17,7 @@ const setComment = comment => ({ type: SET_COMMENT, payload: comment })
 const setPost = post => ({ type: SET_POST, payload: post })
 const removeComment = (comment, postId) => ({ type: REMOVE_COMMENT, payload: comment, postId })
 const setFriend = (friend) => ({type: SET_FRIEND, payload: friend})
+const setFriendReqs = (reqs) => ({type: SET_FRIENDREQS, payload: reqs})
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
@@ -144,4 +146,11 @@ export const addFriend = (id, message) => async (dispatch) => {
   })
   const data = await res.json()
   dispatch(setFriend(data))
+}
+
+export const checkFriendReqs = () => async (dispatch) => {
+  debugger
+  const res = await fetch('api/users/friend-requests')
+  const data = await res.json()
+  dispatch(setFriendReqs(data))
 }

@@ -1,6 +1,6 @@
 import {
   SET_USER, REMOVE_USER, SET_FEED,
-  SET_COMMENT, SET_POST, REMOVE_COMMENT, SET_FRIEND
+  SET_COMMENT, SET_POST, REMOVE_COMMENT, SET_FRIEND, SET_FRIENDREQS
 } from '../actions/session'
 
 const inititalState = { user: null };
@@ -44,6 +44,9 @@ const sessionReducer = (state = inititalState, action) => {
       newState = { ...state }
       newState.user.friends = [...newState.user.friends, action.payload]
       return newState;
+    case SET_FRIENDREQS:
+      newState = Object.assign({...state}, {friendReqs: action.payload})
+      return newState
     default:
       return state;
   }

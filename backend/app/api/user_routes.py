@@ -20,8 +20,6 @@ def user(user):
     users = User.query.filter(or_(func.lower(User.username).like(
         search_user), (func.lower(User.city)).like(search_user),
         (func.lower(User.state)).like(search_user))).all()
-    # users = filter(lambda user: user['id'] != current_user.id, users)
-    print('CURRENT USER', current_user)
     return {"users": [user.to_dict() for user in users]}
 
 
@@ -45,7 +43,6 @@ def add_friend():
 @user_routes.route('/confirm', methods=['POST'])
 @login_required
 def confirm_friend():
-    user_id = current_user.id
     friend_id = request.get_json().get('id')
     friend = User.query.get(friend_id)
     current_user.friends.append(friend)
@@ -69,5 +66,4 @@ def friend_requests():
                  # check this to make sure you don't get the same user with each query
                  friendship['message'])
                 for friendship in friends_waiting]
-
     return {'friends_waiting': [(friend[0].to_dict(), {'message': friend[1]}) for friend in requests]}
