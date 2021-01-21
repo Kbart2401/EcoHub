@@ -22,7 +22,7 @@ def user(user):
         (func.lower(User.state)).like(search_user))).all()
     # users = filter(lambda user: user['id'] != current_user.id, users)
     print('CURRENT USER', current_user)
-    return {"users": [user.to_dict() for user in users ]}
+    return {"users": [user.to_dict() for user in users]}
 
 
 @user_routes.route('/add', methods=['POST'])
@@ -59,11 +59,15 @@ def confirm_friend():
 @login_required
 def friend_requests():
     # check if user id = a friend id
-    friends_added_user = Friend.query.filter_by(friend_id=current_user.id).all()
-    # user_added_friends = Friend.query.filter_by(user_id=current_user.id).all()
-    friends_requested = [friendship.to_dict() for friendship in friends_added_user]
-    print('FRIENDS', friends_requested)
+    friends_added_user = Friend.query.filter_by(
+        friend_id=current_user.id).all()
+    friends_requested = [friendship.to_dict()
+                         for friendship in friends_added_user]
     friends_waiting = list(filter(
-        lambda f: (f.message is not None), friends_requested))
-    return {'friends_waiting': friends_waiting}
+        lambda f: (f['message'] is not None), friends_requested))
+    requests = [(User.query.filter_by(id=friendship['user_id']).one(),
+                 # check this to make sure you don't get the same user with each query
+                 friendship['message'])
+                for friendship in friends_waiting]
 
+    return {'friends_waiting': [(friend[0].to_dict(), {'message': friend[1]}) for friend in requests]}
