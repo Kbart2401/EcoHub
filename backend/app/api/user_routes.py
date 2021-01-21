@@ -60,5 +60,10 @@ def confirm_friend():
 def friend_requests():
     # check if user id = a friend id
     friends_added_user = Friend.query.filter_by(friend_id=current_user.id).all()
-    user_added_friends = Friend.query.filter_by(user_id=current_user.id).all()
-    for user in friends_added_user
+    # user_added_friends = Friend.query.filter_by(user_id=current_user.id).all()
+    friends_requested = [friendship.to_dict() for friendship in friends_added_user]
+    print('FRIENDS', friends_requested)
+    friends_waiting = list(filter(
+        lambda f: (f.message is not None), friends_requested))
+    return {'friends_waiting': friends_waiting}
+
