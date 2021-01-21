@@ -16,7 +16,7 @@ const UserSearch = (props) => {
 
   const handleClick = (id) => (e) => {
     e.preventDefault()
-    dispatch(sessionActions.addFriend(id))
+    dispatch(sessionActions.addFriend(id, ''))
   }
 
   const checkIfNotFriends = (user) => {
