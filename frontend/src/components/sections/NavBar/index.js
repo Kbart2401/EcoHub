@@ -4,12 +4,14 @@ import LogoutButton from '../../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import LoginModal from '../../modals/LoginModal';
 import SignUpModal from '../../modals/SignupModal';
+import MailPopOver from '../../modals/MailPopOver';
 import { AiTwotoneHome } from 'react-icons/ai';
 import { Input } from '@chakra-ui/react';
 import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  const friendReqs = useSelector(state => state.session.friendsWaiting)
   const history = useHistory()
   const [search, setSearch] = useState('')
 
@@ -32,7 +34,7 @@ const NavBar = () => {
               <>
                 <li>
                   <NavLink to="/" exact={true} activeClassName="active">
-                    <AiTwotoneHome size='30px'/>
+                    <AiTwotoneHome size='30px' />
                   </NavLink>
                 </li>
                 <li>
@@ -58,9 +60,14 @@ const NavBar = () => {
               </li>
             }
             {user &&
-              <li>
-                <LogoutButton />
-              </li>
+              <>
+                <li>
+                 <MailPopOver />
+                </li>
+                <li>
+                  <LogoutButton />
+                </li>
+              </>
             }
           </ul>
         </div>

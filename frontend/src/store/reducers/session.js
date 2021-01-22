@@ -45,7 +45,7 @@ const sessionReducer = (state = inititalState, action) => {
       newState.user.friends = [...newState.user.friends, action.payload]
       return newState;
     case SET_FRIENDREQS:
-      newState = Object.assign({...state}, {friendReqs: action.payload})
+      newState = Object.assign({ ...state }, { ...action.payload })
       return newState
     default:
       return state;

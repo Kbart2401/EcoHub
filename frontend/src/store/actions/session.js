@@ -149,7 +149,6 @@ export const addFriend = (id, message) => async (dispatch) => {
 }
 
 export const checkFriendReqs = () => async (dispatch) => {
-  debugger
   const res = await fetch('api/users/friend-requests')
   const data = await res.json()
   dispatch(setFriendReqs(data))

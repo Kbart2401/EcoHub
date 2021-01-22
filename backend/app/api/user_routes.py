@@ -66,4 +66,4 @@ def friend_requests():
                  # check this to make sure you don't get the same user with each query
                  friendship['message'])
                 for friendship in friends_waiting]
-    return {'friends_waiting': [(friend[0].to_dict(), {'message': friend[1]}) for friend in requests]}
+    return {'friendsWaiting': [(friend[0].to_dict(), {'message': friend[1]}) for friend in requests]}
