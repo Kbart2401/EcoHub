@@ -3,6 +3,14 @@ import { Box } from '@chakra-ui/react';
 import AirModal from '../modals/AirModal';
 import '../../stylesheets/weatherLoad.css';
 import '../../stylesheets/weatherBar.css';
+//Import images
+import clearSky from '../../images/clear-sky.jpg';
+import fog from '../../images/fog.jpg';
+import snowfall from '../../images/snowfall.jpg';
+import clouds from '../../images/clouds.jpg';
+import overcast from '../../images/overcast.jpg';
+import raindrops from '../../images/raindrops.jpg';
+import thunderstorm from '../../images/thunderstorm.jpg';
 
 
 const WeatherBar = () => {
@@ -53,29 +61,29 @@ const WeatherBar = () => {
       switch (bgImage) {
         case 'haze':
         case 'mist':
-          setBgUrl("url(/images/fog.jpg)")
+          setBgUrl(`url(${fog})`)
           break;
         case 'light snow':
         case 'heavy snow':
-          setBgUrl("url(/images/snowfall.jpg)")
+          setBgUrl(`url(${snowfall})`)
           break;
         case 'few clouds':
         case 'scattered clouds':
         case 'broken clouds':
-          setBgUrl("url(/images/clouds.jpg)")
+          setBgUrl(`url(${clouds})`)
           break;
         case 'overcast clouds':
-          setBgUrl("url(/images/overcast.jpg)")
+          setBgUrl(`url(${overcast})`)
           break;
         case 'rain':
         case 'shower rain':
-          setBgUrl("url(/images/raindrops.jpg)")
+          setBgUrl(`url(${raindrops})`)
           break;
         case 'thunderstorm':
-          setBgUrl("url(/images/thunderstorm.jpg)")
+          setBgUrl(`url(${thunderstorm})`)
           break;
         default:
-          setBgUrl("url('/images/clear-sky.jpg')")
+          setBgUrl(`url(${clearSky})`)
       }
     }
   })

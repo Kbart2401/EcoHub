@@ -17,12 +17,12 @@ const Landing = () => {
         <AspectRatio maxW="1200px">
           <Box height="400px" width='100vw' display='flex' justifyContent='center'>
             <AliceCarousel autoPlay infinite autoPlayInterval="6000" >
-              <Image src="/images/boy.jpg" />
-              <Image src="/images/lake.jpg" />
-              <Image src="/images/leaf.jpg" />
-              <Image src="/images/nature.jpg" />
-              <Image src="/images/park.jpg" />
-              <Image src="/images/river.jpg" />
+              <Image src={require("../../images/boy.jpg")} />
+              <Image src={require("../../images/lake.jpg")} />
+              <Image src={require("../../images/leaf.jpg")} />
+              <Image src={require("../../images/nature.jpg")} />
+              <Image src={require("../../images/park.jpg")} />
+              <Image src={require("../../images/river.jpg")} />
             </AliceCarousel>
           </Box>
         </AspectRatio>
