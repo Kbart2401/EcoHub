@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Feed from '../sections/Feed';
@@ -11,6 +11,8 @@ import IssueModal from '../modals/IssueModal';
 const Home = () => {
   const user = useSelector(state => state.session.user)
   const history = useHistory()
+  const [height, setHeight] = useState('')
+
 
   useEffect(() => {
     if (!user || user.errors) {
@@ -21,7 +23,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='home-outer'>
+      <div className='home-outer' style={{ height: `${height}` }}>
         <div className='home-left-container'>
           <div className='slide-out-panel'>
             <HomeDrawer />
@@ -33,7 +35,7 @@ const Home = () => {
             <TaskModal />
             <IssueModal />
           </div>
-          <Feed />
+          <Feed setHeight={setHeight} />
         </div>
         <div className='home-right-container'>
           {/* <div>Top Contributors</div> */}

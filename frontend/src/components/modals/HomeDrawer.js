@@ -37,12 +37,6 @@ const HomeDrawer = () => {
                 <>
                   <Table variant="striped" colorScheme="green">
                     <TableCaption placement='top'>Profile</TableCaption>
-                    {/* <Thead>
-                    <Tr>
-                      <Th>Value</Th>
-                      <Th>Rating</Th>
-                    </Tr>
-                  </Thead> */}
                     <Tbody>
                       <Tr>
                         <Td>XP</Td>
@@ -66,12 +60,6 @@ const HomeDrawer = () => {
                       </Tr>
                     </Tbody>
                   </Table>
-                  {/* <h1>Profile</h1> */}
-                  {/* <p>XP: {user.xp}</p> */}
-                  {/* <p>Friends: {friendCount}</p> */}
-                  {/* <p>City: {user.city}</p> */}
-                  {/* <p>State: {user.state}</p>
-                  <p>Country: {user.country}</p> */}
                 </>}
             </DrawerBody>
           </DrawerContent>

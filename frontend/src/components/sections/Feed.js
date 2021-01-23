@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Grid, GridItem, VStack, StackDivider, Image, Flex } from '@chakra-ui/react';
 import Comments from './Comments';
 import '../../stylesheets/feed.css';
 
-const Feed = () => {
+const Feed = ({ setHeight }) => {
   const posts = useSelector(state => state.session.posts)
+
+  useEffect(() => {
+    if (posts) {
+      if (posts.length === 0) {
+        setHeight('100vh')
+      }
+    }
+  })
 
   const postCreated = (createdDate) => {
     return createdDate.slice(4, 16)
@@ -13,8 +21,10 @@ const Feed = () => {
 
   return (
     <>
-      <VStack divider={<StackDivider borderColor='gray.200' />}>
+      <VStack className='feed-outer' divider={<StackDivider borderColor='gray.200' />}>
         <div className='feed-caps'>Recent Activity</div>
+        {posts?.length === 0 &&
+          <div className='empty-feed'>No posts to show</div>}
         {posts?.map((post, idx) => {
           return (
             <>
