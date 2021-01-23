@@ -15,8 +15,12 @@ const HomeDrawer = () => {
 
   useEffect(() => {
     let num = 0;
-    if (user) user.friends.forEach(friend => num++)
-    setFriendCount(num)
+    if (user) {
+      if (user.friends) {
+        user.friends.forEach(friend => num++)
+        setFriendCount(num)
+      }
+    }
   }, [])
 
   return (

@@ -3,7 +3,7 @@ import {
   SET_COMMENT, SET_POST, REMOVE_COMMENT, SET_FRIEND, SET_FRIENDREQS
 } from '../actions/session'
 
-const inititalState = { user: null };
+const inititalState = { user: null, posts: [] };
 const sessionReducer = (state = inititalState, action) => {
   let newState;
   switch (action.type) {
