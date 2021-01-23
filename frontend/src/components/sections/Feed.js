@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Grid, GridItem, VStack, StackDivider, Image, Flex } from '@chakra-ui/react';
+import {
+  Grid, GridItem, VStack, StackDivider,
+  Image, Flex, AspectRatio
+} from '@chakra-ui/react';
 import Comments from './Comments';
 import '../../stylesheets/feed.css';
 
@@ -9,7 +12,7 @@ const Feed = ({ setHeight }) => {
 
   useEffect(() => {
     if (posts) {
-      if (posts.length === 0) {
+      if (posts.length < 3) {
         setHeight('100vh')
       }
     }
@@ -32,7 +35,9 @@ const Feed = ({ setHeight }) => {
                 templateColumns='repeat(3, 1fr)' gap={4}>
                 <GridItem className='feed-username-container' borderRadius='10px'
                   rowSpan={2} colSpan={1} bg='tomato' fontWeight='700'>
-                  <Image borderRadius='10px' src={post.user.image} />
+                  <AspectRatio>
+                    <Image borderRadius='10px' src={post.user.image} />
+                  </AspectRatio>
                   <Flex justifyContent='space-between' alignItems='center'>
                     <div className='feed-username'>{post.user.username}</div>
                     <br /><span>{postCreated(post.created_date)}</span>
