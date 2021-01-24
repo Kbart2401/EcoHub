@@ -11,7 +11,6 @@ const Feed = ({ setHeight }) => {
   const posts = useSelector(state => state.session.posts)
 
   useEffect(() => {
-    debugger
     if (posts) {
       if (posts.length < 3) {
         setHeight('100vh')

@@ -4,7 +4,7 @@ import { FiMail } from 'react-icons/fi';
 import {
   Popover, PopoverTrigger, Portal, PopoverContent,
   PopoverArrow, PopoverHeader, PopoverCloseButton,
-  Button, PopoverFooter, PopoverBody
+  Button, PopoverFooter, PopoverBody, Image
 } from '@chakra-ui/react';
 
 const MailPopOver = () => {
@@ -23,7 +23,12 @@ const MailPopOver = () => {
           <PopoverBody>
             {friendReqs && !friendReqs.length && <div>No Messages</div>}
             {friendReqs?.map(friend => {
-              return <div>{friend[0].username}</div>
+              return (
+                <>
+                  <div>{friend[0].username} <Image borderRadius='full' boxSize='50px' src={friend[0].image} /></div>
+                  <div>{friend[1].message}</div>
+                </>
+              )
             })}
             <Button colorScheme="blue">Button</Button>
           </PopoverBody>
