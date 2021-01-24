@@ -35,8 +35,11 @@ export const logUserIn = (username, password) => async dispatch => {
     const user = await res.json()
     const result = await fetch('/api/posts/')
     const posts = await result.json()
+    const r = await fetch('api/users/friend-requests')
+    const friendReqs = await r.json()
     dispatch(setUser(user))
     dispatch(setFeed(posts))
+    dispatch(setFriendReqs(friendReqs))
   }
   else {
     res = await res.json()
@@ -65,8 +68,11 @@ export const restoreUser = () => async (dispatch) => {
   if (user.errors) user = null;
   const result = await fetch('/api/posts/')
   const posts = await result.json()
+  const r = await fetch('api/users/friend-requests')
+  const friendReqs = await r.json()
   dispatch(setUser(user))
   dispatch(setFeed(posts))
+  dispatch(setFriendReqs(friendReqs))
 }
 
 export const signUserUp = (payload) =>
@@ -148,8 +154,5 @@ export const addFriend = (id, message) => async (dispatch) => {
   dispatch(setFriend(data))
 }
 
-export const checkFriendReqs = () => async (dispatch) => {
-  const res = await fetch('api/users/friend-requests')
-  const data = await res.json()
-  dispatch(setFriendReqs(data))
-}
+
+

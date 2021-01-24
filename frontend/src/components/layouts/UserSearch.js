@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, GridItem, VStack, StackDivider, Flex, Button } from '@chakra-ui/react';
+import AddFriendModal from '../modals/AddFriendModal';
 import * as sessionActions from '../../store/actions/session';
 import '../../stylesheets/feed.css';
 
@@ -13,11 +14,6 @@ const UserSearch = (props) => {
   useEffect(() => {
     setUsers(props.history.location.state.users.users)
   }, [])
-
-  const handleClick = (id) => (e) => {
-    e.preventDefault()
-    dispatch(sessionActions.addFriend(id, ''))
-  }
 
   const checkIfNotFriends = (user) => {
     if (currentUser.friends.length !== 0) {
@@ -41,7 +37,7 @@ const UserSearch = (props) => {
                   <div>{user.city}, {user.state}
                     {currentUser && checkIfNotFriends(user) &&
                       currentUser.id != user.id &&
-                      <Button onClick={handleClick(user.id)}>Add Friend</Button>}</div>
+                      <AddFriendModal user={user}/>}</div>
                 </GridItem>
                 <GridItem colSpan={2} bg='papayawhip'>Category: </GridItem>
                 <GridItem colSpan={2} bg='tomato'></GridItem>

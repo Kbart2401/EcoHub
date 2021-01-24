@@ -11,10 +11,12 @@ const Feed = ({ setHeight }) => {
   const posts = useSelector(state => state.session.posts)
 
   useEffect(() => {
+    debugger
     if (posts) {
       if (posts.length < 3) {
         setHeight('100vh')
       }
+      else setHeight('')
     }
   })
 
@@ -34,7 +36,7 @@ const Feed = ({ setHeight }) => {
               <Grid key={idx} minH='120px' width='75%' templateRows='repeat(2, 1fr)'
                 templateColumns='repeat(3, 1fr)' gap={4}>
                 <GridItem className='feed-username-container' borderRadius='10px'
-                  rowSpan={2} colSpan={1} bg='tomato' fontWeight='700'>
+                  rowSpan={2} colSpan={1} bg='tomato' fontWeight='700' >
                   <AspectRatio>
                     <Image borderRadius='10px' src={post.user.image} />
                   </AspectRatio>

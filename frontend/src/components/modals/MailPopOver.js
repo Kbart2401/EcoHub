@@ -18,9 +18,10 @@ const MailPopOver = () => {
       <Portal>
         <PopoverContent>
           <PopoverArrow />
-          <PopoverHeader>Header</PopoverHeader>
+          <PopoverHeader>Inbox</PopoverHeader>
           <PopoverCloseButton />
           <PopoverBody>
+            {friendReqs && !friendReqs.length && <div>No Messages</div>}
             {friendReqs?.map(friend => {
               return <div>{friend[0].username}</div>
             })}
