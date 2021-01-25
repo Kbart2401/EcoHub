@@ -51,6 +51,7 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: flex;
 }
 
 .logo #one {
@@ -59,6 +60,12 @@
 
 .logo #two {
   color: #718096;
+}
+
+.logo img {
+  height: 20px;
+  width: 20px;
+  filter: brightness(80%);
 }
 
 .navbar-mail {

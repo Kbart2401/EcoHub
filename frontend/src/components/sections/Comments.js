@@ -30,11 +30,12 @@ const Comments = ({ post }) => {
         post.comments.map((comment, idx) => {
           return (
             <>
-              <Box className='comment-container' borderRadius='5px' marginTop='10px' key={idx} bg='#E2E8F0'><div className='comment-text'>{comment.content}
-                {user?.id === comment.user.id &&
-                  <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
-                }
-              </div>
+              <Box className='comment-container' borderRadius='5px' marginTop='10px' key={idx} bg='#E2E8F0'>
+                <div className='comment-text'>{comment.content}
+                  {user?.id === comment.user.id &&
+                    <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
+                  }
+                </div>
                 <div className='comment-username'>{comment.user.username}</div>
               </Box>
 

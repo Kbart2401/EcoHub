@@ -8,6 +8,12 @@
   padding-left: 10px;
   display: flex;
   justify-content: space-between;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+}
+
+.comment-text button {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .comment-container {

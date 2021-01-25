@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
 .css-wwl1ek img {
   height: 4em;
   width: 4em;
@@ -37,14 +39,18 @@
 
 .post-text-header {
   font-family: Helvetica,Arial,sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .post-task {
-  font-family: cursive;
-  font-size: 22px;
+  font-family: 'Potta One', cursive;
+  font-size: 25px;
   font-weight: 700;
   color: tomato;
 }
 
+.post-text {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+}

@@ -49,7 +49,7 @@ const Feed = ({ setHeight }) => {
                   <div className='post-task'>{post.category}</div>
                 </GridItem>
                 <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='tomato'>
-                  <div className='post-text-header'>Here's what they did:</div>
+                  <div className='post-text-header'>Here's what they said:</div>
                   <div className='post-text'>{post.content}</div></GridItem>
               </Grid>
               <Flex width='40%' >

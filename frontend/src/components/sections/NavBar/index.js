@@ -38,7 +38,8 @@ const NavBar = () => {
       <nav className='navbar-main'>
         <div className='navbar-left'>
           <ul>
-            <li className='logo'><span id='one'>Eco</span><span id='two'>Hub</span></li>
+            <li className='logo'><span id='one'>Eco</span><span id='two'>Hub</span>
+              <span><img src={require("../../../images/2d-leaf.png")} /></span></li>
             {user &&
               <>
                 <li>
