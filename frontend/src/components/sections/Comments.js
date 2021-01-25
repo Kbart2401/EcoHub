@@ -30,11 +30,13 @@ const Comments = ({ post }) => {
         post.comments.map((comment, idx) => {
           return (
             <>
-              <Box borderRadius='5px' marginBottom='10px' key={idx} bg='#E2E8F0'><div className='comment-text'>{comment.content}
-                <br /> <div className='comment-username'>{comment.user.username}</div></div>
+              <Box className='comment-container' borderRadius='5px' marginTop='10px' key={idx} bg='#E2E8F0'><div className='comment-text'>{comment.content}
                 {user?.id === comment.user.id &&
                   <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
-                }</Box>
+                }
+              </div>
+                <div className='comment-username'>{comment.user.username}</div>
+              </Box>
 
             </>)
         })
@@ -48,10 +50,10 @@ const Comments = ({ post }) => {
         <Box>{postComments()}</Box>
         <Box>
           <form onSubmit={handleCommentSubmit(post.id)}>
-            <Input type='text' name='comment' placeholder='Leave a comment!'
+            <Input marginTop='10px' type='text' name='comment' placeholder='Leave a comment!'
               value={comment} onChange={e => setComment(e.target.value)} />
           </form>
-         </Box>
+        </Box>
       </Flex>
     </>
   )

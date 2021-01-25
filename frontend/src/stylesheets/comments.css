@@ -1,8 +1,15 @@
 .comment-username {
   color: rgb(107, 106, 106);
   font-size: 14px;
+  padding-left: 10px;
 }
 
 .comment-text {
   padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container {
+  box-shadow: 2px 2px 10px black;
 }

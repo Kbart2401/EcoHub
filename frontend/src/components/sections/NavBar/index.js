@@ -28,7 +28,6 @@ const NavBar = () => {
   }
 
   const mailCount = () => {
-    debugger
     if (friendReqs.length) {
       return <div id='mail-count'>{friendReqs.length}</div>
     }

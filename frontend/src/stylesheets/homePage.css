@@ -6,13 +6,14 @@
 .home-center-container {
   max-width: 1200px;
   min-width: 1000px;
-  border-right: 2px solid #718096;
-  border-left: 2px solid #718096;
+  border-right: 3px solid #718096;
+  border-left: 3px solid #718096;
+  box-shadow: 0 0 5px black;
 }
 
 .home-left-container {
   flex-grow: 1;
-  background-color: #EDF2F7;
+  background-image: linear-gradient(90deg, #F0FFF4, #276749);
 }
 
 .slide-out-panel {
@@ -21,9 +22,13 @@
   justify-content: flex-start;
 }
 
+.slide-out-panel button {
+  box-shadow: 2px 2px 10px black;
+}
+
 .home-right-container {
   flex-grow: 1;
-  background-color: #EDF2F7;
+  background-image: linear-gradient(90deg,#276749, #F0FFF4);
 }
 
 .chakra-modal__header {
@@ -44,4 +49,8 @@ align-items: center;
   border-top: 2px solid #718096;
   border-bottom: 2px solid #718096;
   background-color: #68D391;
+}
+
+.post-buttons button {
+  box-shadow: 2px 2px 10px black;
 }

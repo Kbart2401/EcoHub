@@ -8,6 +8,10 @@ import '../../stylesheets/feed.css';
 
 const UserSearch = (props) => {
   const dispatch = useDispatch()
+  //session is just to check the redux store ans see that user has updated
+  //I think if you're on the actual object that's changing it may not update, 
+  //need to be one object up
+  const session = useSelector(state => state.session)
   const currentUser = useSelector(state => state.session.user)
   const [users, setUsers] = useState([])
 
