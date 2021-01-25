@@ -1,6 +1,7 @@
 import {
   SET_USER, REMOVE_USER, SET_FEED,
-  SET_COMMENT, SET_POST, REMOVE_COMMENT, SET_FRIEND, SET_FRIENDREQS
+  SET_COMMENT, SET_POST, REMOVE_COMMENT, SET_FRIEND,
+  SET_FRIENDREQS, REMOVE_FRIENDREQ
 } from '../actions/session'
 
 const inititalState = { user: null, posts: [] };
@@ -46,6 +47,14 @@ const sessionReducer = (state = inititalState, action) => {
       return newState;
     case SET_FRIENDREQS:
       newState = Object.assign({ ...state }, { ...action.payload })
+      return newState
+    case REMOVE_FRIENDREQ:
+      newState = { ...state }
+      for (let i = 0; i < newState.friendsWaiting.length; i++) {
+        if (newState.friendsWaiting[i][0].id === action.id) {
+          newState.friendsWaiting.splice(i, 1)
+        }
+      }
       return newState
     default:
       return state;
