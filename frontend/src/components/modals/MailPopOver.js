@@ -5,15 +5,17 @@ import * as sessionActions from '../../store/actions/session';
 import {
   Popover, PopoverTrigger, Portal, PopoverContent,
   PopoverArrow, PopoverHeader, PopoverCloseButton,
-  Button, PopoverFooter, PopoverBody, Image
+  Button, PopoverBody, Image, useDisclosure
 } from '@chakra-ui/react';
 
 const MailPopOver = () => {
   const dispatch = useDispatch()
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const friendReqs = useSelector(state => state.session.friendsWaiting)
 
   const handleClick = (id) => (e) => {
     dispatch(sessionActions.confirmFriend(id))
+    onClose()
   }
 
   return (

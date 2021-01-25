@@ -24,6 +24,12 @@ const NavBar = () => {
     return history.push('/users', { users })
   }
 
+  const mailCount = () => {
+    if (friendReqs.length) {
+      return <div id='mail-count'>{friendReqs.length}</div>
+    }
+  }
+
   return (
     <div className='nav-container'>
       <nav className='navbar-main'>
@@ -62,7 +68,10 @@ const NavBar = () => {
             {user &&
               <>
                 <li>
-                 <MailPopOver />
+                  <div className='navbar-mail'>
+                    <MailPopOver />
+                    {friendReqs && mailCount()}
+                  </div>
                 </li>
                 <li>
                   <LogoutButton />

@@ -77,6 +77,7 @@ const WeatherBar = () => {
           break;
         case 'rain':
         case 'shower rain':
+        case 'light intensity drizzle':
           setBgUrl(`url(${raindrops})`)
           break;
         case 'thunderstorm':

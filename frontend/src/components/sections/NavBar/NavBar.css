@@ -57,4 +57,26 @@
   color: #718096;
 }
 
+.navbar-mail {
+  display: flex;
+  position: relative;
+}
 
+#mail-count {
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.navbar-mail button {
+  padding-right: 0%;
+  position: relative;
+}
