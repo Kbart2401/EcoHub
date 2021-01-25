@@ -4,36 +4,37 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
 
-const SignUpForm = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [image, setImage] = useState("");
-  const [errors, setErrors] = useState([]);
-  const dispatch = useDispatch()
+const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
+  setPassword, setRepeatPassword, setImage, onSignUp, errors}) => {
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [city, setCity] = useState("");
+  // const [state, setState] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [repeatPassword, setRepeatPassword] = useState("");
+  // const [image, setImage] = useState("");
+  // const [errors, setErrors] = useState([]);
+  // const dispatch = useDispatch()
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    if (password === repeatPassword) {
-      const form = new FormData()
-      form.append('username', username)
-      form.append('email', email)
-      form.append('city', city)
-      form.append('state', state)
-      form.append('country', country)
-      form.append('password', password)
-      form.append('image', image)
-      dispatch(sessionActions.signUserUp(form))
-        .catch(res => {
-          if (res.errors) setErrors(res.errors)
-        })
-    }
-    else setErrors(['Passwords do not match'])
-  };
+  // const onSignUp = async (e) => {
+  //   e.preventDefault();
+  //   if (password === repeatPassword) {
+  //     const form = new FormData()
+  //     form.append('username', username)
+  //     form.append('email', email)
+  //     form.append('city', city)
+  //     form.append('state', state)
+  //     form.append('country', country)
+  //     form.append('password', password)
+  //     form.append('image', image)
+  //     dispatch(sessionActions.signUserUp(form))
+  //       .catch(res => {
+  //         if (res.errors) setErrors(res.errors)
+  //       })
+  //   }
+  //   else setErrors(['Passwords do not match'])
+  // };
 
   return (
     <form onSubmit={onSignUp}>
@@ -46,7 +47,7 @@ const SignUpForm = () => {
           type="text"
           name="username"
           onChange={e => setUsername(e.target.value)}
-          value={username}
+          // value={username}
         />
       </div>
       <div>
@@ -55,7 +56,7 @@ const SignUpForm = () => {
           type="text"
           name="email"
           onChange={e => setEmail(e.target.value)}
-          value={email}
+          // value={email}
         />
       </div>
       <div>
@@ -64,7 +65,7 @@ const SignUpForm = () => {
           type="text"
           name="city"
           onChange={e => setCity(e.target.value)}
-          value={city}
+          // value={city}
         />
       </div>
       <div>
@@ -73,7 +74,7 @@ const SignUpForm = () => {
           type="text"
           name="state"
           onChange={e => setState(e.target.value)}
-          value={state}
+          // value={state}
         />
       </div>
       <div>
@@ -82,7 +83,7 @@ const SignUpForm = () => {
           type="text"
           name="country"
           onChange={e => setCountry(e.target.value)}
-          value={country}
+          // value={country}
         />
       </div>
       <div>
@@ -91,7 +92,7 @@ const SignUpForm = () => {
           type="password"
           name="password"
           onChange={e => setPassword(e.target.value)}
-          value={password}
+          // value={password}
         />
       </div>
       <div>
@@ -100,14 +101,13 @@ const SignUpForm = () => {
           type="password"
           name="repeat_password"
           onChange={e => setRepeatPassword(e.target.value)}
-          value={repeatPassword}
+          // value={repeatPassword}
           required={true}
         />
       </div>
       <label>Upload Image</label>
       <Input name='image' type='file' onChange={e => setImage(e.target.files[0])}/>
-      <progress max='100' value='0'></progress>
-      <Button type='submit'>Submit</Button>
+      {/* <progress max='100' value='0'></progress> */}
     </form>
   );
 };

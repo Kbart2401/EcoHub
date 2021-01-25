@@ -85,6 +85,8 @@ def sign_up():
     if form.validate_on_submit():
         if request.files:
             image_url = upload_file_to_s3(request.files['image'], BUCKET_NAME)
+        else:
+            image_url = 'https://ecohub-bucket.s3.us-east-2.amazonaws.com/tree-736885_1280.jpg'
 
         user = User(
             username=form.data['username'],

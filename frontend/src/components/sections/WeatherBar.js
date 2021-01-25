@@ -10,6 +10,7 @@ import snowfall from '../../images/snowfall.jpg';
 import clouds from '../../images/clouds.jpg';
 import overcast from '../../images/overcast.jpg';
 import raindrops from '../../images/raindrops.jpg';
+import lightRain from '../../images/light-rain.jpg';
 import thunderstorm from '../../images/thunderstorm.jpg';
 
 
@@ -77,8 +78,11 @@ const WeatherBar = () => {
           break;
         case 'rain':
         case 'shower rain':
-        case 'light intensity drizzle':
           setBgUrl(`url(${raindrops})`)
+          break;
+        case 'light intensity drizzle':
+        case 'light rain':
+          setBgUrl(`url(${lightRain})`)
           break;
         case 'thunderstorm':
           setBgUrl(`url(${thunderstorm})`)
