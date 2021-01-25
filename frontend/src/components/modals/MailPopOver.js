@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FiMail } from 'react-icons/fi';
+import * as sessionActions from '../../store/actions/session';
 import {
   Popover, PopoverTrigger, Portal, PopoverContent,
   PopoverArrow, PopoverHeader, PopoverCloseButton,
@@ -8,7 +9,12 @@ import {
 } from '@chakra-ui/react';
 
 const MailPopOver = () => {
+  const dispatch = useDispatch()
   const friendReqs = useSelector(state => state.session.friendsWaiting)
+
+  const handleClick = (id) => (e) => {
+    dispatch(sessionActions.confirmFriend(id))
+  }
 
   return (
     <Popover>
@@ -27,10 +33,10 @@ const MailPopOver = () => {
                 <>
                   <div>{friend[0].username} <Image borderRadius='full' boxSize='50px' src={friend[0].image} /></div>
                   <div>{friend[1].message}</div>
+                  <Button colorScheme="blue" onClick={handleClick(friend[0].id)}>Confirm</Button>
                 </>
               )
             })}
-            <Button colorScheme="blue">Button</Button>
           </PopoverBody>
         </PopoverContent>
       </Portal>

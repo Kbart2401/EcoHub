@@ -46,9 +46,14 @@ def confirm_friend():
     friend_id = request.get_json().get('id')
     friend = User.query.get(friend_id)
     current_user.friends.append(friend)
+    # change friendship message to None
+    friendship = Friend.query.filter_by(
+        friend_id=current_user.id, user_id=friend_id).first()
+    friendship.message = None
     db.session.add(current_user)
+    db.session.add(friendship)
     db.session.commit()
-    return current_user.to_dict_full()
+    return friend.to_dict()
 
 
 # Check if user has any friend requests waiting

@@ -16,8 +16,8 @@ const setFeed = posts => ({ type: SET_FEED, payload: posts })
 const setComment = comment => ({ type: SET_COMMENT, payload: comment })
 const setPost = post => ({ type: SET_POST, payload: post })
 const removeComment = (comment, postId) => ({ type: REMOVE_COMMENT, payload: comment, postId })
-const setFriend = (friend) => ({type: SET_FRIEND, payload: friend})
-const setFriendReqs = (reqs) => ({type: SET_FRIENDREQS, payload: reqs})
+const setFriend = (friend) => ({ type: SET_FRIEND, payload: friend })
+const setFriendReqs = (reqs) => ({ type: SET_FRIENDREQS, payload: reqs })
 
 /********Thunks*******/
 export const logUserIn = (username, password) => async dispatch => {
@@ -149,6 +149,18 @@ export const addFriend = (id, message) => async (dispatch) => {
     body: JSON.stringify({
       id, message
     })
+  })
+  const data = await res.json()
+  dispatch(setFriend(data))
+}
+
+export const confirmFriend = (id) => async (dispatch) => {
+  const res = await fetch('api/users/confirm', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify({ id })
   })
   const data = await res.json()
   dispatch(setFriend(data))
