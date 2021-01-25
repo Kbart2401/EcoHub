@@ -39,7 +39,7 @@ const Home = () => {
           <Feed setHeight={setHeight} />
         </div>
         <div className='home-right-container'>
-          {/* <div>Top Contributors</div> */}
+          {/* <div className='feed-caps tomato'>Top Contributors</div> */}
         </div>
       </div>
       <Footer />
