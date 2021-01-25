@@ -7,6 +7,7 @@ import UserSearch from './components/layouts/UserSearch';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from './store/actions/session';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Footer from './components/sections/Footer';
 
 function App() {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path='/users' component={UserSearch} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

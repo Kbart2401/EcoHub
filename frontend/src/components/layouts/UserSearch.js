@@ -41,7 +41,7 @@ const UserSearch = (props) => {
                   <div>{user.city}, {user.state}
                     {currentUser && checkIfNotFriends(user) &&
                       currentUser.id != user.id &&
-                      <AddFriendModal user={user}/>}</div>
+                      <AddFriendModal user={user} />}</div>
                 </GridItem>
                 <GridItem colSpan={2} bg='papayawhip'>Category: </GridItem>
                 <GridItem colSpan={2} bg='tomato'></GridItem>

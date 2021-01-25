@@ -26,7 +26,7 @@ const MailPopOver = () => {
       <Portal>
         <PopoverContent>
           <PopoverArrow />
-          <PopoverHeader>Inbox</PopoverHeader>
+          <PopoverHeader><b>Inbox</b></PopoverHeader>
           <PopoverCloseButton />
           <PopoverBody>
             {friendReqs && !friendReqs.length && <div>No Messages</div>}

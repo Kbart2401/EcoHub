@@ -10,6 +10,7 @@ import {
   ModalBody,
   ModalCloseButton, Button, useDisclosure, Input
 } from "@chakra-ui/react";
+import { TiUserAdd } from 'react-icons/ti';
 
 const AddFriendModal = ({ user }) => {
   const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const AddFriendModal = ({ user }) => {
 
   return (
     <>
-      <Button onClick={onOpen}>Add Friend</Button>
+      <Button onClick={onOpen}><TiUserAdd /></Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
