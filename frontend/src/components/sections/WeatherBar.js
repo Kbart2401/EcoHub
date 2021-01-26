@@ -24,12 +24,14 @@ const WeatherBar = () => {
   const [bgUrl, setBgUrl] = useState('');
   const [temp, setTemp] = useState('');
   const [particles, setParticles] = useState({});
+  const [bgColor, setBgColor] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getWeather, (err => {
-      console.error(`ERROR(${err.code}): ${err.message}`);
+      setError(`ERROR Couldn't Retrieve Data`);
     }), {
-      timeout: 5000, maximumAge: 1000 * 60 * 60
+      timeout: 10000, maximumAge: 1000 * 60 * 60
     });
   }, [])
 
@@ -93,6 +95,10 @@ const WeatherBar = () => {
     }
   })
 
+  useEffect(() => {
+    if (!air) setBgColor('#E2E8F0')
+  })
+
   async function getWeather(location) {
     const res = await fetch('/api/api/weather', {
       method: 'POST',
@@ -124,12 +130,12 @@ const WeatherBar = () => {
   }
 
   return (
-    <Box className="weather-container" align='center' bgImage={bgUrl}>
-      {!air &&
+    <Box className="weather-container" align='center' bgImage={bgUrl} bgColor={bgColor}>
+      {!air && !error &&
         <div class="lds-roller"><div></div><div></div><div></div><div></div>
           <div></div><div></div><div></div><div></div></div>
       }
-
+      {error && <div>{error}</div>}
       {air &&
         <h2>{region.name}</h2>}
       {weather && air &&
