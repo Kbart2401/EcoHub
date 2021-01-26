@@ -5,11 +5,11 @@ import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
 
 const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountry,
-  setPassword, setRepeatPassword, setImage, onSignUp, errors }) => {
+  setPassword, setRepeatPassword, setImage, onUpdate, errors }) => {
     const user = useSelector(state => state.session.user)
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onUpdate}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
@@ -19,7 +19,7 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
           type="text"
           name="username"
           onChange={e => setUsername(e.target.value)}
-        value={user.username}
+        // value={user.username}
         />
       </div>
       <div>
@@ -28,7 +28,7 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
           type="text"
           name="email"
           onChange={e => setEmail(e.target.value)}
-        value={user.email}
+        // value={user.email}
         />
       </div>
       <div>
@@ -37,7 +37,7 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
           type="text"
           name="city"
           onChange={e => setCity(e.target.value)}
-        value={user.city}
+        // value={user.city}
         />
       </div>
       <div>
@@ -46,7 +46,7 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
           type="text"
           name="state"
           onChange={e => setState(e.target.value)}
-        value={user.state}
+        // value={user.state}
         />
       </div>
       <div>
@@ -55,7 +55,7 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
           type="text"
           name="country"
           onChange={e => setCountry(e.target.value)}
-        value={user.country}
+        // value={user.country}
         />
       </div>
       <div>

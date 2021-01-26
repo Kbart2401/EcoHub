@@ -26,7 +26,7 @@ const EditProfileModal = () => {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
 
-  const onSignUp = async (e) => {
+  const onUpdate = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const form = new FormData()
@@ -37,12 +37,13 @@ const EditProfileModal = () => {
       form.append('country', country)
       form.append('password', password)
       form.append('image', image)
-      dispatch(sessionActions.signUserUp(form))
+      dispatch(sessionActions.updateUser(form))
         .catch(res => {
           if (res.errors) setErrors(res.errors)
         })
     }
     else setErrors(['Passwords do not match'])
+    onClose()
   };
 
   return (
@@ -55,14 +56,14 @@ const EditProfileModal = () => {
           <ModalHeader>Update Profile</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <UpdateProfileForm onSignUp={onSignUp} setUsername={setUsername}
+            <UpdateProfileForm onUpdate={onUpdate} setUsername={setUsername}
               setEmail={setEmail} setCity={setCity} setState={setState}
               setCountry={setCountry} setPassword={setPassword}
               setRepeatPassword={setRepeatPassword} setImage={setImage} errors={errors} />
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' onClick={onSignUp}>Update</Button>
+            <Button type='submit' onClick={onUpdate}>Update</Button>
             <Button colorScheme="orange" mr={3} onClick={onClose}>
               Close
             </Button>

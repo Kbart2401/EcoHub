@@ -94,6 +94,23 @@ export const signUserUp = (payload) =>
     return res
   }
 
+export const updateUser = (payload) =>
+  async dispatch => {
+    let res = await fetch("/api/auth/signup", {
+      method: "PATCH",
+      body: payload,
+    });
+    if (res.ok) {
+      const user = await res.json()
+      dispatch(setUser(user))
+    }
+    else {
+      res = await res.json()
+      throw res;
+    }
+    return res
+  }
+
 export const addPost = (category, content) => async (dispatch) => {
   const res = await fetch('api/posts/', {
     headers: {
