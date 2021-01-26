@@ -25,7 +25,8 @@ const AddFriendModal = ({ user }) => {
 
   return (
     <>
-      <Button onClick={onOpen}><TiUserAdd /></Button>
+      <Button className='friend-modal-button' colorScheme='tomato' 
+      size='lg' onClick={onOpen}><TiUserAdd size={30}/></Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

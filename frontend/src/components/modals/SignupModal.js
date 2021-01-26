@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import SignUpForm from '../auth/SignUpForm';
 import * as sessionActions from '../../store/actions/session';
+import '../../stylesheets/modals.css';
 
 const SignUpModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -60,7 +61,7 @@ const SignUpModal = () => {
               setRepeatPassword={setRepeatPassword} setImage={setImage} errors={errors} />
           </ModalBody>
 
-          <ModalFooter>
+          <ModalFooter className='modal-buttons'>
             <Button type='submit' onClick={onSignUp}>Sign Up</Button>
             <Button colorScheme="orange" mr={3} onClick={onClose}>
               Close

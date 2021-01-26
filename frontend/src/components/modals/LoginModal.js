@@ -11,6 +11,7 @@ import {
   ModalCloseButton, Button, useDisclosure, Link
 } from "@chakra-ui/react";
 import LoginForm from '../auth/LoginForm';
+import '../../stylesheets/modals.css';
 
 const LoginModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -49,9 +50,9 @@ const LoginModal = () => {
               setPassword={setPassword} setUsername={setUsername} />
           </ModalBody>
 
-          <ModalFooter>
-            <Button type='submit' onClick={demoLogin}>Login As Demo User</Button>
-            <Button type='submit' onClick={onLogin}>Submit</Button>
+          <ModalFooter className='modal-buttons'>
+            <Button type='submit' onClick={demoLogin}>Demo User</Button>
+            <Button type='submit' onClick={onLogin}>Login</Button>
             <Button colorScheme="orange" mr={3} onClick={onClose}>
               Close
             </Button>

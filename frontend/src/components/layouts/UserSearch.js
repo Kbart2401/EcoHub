@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, GridItem, VStack, StackDivider, Flex, Button } from '@chakra-ui/react';
+import { VStack, StackDivider, Flex, AspectRatio, Image } from '@chakra-ui/react';
 import AddFriendModal from '../modals/AddFriendModal';
+import HomeDrawer from '../modals/HomeDrawer';
 import * as sessionActions from '../../store/actions/session';
-import '../../stylesheets/feed.css';
+import '../../stylesheets/userSearch.css';
 
 
 const UserSearch = (props) => {
@@ -29,28 +30,43 @@ const UserSearch = (props) => {
 
   return (
     <>
-      <VStack divider={<StackDivider borderColor='gray.200' />}>
-        <div className='feed-caps'>Search Results</div>
-        {users.map((user, idx) => {
-          return (
-            <>
-              <Grid key={idx} minH='120px' width='75%' templateRows='repeat(2, 1fr)'
-                templateColumns='repeat(3, 1fr)' gap={4}>
-                <GridItem border='2px solid black' rowSpan={2} colSpan={1} bg='tomato' fontWeight='700'>
-                  <Flex><img src={user.image} /> {user.username}</Flex>
-                  <div>{user.city}, {user.state}
-                    {currentUser && checkIfNotFriends(user) &&
-                      currentUser.id != user.id &&
-                      <AddFriendModal user={user} />}</div>
-                </GridItem>
-                <GridItem colSpan={2} bg='papayawhip'>Category: </GridItem>
-                <GridItem colSpan={2} bg='tomato'></GridItem>
-              </Grid>
-            </>
-          )
-        })
-        }
-      </VStack>
+      <div className='home-outer' >
+        <div className='home-left-container'>
+          <div className='slide-out-panel'>
+            <HomeDrawer />
+          </div>
+        </div>
+        <div className='home-center-container'>
+          <VStack divider={<StackDivider borderColor='gray.200' />}>
+            <div className='feed-caps'>Search Results</div>
+            {users.map((user, idx) => {
+              return (
+                <>
+                  <Flex key={idx} className='usersearch-user-container' bg='tomato' fontWeight='700'>
+                    <div>
+                      <Image src={user.image} objectFit='cover' />
+                    </div>
+                    <div className='usersearch-user-details-left'>
+                      <div className='usersearch-username'>{user.username}</div>
+                      <div>{user.city}, {user.state}
+                        {currentUser && checkIfNotFriends(user) &&
+                          currentUser.id != user.id &&
+                          <AddFriendModal user={user} />}
+                      </div>
+                    </div>
+                    <div className='usersearch-user-details-right'>
+                      <span>XP</span> &nbsp; &nbsp; {user.xp}
+                    </div>
+                  </Flex>
+                </>
+              )
+            })
+            }
+          </VStack>
+        </div>
+        <div className='home-right-container'>
+        </div>
+      </div>
     </>
   )
 
