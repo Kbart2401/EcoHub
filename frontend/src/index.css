@@ -1,3 +1,10 @@
 body {
   margin: 0;
 }
+
+.form-errors {
+  color: red;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}

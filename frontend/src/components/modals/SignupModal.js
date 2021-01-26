@@ -45,6 +45,11 @@ const SignUpModal = () => {
     else setErrors(['Passwords do not match'])
   };
 
+  const closeModal = () => {
+    setErrors([])
+    onClose()
+  }
+
   return (
     <>
       <Link onClick={onOpen}>Sign Up</Link>
@@ -63,7 +68,7 @@ const SignUpModal = () => {
 
           <ModalFooter className='modal-buttons'>
             <Button type='submit' onClick={onSignUp}>Sign Up</Button>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+            <Button colorScheme="orange" mr={3} onClick={closeModal}>
               Close
             </Button>
           </ModalFooter>

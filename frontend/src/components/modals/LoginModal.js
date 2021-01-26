@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/actions/session'
 import {
   Modal,
@@ -35,6 +35,11 @@ const LoginModal = () => {
       })
   }
 
+  const closeModal = () => {
+    setErrors([])
+    onClose()
+  }
+
 
   return (
     <>
@@ -53,7 +58,7 @@ const LoginModal = () => {
           <ModalFooter className='modal-buttons'>
             <Button type='submit' onClick={demoLogin}>Demo User</Button>
             <Button type='submit' onClick={onLogin}>Login</Button>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+            <Button colorScheme="orange" mr={3} onClick={closeModal} >
               Close
             </Button>
           </ModalFooter>

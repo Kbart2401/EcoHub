@@ -1,25 +1,31 @@
-import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/actions/session';
-import { Button, Input } from '@chakra-ui/react';
+import React, { useEffect } from "react";
+import { useSelector } from 'react-redux';
+import { Input } from '@chakra-ui/react';
 
-const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountry,
-  setPassword, setRepeatPassword, setImage, onUpdate, errors }) => {
-    const user = useSelector(state => state.session.user)
+const UpdateProfileForm = (props) => {
+  const user = useSelector(state => state.session.user)
+
+  useEffect(() => {
+    props.setUsername(user.username)
+    props.setEmail(user.email)
+    props.setCity(user.city)
+    props.setState(user.state)
+    props.setCountry(user.country)
+  }, [])
+
 
   return (
-    <form onSubmit={onUpdate}>
+    <form onSubmit={props.onUpdate}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {props.errors.map((error, idx) => <li className='form-errors' key={idx}>{error}</li>)}
       </ul>
       <div>
         <label>User Name</label>
         <Input
           type="text"
           name="username"
-          onChange={e => setUsername(e.target.value)}
-        // value={user.username}
+          onChange={e => props.setUsername(e.target.value)}
+          value={props.username}
         />
       </div>
       <div>
@@ -27,8 +33,8 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="text"
           name="email"
-          onChange={e => setEmail(e.target.value)}
-        // value={user.email}
+          onChange={e => props.setEmail(e.target.value)}
+          value={props.email}
         />
       </div>
       <div>
@@ -36,8 +42,8 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="text"
           name="city"
-          onChange={e => setCity(e.target.value)}
-        // value={user.city}
+          onChange={e => props.setCity(e.target.value)}
+          value={props.city}
         />
       </div>
       <div>
@@ -45,8 +51,8 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="text"
           name="state"
-          onChange={e => setState(e.target.value)}
-        // value={user.state}
+          onChange={e => props.setState(e.target.value)}
+          value={props.state}
         />
       </div>
       <div>
@@ -54,8 +60,8 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="text"
           name="country"
-          onChange={e => setCountry(e.target.value)}
-        // value={user.country}
+          onChange={e => props.setCountry(e.target.value)}
+          value={props.country}
         />
       </div>
       <div>
@@ -63,8 +69,9 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="password"
           name="password"
-          onChange={e => setPassword(e.target.value)}
-        // value={password}
+          onChange={e => props.setPassword(e.target.value)}
+          value={props.password}
+          required={true}
         />
       </div>
       <div>
@@ -72,13 +79,13 @@ const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountr
         <Input
           type="password"
           name="repeat_password"
-          onChange={e => setRepeatPassword(e.target.value)}
-          // value={repeatPassword}
+          onChange={e => props.setRepeatPassword(e.target.value)}
+          value={props.repeatPassword}
           required={true}
         />
       </div>
       <label>Upload Image</label>
-      <Input name='image' type='file' onChange={e => setImage(e.target.files[0])} />
+      <Input name='image' type='file' onChange={e => props.setImage(e.target.files[0])} />
       {/* <progress max='100' value='0'></progress> */}
     </form>
   );

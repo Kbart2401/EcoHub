@@ -10,7 +10,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
   return (
     <form onSubmit={onSignUp}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => <li className='form-errors' key={idx}>{error}</li>)}
       </ul>
       <div>
         <label>User Name</label>

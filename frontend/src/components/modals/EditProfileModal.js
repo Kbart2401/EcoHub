@@ -7,7 +7,7 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton, Button, useDisclosure, Link
+  ModalCloseButton, Button, useDisclosure
 } from "@chakra-ui/react";
 import UpdateProfileForm from '../auth/UpdateProfileForm';
 import * as sessionActions from '../../store/actions/session';
@@ -37,14 +37,18 @@ const EditProfileModal = () => {
       form.append('country', country)
       form.append('password', password)
       form.append('image', image)
-      dispatch(sessionActions.updateUser(form))
+      dispatch(sessionActions.updateUser(form)).then(() => onClose())
         .catch(res => {
           if (res.errors) setErrors(res.errors)
         })
     }
     else setErrors(['Passwords do not match'])
-    onClose()
   };
+
+  const closeModal = () => {
+    setErrors([])
+    onClose()
+  }
 
   return (
     <>
@@ -56,15 +60,15 @@ const EditProfileModal = () => {
           <ModalHeader>Update Profile</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <UpdateProfileForm onUpdate={onUpdate} setUsername={setUsername}
-              setEmail={setEmail} setCity={setCity} setState={setState}
-              setCountry={setCountry} setPassword={setPassword}
+            <UpdateProfileForm onUpdate={onUpdate} username={username} setUsername={setUsername}
+              email={email} setEmail={setEmail} city={city} setCity={setCity} state={state} setState={setState}
+              country={country} setCountry={setCountry} setPassword={setPassword}
               setRepeatPassword={setRepeatPassword} setImage={setImage} errors={errors} />
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
             <Button type='submit' onClick={onUpdate}>Update</Button>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+            <Button colorScheme="orange" mr={3} onClick={closeModal}>
               Close
             </Button>
           </ModalFooter>

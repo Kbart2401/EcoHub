@@ -6,7 +6,7 @@ const LoginForm = ({ errors, onLogin, setPassword, setUsername }) => {
   return (
     <form onSubmit={onLogin}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => <li className='form-errors' key={idx}>{error}</li>)}
       </ul>
       <div>
         <label htmlFor="username">Username</label>
