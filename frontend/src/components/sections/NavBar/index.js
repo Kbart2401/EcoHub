@@ -20,6 +20,7 @@ const NavBar = () => {
 
 
   const onSearch = async (e) => {
+    debugger
     e.preventDefault()
     const res = await fetch(`/api/users/${search}`)
     const users = await res.json()

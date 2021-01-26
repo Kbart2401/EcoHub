@@ -28,6 +28,8 @@ const UserSearch = (props) => {
     return true
   }
 
+  const friendCount = (user) => user.friends.length
+
   return (
     <>
       <div className='home-outer' >
@@ -55,7 +57,8 @@ const UserSearch = (props) => {
                       </div>
                     </div>
                     <div className='usersearch-user-details-right'>
-                      <span>XP</span> &nbsp; &nbsp; {user.xp}
+                      <span>XP</span> &nbsp; &nbsp; {user.xp} <br /><br />
+                      <span>Friends</span> &nbsp; &nbsp; {user.friends ? user.friends.length : 0}
                     </div>
                   </Flex>
                 </>
