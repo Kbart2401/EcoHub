@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import EditProfileModal from './EditProfileModal';
 import {
   Drawer, DrawerBody, DrawerFooter, DrawerHeader,
   DrawerOverlay, DrawerContent, useDisclosure, Button,
   Table, Thead, Tbody, Tr, Th, Td, TableCaption
 } from "@chakra-ui/react";
-import { useSelector } from 'react-redux';
 
 const HomeDrawer = () => {
   const user = useSelector(state => state.session.user)
@@ -32,40 +33,43 @@ const HomeDrawer = () => {
         <DrawerOverlay>
           <DrawerContent>
             {user &&
-              <DrawerHeader borderBottomWidth="1px">
+              <DrawerHeader className='drawer-header' borderBottomWidth="1px">
                 {user.username} <img src={user.image} />
               </DrawerHeader>
             }
             <DrawerBody>
               {user &&
                 <>
-                  <Table variant="striped" colorScheme="green">
+                  <Table className='home-drawer-table' variant="striped" colorScheme="green">
                     <TableCaption placement='top'>Profile</TableCaption>
                     <Tbody>
                       <Tr>
-                        <Td>XP</Td>
+                        <Td className='drawer-table-data'>XP</Td>
                         <Td>{user.xp}</Td>
                       </Tr>
                       <Tr>
-                        <Td>Friends</Td>
+                        <Td className='drawer-table-data'>Friends</Td>
                         <Td>{friendCount}</Td>
                       </Tr>
                       <Tr>
-                        <Td>City</Td>
+                        <Td className='drawer-table-data'>City</Td>
                         <Td>{user.city}</Td>
                       </Tr>
                       <Tr>
-                        <Td>State</Td>
+                        <Td className='drawer-table-data'>State</Td>
                         <Td>{user.state}</Td>
                       </Tr>
                       <Tr>
-                        <Td>Country</Td>
+                        <Td className='drawer-table-data'>Country</Td>
                         <Td>{user.country}</Td>
                       </Tr>
                     </Tbody>
                   </Table>
                 </>}
             </DrawerBody>
+            <DrawerFooter borderTopWidth="1px">
+              <EditProfileModal />
+            </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>

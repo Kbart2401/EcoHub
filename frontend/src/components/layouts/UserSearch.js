@@ -28,8 +28,6 @@ const UserSearch = (props) => {
     return true
   }
 
-  const friendCount = (user) => user.friends.length
-
   return (
     <>
       <div className='home-outer' >

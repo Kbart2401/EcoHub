@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
 
-const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
-  setPassword, setRepeatPassword, setImage, onSignUp, errors}) => {
+const UpdateProfileForm = ({ setUsername, setEmail, setCity, setState, setCountry,
+  setPassword, setRepeatPassword, setImage, onSignUp, errors }) => {
+    const user = useSelector(state => state.session.user)
 
   return (
     <form onSubmit={onSignUp}>
@@ -18,7 +19,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="text"
           name="username"
           onChange={e => setUsername(e.target.value)}
-          // value={username}
+        value={user.username}
         />
       </div>
       <div>
@@ -27,7 +28,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="text"
           name="email"
           onChange={e => setEmail(e.target.value)}
-          // value={email}
+        value={user.email}
         />
       </div>
       <div>
@@ -36,7 +37,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="text"
           name="city"
           onChange={e => setCity(e.target.value)}
-          // value={city}
+        value={user.city}
         />
       </div>
       <div>
@@ -45,7 +46,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="text"
           name="state"
           onChange={e => setState(e.target.value)}
-          // value={state}
+        value={user.state}
         />
       </div>
       <div>
@@ -54,7 +55,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="text"
           name="country"
           onChange={e => setCountry(e.target.value)}
-          // value={country}
+        value={user.country}
         />
       </div>
       <div>
@@ -63,7 +64,7 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
           type="password"
           name="password"
           onChange={e => setPassword(e.target.value)}
-          // value={password}
+        // value={password}
         />
       </div>
       <div>
@@ -77,10 +78,10 @@ const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
         />
       </div>
       <label>Upload Image</label>
-      <Input name='image' type='file' onChange={e => setImage(e.target.files[0])}/>
+      <Input name='image' type='file' onChange={e => setImage(e.target.files[0])} />
       {/* <progress max='100' value='0'></progress> */}
     </form>
   );
 };
 
-export default SignUpForm;
+export default UpdateProfileForm;

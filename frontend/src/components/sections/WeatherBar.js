@@ -132,7 +132,7 @@ const WeatherBar = () => {
   return (
     <Box className="weather-container" align='center' bgImage={bgUrl} bgColor={bgColor}>
       {!air && !error &&
-        <div class="lds-roller"><div></div><div></div><div></div><div></div>
+        <div className="lds-roller"><div></div><div></div><div></div><div></div>
           <div></div><div></div><div></div><div></div></div>
       }
       {error && <div>{error}</div>}
