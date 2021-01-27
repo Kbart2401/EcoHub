@@ -7,6 +7,7 @@ import UserSearch from './UserSearch';
 import FriendList from './FriendList';
 import HomeDrawer from '../modals/HomeDrawer';
 import '../../stylesheets/homePage.css';
+import ProfilePage from './ProfilePage';
 
 
 const Main = (props) => {
@@ -14,13 +15,11 @@ const Main = (props) => {
   const history = useHistory()
   const [height, setHeight] = useState('')
 
-
-  // useEffect(() => {
-  //   // debugger
-  //   if (!user || user.errors) {
-  //     return history.push('/')
-  //   }
-  // })
+  useEffect(() => {
+    if (!user || user.errors) {
+      return history.push('/')
+    }
+  })
 
 
   return (
@@ -37,6 +36,7 @@ const Main = (props) => {
             <Route path='/users' component={() => <UserSearch users={props.history.location.state.users}
               setHeight={setHeight} />} />
             <Route path="/friends" component={() => <FriendList setHeight={setHeight} />} />
+            <Route path="/profile" component={ProfilePage} />
           </Switch>
         </div>
         <div className='home-right-container'>

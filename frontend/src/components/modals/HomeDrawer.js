@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import EditProfileModal from './EditProfileModal';
 import {
   Drawer, DrawerBody, DrawerFooter, DrawerHeader,
   DrawerOverlay, DrawerContent, useDisclosure, Button,
-  Table, Thead, Tbody, Tr, Th, Td, TableCaption, Link
+  Table, Thead, Tbody, Tr, Th, Td, TableCaption
 } from "@chakra-ui/react";
 
 const HomeDrawer = () => {
@@ -48,7 +49,7 @@ const HomeDrawer = () => {
                         <Td>{user.xp}</Td>
                       </Tr>
                       <Tr>
-                        <Link href='/friends' className='drawer-table-data'>
+                        <Link to='/friends' onClick={onClose} className='drawer-table-data'>
                           <Td className='drawer-table-data'>Friends</Td>
                           <Td>{friendCount}</Td>
                         </Link>

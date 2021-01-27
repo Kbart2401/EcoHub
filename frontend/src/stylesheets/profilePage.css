@@ -1,0 +1,20 @@
+.profile-header-container {
+  height: 250px;
+  background-image: url('../images/clear-night.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header-container img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.profile-username {
+  font-size: 30px;
+  color: white;
+  font-weight: 700;
+}

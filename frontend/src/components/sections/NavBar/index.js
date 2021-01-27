@@ -21,7 +21,7 @@ const NavBar = () => {
 
   const onSearch = async (e) => {
     e.preventDefault()
-    const res = await fetch(`/api/users/${search}`)
+    const res = await fetch(`/api/users/search/${search}`)
     const users = await res.json()
     setSearch('')
     return history.push('/users', { users })

@@ -6,16 +6,22 @@ from sqlalchemy import func, or_
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('/search/')
 @login_required
 def users():
     users = User.query.all()
     return {"users": [user.to_dict_full() for user in users]}
 
-
-@user_routes.route('/<user>')
+@user_routes.route('/<id>')
 @login_required
-def user(user):
+def user(id):
+    user = User.query.get(id)
+    return user.to_dict_full()
+
+
+@user_routes.route('/search/<user>')
+@login_required
+def search(user):
     search_user = f'%{user.lower()}%'
     if not search_user:
         return {"users": []}

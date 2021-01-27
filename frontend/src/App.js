@@ -24,10 +24,11 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/' exact component={Landing} />
+        <Route exact path='/' component={Landing} />
         <Route path="/home" component={(Main)} />
         <Route path='/users' component={Main} />
         <Route path='/friends' component={Main} />
+        <Route path='/profile' component={Main} />
       </Switch>
       <Footer />
     </BrowserRouter>
