@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/sections/NavBar";
 import Home from './components/layouts/Home';
+import Main from './components/layouts/Main';
 import Landing from './components/layouts/Landing';
 import UserSearch from './components/layouts/UserSearch';
 import { useDispatch } from 'react-redux';
@@ -24,8 +25,9 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/' exact component={Landing} />
-        <Route path="/home" component={Home} />
-        <Route path='/users' component={UserSearch} />
+        <Route path="/home" component={(Main)} />
+        <Route path='/users' component={Main} />
+        <Route path='/friends' component={Main} />
       </Switch>
       <Footer />
     </BrowserRouter>

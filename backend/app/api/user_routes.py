@@ -10,13 +10,15 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+    return {"users": [user.to_dict_full() for user in users]}
 
 
 @user_routes.route('/<user>')
 @login_required
 def user(user):
     search_user = f'%{user.lower()}%'
+    if not search_user:
+        return {"users": []}
     users = User.query.filter(or_(func.lower(User.username).like(
         search_user), (func.lower(User.city)).like(search_user),
         (func.lower(User.state)).like(search_user))).all()

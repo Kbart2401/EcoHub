@@ -4,7 +4,7 @@ import EditProfileModal from './EditProfileModal';
 import {
   Drawer, DrawerBody, DrawerFooter, DrawerHeader,
   DrawerOverlay, DrawerContent, useDisclosure, Button,
-  Table, Thead, Tbody, Tr, Th, Td, TableCaption
+  Table, Thead, Tbody, Tr, Th, Td, TableCaption, Link
 } from "@chakra-ui/react";
 
 const HomeDrawer = () => {
@@ -48,8 +48,10 @@ const HomeDrawer = () => {
                         <Td>{user.xp}</Td>
                       </Tr>
                       <Tr>
-                        <Td className='drawer-table-data'>Friends</Td>
-                        <Td>{friendCount}</Td>
+                        <Link href='/friends' className='drawer-table-data'>
+                          <Td className='drawer-table-data'>Friends</Td>
+                          <Td>{friendCount}</Td>
+                        </Link>
                       </Tr>
                       <Tr>
                         <Td className='drawer-table-data'>City</Td>

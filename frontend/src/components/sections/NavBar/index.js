@@ -11,7 +11,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  /*we're using session here just to re-render, keying into friendsWaiting wasn't 
+  /* we're using session here just to re-render, keying into friendsWaiting wasn't 
   re-rendering the component, redux uses strict equality for comparison but still shouldn't updated */
   const session = useSelector(state => state.session)
   const friendReqs = useSelector(state => state.session.friendsWaiting)
@@ -20,7 +20,6 @@ const NavBar = () => {
 
 
   const onSearch = async (e) => {
-    debugger
     e.preventDefault()
     const res = await fetch(`/api/users/${search}`)
     const users = await res.json()
