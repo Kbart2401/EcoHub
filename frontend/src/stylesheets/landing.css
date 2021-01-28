@@ -29,3 +29,25 @@
   background-image: linear-gradient( #F0FFF4, #276749);
   height: 60vh;
 }
+
+.lower-landing img {
+  height: 500px;
+}
+
+.landing-trees {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 200px;
+  position: relative;
+} 
+
+.tree-start {
+  position: relative;
+  bottom: -250px;
+  transition: bottom 2s;
+}
+
+.tree-end {
+  bottom: 0px;
+  transition: bottom 2s;
+}

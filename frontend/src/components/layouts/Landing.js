@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Image, AspectRatio, Flex } from '@chakra-ui/react';
@@ -8,9 +8,21 @@ import '../../stylesheets/landing.css'
 
 const Landing = () => {
   const user = useSelector(state => state.session.user)
+  const [start, setStart] = useState('tree-start')
+
+  useEffect(() => {
+    setTimeout(() => {
+      debugger
+      setStart('.tree-end')
+    }, 3000)
+  },[])
+
   if (user && !user.errors) {
     return <Redirect to="/home" />;
   }
+
+
+
   return (
     <>
       <Flex className='carousel-container' flexDirection='column'>
@@ -32,7 +44,12 @@ const Landing = () => {
           <li>Contribute</li>
           <li>Encourage</li>
           <li>Inspire</li>
-        </ul>
+        </ul>1
+        <div className='landing-trees'>
+          <img className={start} id="tree1" src={require('../../images/2d-tree1.png')} />
+          <img className={start} id="tree2" src={require('../../images/2d-tree2.png')} />
+          <img className={start} id="tree3" src={require('../../images/2d-tree3.png')} />
+        </div>
       </div>
     </>
   )
