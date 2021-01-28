@@ -1,10 +1,11 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Image, AspectRatio, Flex } from '@chakra-ui/react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../stylesheets/landing.css'
+import Mission from '../sections/Mission';
 
 const Landing = () => {
   const user = useSelector(state => state.session.user)
@@ -14,7 +15,7 @@ const Landing = () => {
   const header3 = useRef(null)
 
   useEffect(() => {
-    debugger
+    // debugger
     setTimeout(() => {
       header1.current.classList.remove('invisible')
     }, 500)
@@ -28,7 +29,7 @@ const Landing = () => {
     setTimeout(() => {
       landingTrees.current.classList.add('trees-end')
     }, 3000)
-  },[])
+  }, [])
 
   if (user && !user.errors) {
     return <Redirect to="/home" />;
@@ -41,7 +42,7 @@ const Landing = () => {
       <Flex className='carousel-container' flexDirection='column'>
         <AspectRatio maxW="1200px">
           <Box height="400px" width='100vw' display='flex' justifyContent='center'>
-            <AliceCarousel autoPlay infinite autoPlayInterval="6000" >
+            <AliceCarousel autoPlay infinite autoPlayInterval="4000" animationType='fadeout' >
               <Image src={require("../../images/boy.jpg")} />
               <Image src={require("../../images/lake.jpg")} />
               <Image src={require("../../images/leaf.jpg")} />
@@ -63,6 +64,7 @@ const Landing = () => {
           <img id="tree2" src={require('../../images/2d-tree2.png')} />
           <img id="tree3" src={require('../../images/2d-tree3.png')} />
         </div>
+        <Mission />
       </div>
     </>
   )

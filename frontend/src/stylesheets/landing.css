@@ -19,6 +19,7 @@
   font-size: 50px;
   font-family: 'Potta One', cursive;
   color: tomato;
+  text-shadow: 1px 5px black;
 }
 
 .carousel-container {
@@ -27,7 +28,6 @@
 
 .lower-landing {
   background-image: linear-gradient( #F0FFF4, #276749);
-  height: 60vh;
 }
 
 .lower-landing img {
@@ -40,11 +40,13 @@
   margin-right: 200px;
   position: relative;
   bottom: -250px;
-  transition: bottom 4s;
+  opacity: 0;
+  transition: bottom 4s, opacity 4s;
 } 
 
 .landing-trees.trees-end {
   bottom: 0px;
+  opacity: 1;
 }
 
 .header-1.invisible {
@@ -53,7 +55,7 @@
 
 .header-1 {
   opacity: 1;
-  transition: opacity 2s, visibility 2s;
+  transition: opacity 2s;
 }
 .header-2.invisible {
   opacity: 0;
@@ -61,7 +63,7 @@
 
 .header-2 {
   opacity: 1;
-  transition: opacity 2s, visibility 2s;
+  transition: opacity 2s;
 }
 .header-3.invisible {
   opacity: 0;
@@ -69,5 +71,27 @@
 
 .header-3 {
   opacity: 1;
-  transition: opacity 2s, visibility 2s;
+  transition: opacity 2s;
+}
+
+.mission-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: tomato;
+  font-size: 40px;
+  padding: 0 50px;
+}
+
+.mission-wrapper div {
+  display: flex;
+  font-weight: bold;
+  text-shadow: 1px 2px black;
+}
+
+.mission-wrapper h1{
+  font-size: 75px;
+  font-family: 'Potta One', cursive;
+  color: tomato;
+  text-shadow: 1px 5px black;
 }
