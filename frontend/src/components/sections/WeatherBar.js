@@ -100,25 +100,24 @@ const WeatherBar = () => {
   })
 
   async function getWeather(location) {
-    // debugger
-    // const res = await fetch('/api/api/weather', {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-type": 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     lat: location.coords.latitude, lon: location.coords.longitude
-    //   })
-    // })
-    // const data = await res.json()
-    // const img = `http://openweathermap.org/img/wn/${data.weather.weather[0].icon}@2x.png`
-    // setImage(img)
-    // setRegion(data.weather)
-    // setWeather(data.weather.weather[0])
-    // setAir(data.air.list[0].main.aqi)
-    // setParticles(data.air.list[0].components)
-    // setBgImage(data.weather.weather[0].description)
-    // convertFahreneit(data.weather.main.temp)
+    const res = await fetch('/api/api/weather', {
+      method: 'POST',
+      headers: {
+        "Content-type": 'application/json'
+      },
+      body: JSON.stringify({
+        lat: location.coords.latitude, lon: location.coords.longitude
+      })
+    })
+    const data = await res.json()
+    const img = `http://openweathermap.org/img/wn/${data.weather.weather[0].icon}@2x.png`
+    setImage(img)
+    setRegion(data.weather)
+    setWeather(data.weather.weather[0])
+    setAir(data.air.list[0].main.aqi)
+    setParticles(data.air.list[0].components)
+    setBgImage(data.weather.weather[0].description)
+    convertFahreneit(data.weather.main.temp)
   }
 
   function convertFahreneit(k) {

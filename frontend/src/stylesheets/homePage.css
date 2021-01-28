@@ -61,21 +61,5 @@
   justify-content: center;
 }
 
-.home-drawer-table caption {
-  font-weight: bold;
-  font-size: 25px;
-}
 
-.drawer-header {
-  font-family: 'Potta One', cursive;
-  color: #276749;
-}
-
-.drawer-table-data {
-  font-weight: bold;
-}
-
-.home-drawer-table {
-  font-size: 20px;
-}
 

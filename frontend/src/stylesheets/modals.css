@@ -1,3 +1,42 @@
 .modal-buttons button {
   margin-left: 15px;
 }
+
+.home-drawer-table caption {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.drawer-header {
+  font-family: 'Potta One', cursive;
+  color: #276749;
+}
+
+.drawer-table-data {
+  font-weight: bold;
+}
+
+.home-drawer-table {
+  font-size: 20px;
+  max-width: 287px;
+}
+
+.home-drawer-table {
+  margin-bottom: 50px;
+}
+
+#profile-button {
+  background-color: tomato;
+  color: white;
+}
+
+.drawer-table-link {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+#drawer-friend-count {
+  font-weight: 200;
+}
+

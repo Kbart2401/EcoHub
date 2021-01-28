@@ -43,7 +43,7 @@ const LoginModal = () => {
 
   return (
     <>
-      <Link onClick={onOpen}>Login</Link>
+      <Link onClick={onOpen}>Log In</Link>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -56,7 +56,7 @@ const LoginModal = () => {
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' onClick={demoLogin}>Demo User</Button>
+            <Button type='submit' onClick={demoLogin}>Demo</Button>
             <Button type='submit' onClick={onLogin}>Login</Button>
             <Button colorScheme="orange" mr={3} onClick={closeModal} >
               Close
