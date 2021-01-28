@@ -5,12 +5,23 @@ import * as sessionActions from '../../store/actions/session';
 import '../../stylesheets/comments.css';
 
 
-const Comments = ({ post }) => {
+const ProfileComments = ({ post, user }) => {
   const dispatch = useDispatch()
   //even though comments isn't used, needed for component re-render, the comments in post are nested too deep
-  const comments = useSelector(state => state.session.posts.map(post => post.comments))
-  const user = useSelector(state => state.session.user)
+  const reduxComments = useSelector(state => state.session.posts.map(post => post.comments))
+  const currentUser = useSelector(state => state.session.user)
   const [comment, setComment] = useState('')
+  const [comments, setComments] = useState([])
+
+
+  useEffect(() => {
+    const getComments = async () => {
+      const res = await fetch(`api/comments/${post.id}`)
+      const data = await res.json()
+      setComments([...data.comments])
+    }
+    getComments()
+  }, [])
 
 
   const handleCommentSubmit = (postId) => (e) => {
@@ -24,18 +35,18 @@ const Comments = ({ post }) => {
   }
 
   function postComments() {
-    if (post.comments) {
+    if (comments) {
       return (
-        post.comments.map((comment, idx) => {
+        comments.map((comment, idx) => {
           return (
             <>
               <Box className='comment-container' borderRadius='5px' marginTop='10px' key={idx} bg='#E2E8F0'>
                 <div className='comment-text'>{comment.content}
-                  {user?.id === comment.user.id &&
+                  {currentUser?.id === comment.user_id &&
                     <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
                   }
                 </div>
-                <div className='comment-username'>{comment.user.username}</div>
+                <div className='comment-username'>{user.username}</div>
               </Box>
 
             </>)
@@ -59,4 +70,4 @@ const Comments = ({ post }) => {
   )
 }
 
-export default Comments
+export default ProfileComments

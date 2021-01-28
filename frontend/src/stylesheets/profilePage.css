@@ -14,7 +14,23 @@
 }
 
 .profile-username {
+  width: 100%;
   font-size: 30px;
   color: white;
   font-weight: 700;
+  display: flex;
+}
+
+.profile-username div {
+  width: 33%;
+  display: flex;
+}
+
+.username-center {
+  display: flex;
+  justify-content: center;
+}
+.username-right {
+  display: flex;
+  justify-content: flex-end;
 }
