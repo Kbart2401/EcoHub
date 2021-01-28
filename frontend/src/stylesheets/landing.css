@@ -81,6 +81,7 @@
   color: tomato;
   font-size: 40px;
   padding: 0 50px;
+  position: relative;
 }
 
 .mission-wrapper div {
@@ -94,4 +95,17 @@
   font-family: 'Potta One', cursive;
   color: tomato;
   text-shadow: 1px 5px black;
+}
+
+.mission-wrapper img {
+  height: 200px;
+}
+
+.mission-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 15px;
+  position: absolute;
+  margin-right: 200px;
 }
