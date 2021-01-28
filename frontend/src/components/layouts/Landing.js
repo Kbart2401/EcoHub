@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Image, AspectRatio, Flex } from '@chakra-ui/react';
@@ -8,12 +8,25 @@ import '../../stylesheets/landing.css'
 
 const Landing = () => {
   const user = useSelector(state => state.session.user)
-  const [start, setStart] = useState('tree-start')
+  const landingTrees = useRef(null)
+  const header1 = useRef(null)
+  const header2 = useRef(null)
+  const header3 = useRef(null)
 
   useEffect(() => {
+    debugger
     setTimeout(() => {
-      debugger
-      setStart('.tree-end')
+      header1.current.classList.remove('invisible')
+    }, 500)
+    setTimeout(() => {
+      header2.current.classList.remove('invisible')
+    }, 1500)
+    setTimeout(() => {
+      header3.current.classList.remove('invisible')
+    }, 2500)
+
+    setTimeout(() => {
+      landingTrees.current.classList.add('trees-end')
     }, 3000)
   },[])
 
@@ -41,14 +54,14 @@ const Landing = () => {
       </Flex>
       <div className='lower-landing'>
         <ul className='landing-list'>
-          <li>Contribute</li>
-          <li>Encourage</li>
-          <li>Inspire</li>
-        </ul>1
-        <div className='landing-trees'>
-          <img className={start} id="tree1" src={require('../../images/2d-tree1.png')} />
-          <img className={start} id="tree2" src={require('../../images/2d-tree2.png')} />
-          <img className={start} id="tree3" src={require('../../images/2d-tree3.png')} />
+          <li className='header-1 invisible' ref={header1}>Contribute</li>
+          <li className='header-2 invisible' ref={header2}>Encourage</li>
+          <li className='header-3 invisible' ref={header3}>Inspire</li>
+        </ul>
+        <div className='landing-trees' ref={landingTrees}>
+          <img id="tree1" src={require('../../images/2d-tree1.png')} />
+          <img id="tree2" src={require('../../images/2d-tree2.png')} />
+          <img id="tree3" src={require('../../images/2d-tree3.png')} />
         </div>
       </div>
     </>

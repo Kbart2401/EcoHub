@@ -39,15 +39,35 @@
   justify-content: space-between;
   margin-right: 200px;
   position: relative;
+  bottom: -250px;
+  transition: bottom 4s;
 } 
 
-.tree-start {
-  position: relative;
-  bottom: -250px;
-  transition: bottom 2s;
+.landing-trees.trees-end {
+  bottom: 0px;
 }
 
-.tree-end {
-  bottom: 0px;
-  transition: bottom 2s;
+.header-1.invisible {
+  opacity: 0;
+}
+
+.header-1 {
+  opacity: 1;
+  transition: opacity 2s, visibility 2s;
+}
+.header-2.invisible {
+  opacity: 0;
+}
+
+.header-2 {
+  opacity: 1;
+  transition: opacity 2s, visibility 2s;
+}
+.header-3.invisible {
+  opacity: 0;
+}
+
+.header-3 {
+  opacity: 1;
+  transition: opacity 2s, visibility 2s;
 }
