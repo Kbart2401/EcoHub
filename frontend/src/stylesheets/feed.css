@@ -20,6 +20,8 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #276749;
+  font-size: 20px;
+  text-shadow: 1px 1px black;
 }
 
 .feed-username {

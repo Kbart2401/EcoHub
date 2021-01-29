@@ -23,7 +23,7 @@ const TaskModal = () => {
 
   return (
     <>
-      <Button onClick={onOpen}>Complete Task</Button>
+      <Button className='home-modal-button' bgColor='tomato' onClick={onOpen}>Complete Task</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

@@ -23,7 +23,7 @@ const IssueModal = () => {
 
   return (
     <>
-      <Button onClick={onOpen}>Report Issue</Button>
+      <Button className='home-modal-button' bgColor='tomato' onClick={onOpen}>Report Issue</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
