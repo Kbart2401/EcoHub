@@ -7,6 +7,7 @@ import {
   PopoverArrow, PopoverHeader, PopoverCloseButton,
   Button, PopoverBody, Image, useDisclosure
 } from '@chakra-ui/react';
+import '../../stylesheets/inbox.css';
 
 const MailPopOver = () => {
   const dispatch = useDispatch()
@@ -26,17 +27,18 @@ const MailPopOver = () => {
       <Portal>
         <PopoverContent>
           <PopoverArrow />
-          <PopoverHeader><b>Inbox</b></PopoverHeader>
+          <PopoverHeader><b>Friend Requests</b></PopoverHeader>
           <PopoverCloseButton />
           <PopoverBody>
             {friendReqs && !friendReqs.length && <div>No Messages</div>}
             {friendReqs?.map(friend => {
               return (
-                <>
-                  <div>{friend[0].username} <Image borderRadius='full' boxSize='50px' src={friend[0].image} /></div>
+                <div className='inbox-wrapper'>
+                  <div className='inbox-user'><div><Image borderRadius='full' boxSize='50px' src={friend[0].image} /></div>
+                    <div className='inbox-username-middle'>{friend[0].username}</div><div></div></div>
                   <div>{friend[1].message}</div>
-                  <Button colorScheme="blue" onClick={handleClick(friend[0].id)}>Confirm</Button>
-                </>
+                  <Button colorScheme="orange" onClick={handleClick(friend[0].id)}>Confirm</Button>
+                </div>
               )
             })}
           </PopoverBody>

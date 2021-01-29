@@ -1,0 +1,33 @@
+.inbox-wrapper {
+  padding: 10px 0;
+  border-bottom: 1px solid #E2E8F0;
+  text-align: center;
+}
+
+.inbox-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inbox-user div {
+  width: 33%;
+  display: flex;
+  align-items: center;
+}
+
+.inbox-user {
+  font-weight: bold;
+  text-align: center;
+}
+
+.inbox-username-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.inbox-wrapper button {
+  margin-top: 10px;
+}
+
+
