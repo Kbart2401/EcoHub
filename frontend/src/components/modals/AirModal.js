@@ -14,7 +14,7 @@ const AirModal = ({ airQuality, particles }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Link onClick={onOpen}>Air Quality: {airQuality}</Link>
+      <Link id='air-modal-link' onClick={onOpen}>Air Quality: {airQuality}</Link>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

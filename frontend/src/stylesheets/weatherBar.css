@@ -13,14 +13,23 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.weather-container div, a {
-  color: black;
+.weather-container div, .weather-container a {
+  color: white;
   font-size: 16px;
   font-weight: 800;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: 2px 3px black;
 }
 
 .weather-container p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 12px;
+}
+
+.weather-container p {
+  color: white;
+}
+
+#air-modal-link {
+  color: white;
 }

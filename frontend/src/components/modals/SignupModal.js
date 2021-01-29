@@ -52,7 +52,7 @@ const SignUpModal = () => {
 
   return (
     <>
-      <Link onClick={onOpen}>Sign Up</Link>
+      <Link fontWeight='bold' onClick={onOpen}>Sign Up</Link>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

@@ -43,7 +43,7 @@ const LoginModal = () => {
 
   return (
     <>
-      <Link onClick={onOpen}>Log In</Link>
+      <Link fontWeight='bold' onClick={onOpen}>Log In</Link>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
