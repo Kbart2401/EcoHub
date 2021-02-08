@@ -25,7 +25,7 @@ const HomeDrawer = () => {
         setFriendCount(num)
       }
     }
-  }, [])
+  }, [user])
 
   const handleClick = () => {
     onClose()
@@ -56,7 +56,7 @@ const HomeDrawer = () => {
                         <Td>{user.xp}</Td>
                       </Tr>
                       <Tr>
-                        <Link to='/friends' onClick={onClose} className='drawer-table-link' style={{ width: '287px' }} >
+                        <Link to='/friends' onClick={onClose} className='drawer-table-link'  >
                           <Td className='drawer-table-data'>Friends</Td>
                           <Td id='drawer-friend-count'>{friendCount}</Td>
                         </Link>

@@ -11,15 +11,19 @@ const sessionReducer = (state = inititalState, action) => {
     case SET_USER:
       newState = Object.assign({ ...state }, { user: action.payload })
       return newState;
+
     case REMOVE_USER:
-      newState = Object.assign({ ...state }, { user: null, posts: null })
+      newState = Object.assign({ ...state }, { user: null, posts: [] })
       return newState;
+
     case SET_FEED:
       newState = Object.assign({ ...state }, { ...action.payload })
       return newState;
+
     case SET_POST:
       newState = Object.assign({ ...state }, { posts: [action.payload, ...state.posts] })
       return newState;
+
     case SET_COMMENT:
       for (let i = 0; i < state.posts.length; i++) {
         if (state.posts[i].id === action.payload.post_id) {
@@ -28,6 +32,7 @@ const sessionReducer = (state = inititalState, action) => {
         }
       }
       return newState;
+
     case REMOVE_COMMENT:
       for (let i = 0; i < state.posts.length; i++) {
         if (state.posts[i].id === action.postId) {
@@ -41,13 +46,16 @@ const sessionReducer = (state = inititalState, action) => {
         }
       }
       return newState;
+
     case SET_FRIEND:
       newState = { ...state }
       newState.user.friends = [...newState.user.friends, action.payload]
       return newState;
+      
     case SET_FRIENDREQS:
       newState = Object.assign({ ...state }, { ...action.payload })
-      return newState
+      return newState;
+
     case REMOVE_FRIENDREQ:
       newState = { ...state }
       for (let i = 0; i < newState.friendsWaiting.length; i++) {
@@ -55,7 +63,8 @@ const sessionReducer = (state = inititalState, action) => {
           newState.friendsWaiting.splice(i, 1)
         }
       }
-      return newState
+      return newState;
+
     default:
       return state;
   }
