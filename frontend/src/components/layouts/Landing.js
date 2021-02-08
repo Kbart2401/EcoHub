@@ -38,7 +38,6 @@ const Landing = () => {
   }, [])
 
   useEffect(() => {
-    debugger
     if (user && !user.errors) {
       return history.push('/home');
     }

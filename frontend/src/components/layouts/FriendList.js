@@ -20,7 +20,6 @@ const FriendList = ({ setHeight }) => {
   })
 
   const handleClick = (id) => async (e) => {
-    debugger
     const res = await fetch(`api/users/${id}`)
     const data = await res.json()
     return history.push('/profile', {'user': data})
