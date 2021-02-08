@@ -7,10 +7,8 @@ const LogoutButton = () => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const onLogout = async () => {
-    dispatch(sessionActions.logUserOut())
-    return history.push('/')
-
+  const onLogout = () => {
+    dispatch(sessionActions.logUserOut()).then(() => history.push('/'))
   };
 
   return <button className='css-1bvdrhg' onClick={onLogout}>Log Out</button>;

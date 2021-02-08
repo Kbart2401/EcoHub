@@ -12,15 +12,7 @@ import ProfilePage from './ProfilePage';
 
 const Main = (props) => {
   const user = useSelector(state => state.session.user)
-  const history = useHistory()
   const [height, setHeight] = useState('')
-
-  useEffect(() => {
-    if (!user || user.errors) {
-      return history.push('/')
-    }
-  })
-
 
   return (
     <>

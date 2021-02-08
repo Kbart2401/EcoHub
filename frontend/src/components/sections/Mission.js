@@ -10,7 +10,7 @@ const Mission = () => {
         <span></span></span>&nbsp;is designed to be a part of (even if small) the solution
         in helping preserve the Earth
       </div>
-      <div>by creating more evironmentally-minded users.</div>
+      <div>by creating more environmentally-minded users.</div>
       <div>Here find a like-minded community doing their part in their everyday activities. </div>
       <div>Complete Tasks to earn experience points (XP)</div>
       <div>Report any environmental issues to the community</div>

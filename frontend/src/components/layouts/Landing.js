@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Image, AspectRatio, Flex } from '@chakra-ui/react';
 import AliceCarousel from 'react-alice-carousel';
@@ -9,31 +9,40 @@ import Mission from '../sections/Mission';
 
 const Landing = () => {
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
   const landingTrees = useRef(null)
   const header1 = useRef(null)
   const header2 = useRef(null)
   const header3 = useRef(null)
 
   useEffect(() => {
-    // debugger
-    setTimeout(() => {
+    const a1 = setTimeout(() => {
       header1.current.classList.remove('invisible')
     }, 500)
-    setTimeout(() => {
+    const a2 = setTimeout(() => {
       header2.current.classList.remove('invisible')
     }, 1500)
-    setTimeout(() => {
+    const a3 = setTimeout(() => {
       header3.current.classList.remove('invisible')
     }, 2500)
 
-    setTimeout(() => {
+    const a4 = setTimeout(() => {
       landingTrees.current.classList.add('trees-end')
     }, 3000)
+    return () => {
+      clearTimeout(a1)
+      clearTimeout(a2)
+      clearTimeout(a3)
+      clearTimeout(a4)
+    }
   }, [])
 
-  if (user && !user.errors) {
-    return <Redirect to="/home" />;
-  }
+  useEffect(() => {
+    debugger
+    if (user && !user.errors) {
+      return history.push('/home');
+    }
+  })
 
 
 

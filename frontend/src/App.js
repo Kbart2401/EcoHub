@@ -25,10 +25,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/' component={Landing} />
-        <Route path="/home" component={(Main)} />
-        <Route path='/users' component={Main} />
-        <Route path='/friends' component={Main} />
-        <Route path='/profile' component={Main} />
+        <Route exact path="/home" component={(Main)} />
+        <Route exact path='/users' component={Main} />
+        <Route exact path='/friends' component={Main} />
+        <Route exact path='/profile' component={Main} />
       </Switch>
       <Footer />
     </BrowserRouter>
