@@ -9,6 +9,7 @@
   border-right: 3px solid #718096;
   border-left: 3px solid #718096;
   box-shadow: 0 0 5px black;
+  min-height: 85vh;
 }
 
 .home-left-container {
