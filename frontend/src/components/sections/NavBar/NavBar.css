@@ -40,10 +40,20 @@
   height: 50px;
 }
 
+.navbar-left input {
+  width: 150%;
+}
+
 .navbar-right {
   width: 50%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.logout-div {
+  align-items: center;
+  display: flex;
 }
 
 .logo {

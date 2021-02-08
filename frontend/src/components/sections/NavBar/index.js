@@ -77,7 +77,7 @@ const NavBar = () => {
                     {friendReqs && mailCount()}
                   </div>
                 </li>
-                <li>
+                <li className='logout-div'>
                   <LogoutButton />
                 </li>
               </>
