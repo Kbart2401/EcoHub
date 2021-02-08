@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import AirModal from '../modals/AirModal';
 import '../../stylesheets/weatherLoad.css';
@@ -15,6 +16,7 @@ import thunderstorm from '../../images/thunderstorm.jpg';
 
 
 const WeatherBar = () => {
+  const user = useSelector(state => state.session.user)
   const [weather, setWeather] = useState([]);
   const [region, setRegion] = useState({});
   const [air, setAir] = useState('');
@@ -28,11 +30,17 @@ const WeatherBar = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    if (user && user.email === 'demo@aa.io') {
+      let location = { coords: { latitude: 40.7831, longitude: -73.9712}}
+      getWeather(location)
+    }
+    else {
     navigator.geolocation.getCurrentPosition(getWeather, (err => {
-      setError(`ERROR Couldn't Retrieve Data`);
+      setError(`ERROR Couldn't Retrieve Location`);
     }), {
       timeout: 10000, maximumAge: 1000 * 60 * 60
     });
+  }
   }, [])
 
   useEffect(() => {
