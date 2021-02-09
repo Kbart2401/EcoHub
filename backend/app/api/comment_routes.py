@@ -34,4 +34,4 @@ def delete_comment():
 @login_required
 def get_comments(id):
     comments = Comment.query.filter_by(post_id=id).all()
-    return {"comments": [comment.to_dict() for comment in comments]}
+    return {"comments": [comment.to_dict_full() for comment in comments]}

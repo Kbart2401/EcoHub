@@ -47,7 +47,7 @@ const ProfileComments = ({ post, user }) => {
                     <Button alignSelf='flex-end' size='xs' type='button' onClick={handleClick(comment)}>Delete</Button>
                   }
                 </div>
-                <div className='comment-username'>{user.username}</div>
+                <div className='comment-username'>{comment.user.username}</div>
               </Box>
 
             </>)

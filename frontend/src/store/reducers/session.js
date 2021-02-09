@@ -25,21 +25,21 @@ const sessionReducer = (state = inititalState, action) => {
       return newState;
 
     case SET_COMMENT:
+      newState = { ...state }
       for (let i = 0; i < state.posts.length; i++) {
         if (state.posts[i].id === action.payload.post_id) {
-          newState = { ...state }
           newState.posts[i].comments = [...newState.posts[i].comments, action.payload]
         }
       }
       return newState;
 
     case REMOVE_COMMENT:
+      newState = { ...state }
       for (let i = 0; i < state.posts.length; i++) {
         if (state.posts[i].id === action.postId) {
           for (let j = 0; j < state.posts[i].comments.length; j++) {
             let comment = state.posts[i].comments[j]
             if (comment.id === action.payload.id) {
-              newState = { ...state }
               newState.posts[i].comments.splice(j, 1)
             }
           }
