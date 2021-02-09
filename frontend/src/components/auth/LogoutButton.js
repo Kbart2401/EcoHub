@@ -8,6 +8,7 @@ const LogoutButton = () => {
   const history = useHistory()
 
   const onLogout = () => {
+    debugger
     dispatch(sessionActions.logUserOut()).then(() => history.push('/'))
   };
 

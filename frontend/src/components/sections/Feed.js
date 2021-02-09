@@ -7,17 +7,8 @@ import {
 import Comments from './Comments';
 import '../../stylesheets/feed.css';
 
-const Feed = ({ setHeight }) => {
+const Feed = () => {
   const posts = useSelector(state => state.session.posts)
-
-  useEffect(() => {
-    if (posts) {
-      if (posts.length < 3) {
-        setHeight('100vh')
-      }
-      else setHeight('')
-    }
-  })
 
   const postCreated = (createdDate) => {
     return createdDate.slice(4, 16)

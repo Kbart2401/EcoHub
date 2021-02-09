@@ -22,7 +22,7 @@ def add_post():
     db.session.add(post)
     db.session.add(current_user)
     db.session.commit()
-    return post.to_dict_full()
+    return {'post': post.to_dict_full(), 'user': current_user.to_dict_full()}
 
 
 @post_routes.route('/', methods=['DELETE'])
@@ -55,4 +55,6 @@ def recent_posts():
             friend_posts = [post.to_dict_full() for post in friend_posts]
             posts = [*posts, *friend_posts]
             posts.sort(key=lambda p: p['created_date'], reverse=True)
+            if len(posts) > 10:
+                posts = posts[:10]
     return {'posts': posts}

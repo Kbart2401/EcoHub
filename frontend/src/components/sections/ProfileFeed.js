@@ -9,15 +9,6 @@ import '../../stylesheets/feed.css';
 
 const ProfileFeed = ({ user, posts }) => {
 
-  // useEffect(() => {
-  //   if (posts) {
-  //     if (posts.length < 3) {
-  //       setHeight('100vh')
-  //     }
-  //     else setHeight('')
-  //   }
-  // })
-
   const postCreated = (createdDate) => {
     return createdDate.slice(4, 16)
   }

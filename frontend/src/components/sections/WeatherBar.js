@@ -15,8 +15,7 @@ import lightRain from '../../images/light-rain.jpg';
 import thunderstorm from '../../images/thunderstorm.jpg';
 
 
-const WeatherBar = () => {
-  const user = useSelector(state => state.session.user)
+const WeatherBar = ({user}) => {
   const [weather, setWeather] = useState([]);
   const [region, setRegion] = useState({});
   const [air, setAir] = useState('');
@@ -76,6 +75,7 @@ const WeatherBar = () => {
           break;
         case 'light snow':
         case 'heavy snow':
+        case 'snow':
           setBgUrl(`url(${snowfall})`)
           break;
         case 'few clouds':

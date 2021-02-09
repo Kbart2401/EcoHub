@@ -4,7 +4,7 @@ import {
   SET_FRIENDREQS, REMOVE_FRIENDREQ
 } from '../actions/session'
 
-const inititalState = { user: null, posts: [] };
+const inititalState = { user: {}, posts: [] };
 const sessionReducer = (state = inititalState, action) => {
   let newState;
   switch (action.type) {
@@ -13,7 +13,7 @@ const sessionReducer = (state = inititalState, action) => {
       return newState;
 
     case REMOVE_USER:
-      newState = Object.assign({ ...state }, { user: null, posts: [] })
+      newState = Object.assign({ ...state }, { user: { friends: [] }, posts: [] })
       return newState;
 
     case SET_FEED:
@@ -51,7 +51,7 @@ const sessionReducer = (state = inititalState, action) => {
       newState = { ...state }
       newState.user.friends = [...newState.user.friends, action.payload]
       return newState;
-      
+
     case SET_FRIENDREQS:
       newState = Object.assign({ ...state }, { ...action.payload })
       return newState;

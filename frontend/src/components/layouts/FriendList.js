@@ -6,18 +6,9 @@ import '../../stylesheets/userSearch.css';
 import '../../stylesheets/friendList.css';
 
 
-const FriendList = ({ setHeight }) => {
+const FriendList = () => {
   const user = useSelector(state => state.session.user)
   const history = useHistory()
-
-  useEffect(() => {
-    if (user) {
-      if (user.friends.length < 3) {
-        setHeight('100vh')
-      }
-      else setHeight('')
-    }
-  })
 
   const handleClick = (id) => async (e) => {
     const res = await fetch(`api/users/${id}`)

@@ -6,17 +6,17 @@ import '../../stylesheets/homePage.css';
 import IssueModal from '../modals/IssueModal';
 
 
-const Home = ({ setHeight }) => {
+const Home = ({ user }) => {
 
 
   return (
     <>
-      <WeatherBar />
+      <WeatherBar user={user}/>
       <div className='post-buttons'>
         <TaskModal />
         <IssueModal />
       </div>
-      <Feed setHeight={setHeight} />
+      <Feed />
     </>
   )
 }

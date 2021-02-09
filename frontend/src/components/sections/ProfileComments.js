@@ -7,11 +7,10 @@ import '../../stylesheets/comments.css';
 
 const ProfileComments = ({ post, user }) => {
   const dispatch = useDispatch()
-  //even though comments isn't used, needed for component re-render, the comments in post are nested too deep
-  const reduxComments = useSelector(state => state.session.posts.map(post => post.comments))
   const currentUser = useSelector(state => state.session.user)
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
+  const [commentSubmit, setCommentSubmit] = useState(false)
 
 
   useEffect(() => {
@@ -21,16 +20,18 @@ const ProfileComments = ({ post, user }) => {
       setComments([...data.comments])
     }
     getComments()
-  }, [])
+  }, [commentSubmit])
 
 
   const handleCommentSubmit = (postId) => (e) => {
     e.preventDefault();
+    setCommentSubmit(!commentSubmit)
     dispatch(sessionActions.addComment(comment, postId))
     setComment('')
   }
 
   const handleClick = (comment) => (e) => {
+    setCommentSubmit(!commentSubmit)
     dispatch(sessionActions.deleteComment(comment, post.id))
   }
 

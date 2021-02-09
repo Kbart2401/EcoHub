@@ -11,6 +11,7 @@ import '../../stylesheets/modals.css';
 
 const HomeDrawer = () => {
   const user = useSelector(state => state.session.user)
+  const friends = useSelector(state => state.session.user.friends)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const history = useHistory()
   const [placement, setPlacement] = useState("left")
@@ -25,7 +26,7 @@ const HomeDrawer = () => {
         setFriendCount(num)
       }
     }
-  }, [user])
+  }, [friends])
 
   const handleClick = () => {
     onClose()

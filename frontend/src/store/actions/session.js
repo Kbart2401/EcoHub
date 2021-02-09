@@ -51,6 +51,7 @@ export const logUserIn = (username, password) => async dispatch => {
 }
 
 export const logUserOut = () => async dispatch => {
+  debugger
     const res = await fetch("/api/auth/logout", {
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +64,7 @@ export const logUserOut = () => async dispatch => {
 export const restoreUser = () => async (dispatch) => {
   const res = await fetch('/api/auth/')
   const user = await res.json();
-  if (user.errors) user = null;
+  if (user.errors) user = {};
   const result = await fetch('/api/posts/')
   const posts = await result.json()
   const r = await fetch('api/users/friend-requests')
@@ -82,6 +83,7 @@ export const signUserUp = (payload) =>
     if (res.ok) {
       const user = await res.json()
       dispatch(setUser(user))
+      dispatch(setFeed(new Array(0)))
     }
     else {
       res = await res.json()
@@ -118,7 +120,8 @@ export const addPost = (category, content) => async (dispatch) => {
     })
   })
   const data = await res.json()
-  dispatch(setPost(data))
+  dispatch(setPost(data.post))
+  dispatch(setUser(data.user))
 }
 
 export const addComment = (content, post_id) => async (dispatch) => {

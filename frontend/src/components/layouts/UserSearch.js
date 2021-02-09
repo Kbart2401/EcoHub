@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { VStack, StackDivider, Flex, Image } from '@chakra-ui/react';
 import AddFriendModal from '../modals/AddFriendModal';
 import '../../stylesheets/userSearch.css';
 
 
 const UserSearch = (props) => {
-  //session is just to check the redux store ans see that user has updated
+  //session is just to check the redux store and see that user has updated
   //I think if you're on the actual object that's changing it may not update, 
   //need to be one object up
-  const session = useSelector(state => state.session)
+  // const session = useSelector(state => state.session)
   const currentUser = useSelector(state => state.session.user)
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     setUsers(props.users.users)
   }, [])
-
-  useEffect(() => {
-    if (users.length) {
-      if (users.length < 3) {
-        props.setHeight('100vh')
-      }
-      else props.setHeight('')
-    }
-  })
 
   const checkIfNotFriends = (user) => {
     if (currentUser.friends.length !== 0) {
@@ -38,6 +29,7 @@ const UserSearch = (props) => {
     <>
       <VStack divider={<StackDivider borderColor='gray.200' />}>
         <div className='feed-caps'>Search Results</div>
+        {users.length === 0 && <div>No Search Results</div>}
         {users.map((user, idx) => {
           return (
             <Flex key={idx} className='usersearch-user-container' bg='tomato' fontWeight='700'>

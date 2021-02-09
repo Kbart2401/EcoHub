@@ -12,11 +12,10 @@ import ProfilePage from './ProfilePage';
 
 const Main = (props) => {
   const user = useSelector(state => state.session.user)
-  const [height, setHeight] = useState('')
 
   return (
     <>
-      <div className='home-outer' style={{ height: `${height}` }}>
+      <div className='home-outer'>
         <div className='home-left-container'>
           <div className='slide-out-panel'>
             <HomeDrawer />
@@ -24,10 +23,10 @@ const Main = (props) => {
         </div>
         <div className='home-center-container'>
           <Switch>
-            <Route path="/home" component={() => <Home setHeight={setHeight} />} />
+            <Route path="/home" component={() => <Home user={user}/>} />
             <Route path='/users' component={() => <UserSearch users={props.history.location.state.users}
-              setHeight={setHeight} />} />
-            <Route path="/friends" component={() => <FriendList setHeight={setHeight} />} />
+               />} />
+            <Route path="/friends" component={() => <FriendList />} />
             <Route path="/profile" component={ProfilePage} />
           </Switch>
         </div>
