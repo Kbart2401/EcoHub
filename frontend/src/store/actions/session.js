@@ -125,6 +125,7 @@ export const addPost = (category, content) => async (dispatch) => {
 }
 
 export const addComment = (content, post_id) => async (dispatch) => {
+  debugger
   let res = await fetch('/api/comments/', {
     headers: {
       'Content-Type': 'application/json'

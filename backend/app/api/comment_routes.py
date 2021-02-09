@@ -4,6 +4,7 @@ from app.models import Comment, User, db
 
 comment_routes = Blueprint('comments', __name__)
 
+
 @comment_routes.route('/', methods=['POST'])
 @login_required
 def create_comment():
