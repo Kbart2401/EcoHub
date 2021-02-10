@@ -18,7 +18,7 @@ const Feed = () => {
     <>
       <VStack className='feed-outer' divider={<StackDivider borderColor='gray.200' />}>
         <div className='feed-caps'>Recent Activity</div>
-        {posts?.length === 0 &&
+        {!posts?.length &&
           <div className='empty-feed'>Nothing to show here....yet 😏</div>}
         {posts?.map((post, idx) => {
           return (
