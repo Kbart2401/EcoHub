@@ -82,6 +82,7 @@
   font-size: 40px;
   padding: 0 50px;
   position: relative;
+  z-index: 2;
 }
 
 .mission-wrapper div {
@@ -108,4 +109,5 @@
   bottom: 15px;
   position: absolute;
   margin-right: 200px;
+  z-index: -1;
 }
