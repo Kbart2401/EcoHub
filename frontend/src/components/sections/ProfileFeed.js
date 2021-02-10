@@ -17,7 +17,7 @@ const ProfileFeed = ({ user, posts }) => {
     <>
       <VStack className='feed-outer' divider={<StackDivider borderColor='gray.200' />}>
         <div className='feed-caps'>Recent Activity</div>
-        {posts?.length === 0 &&
+        {!posts?.length &&
           <div className='empty-feed'>Nothing to show here....yet 😏</div>}
         {posts?.map((post, idx) => {
           return (
@@ -25,7 +25,7 @@ const ProfileFeed = ({ user, posts }) => {
               <Grid key={idx} minH='120px' width='75%' templateRows='repeat(2, 1fr)'
                 templateColumns='repeat(3, 1fr)' gap={4}>
                 <GridItem className='feed-username-container' borderRadius='10px'
-                  rowSpan={2} colSpan={1} bg='tomato' fontWeight='700' >
+                  rowSpan={2} colSpan={1} bg={post.category[post.category.length - 1] === '*' ? '#38A169' : 'tomato'} fontWeight='700' >
                   <AspectRatio>
                     <Image borderRadius='10px' src={user.image} />
                   </AspectRatio>
@@ -35,10 +35,12 @@ const ProfileFeed = ({ user, posts }) => {
                   </Flex>
                 </GridItem>
                 <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='papayawhip'>
-                  <div className='post-text-header'>{user.username} completed a task!</div>
+                  <div className='post-text-header'>{user.username}&nbsp;
+                    {post.category[post.category.length - 1] === '*' ? 'reported an issue!' : 'completed a task!'}</div>
                   <div className='post-task'>{post.category}</div>
                 </GridItem>
-                <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='tomato'>
+                <GridItem className='post-text-container' borderRadius='10px' colSpan={2}
+                  bg={post.category[post.category.length - 1] === '*' ? '#38A169' : 'tomato'}>
                   <div className='post-text-header'>Here's what they said:</div>
                   <div className='post-text'>{post.content}</div></GridItem>
               </Grid>
