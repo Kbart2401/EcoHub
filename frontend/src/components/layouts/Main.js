@@ -11,7 +11,7 @@ import ProfilePage from './ProfilePage';
 
 
 const Main = (props) => {
-  const user = useSelector(state => state.session.user)
+  const userEmail = useSelector(state => state.session.user.email)
 
   return (
     <>
@@ -23,7 +23,7 @@ const Main = (props) => {
         </div>
         <div className='home-center-container'>
           <Switch>
-            <Route path="/home" component={() => <Home user={user}/>} />
+            <Route path="/home" component={() => <Home userEmail={userEmail}/>} />
             <Route path='/users' component={() => <UserSearch users={props.history.location.state.users}
                />} />
             <Route path="/friends" component={() => <FriendList />} />

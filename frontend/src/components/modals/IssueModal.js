@@ -16,9 +16,10 @@ const IssueModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let sendIssue;
-    if (customIssue && issue === 'Enter') sendIssue = customIssue
+    if (customIssue && issue === 'Enter') sendIssue = `${customIssue}*`
     else sendIssue = issue
     dispatch(sessionActions.addPost(sendIssue, content))
+      .then(() => onClose())
   }
 
   return (
@@ -34,12 +35,12 @@ const IssueModal = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <Select placeholder='Select option' value={issue} onChange={e => setIssue(e.target.value)}>
-                  <option value='Wild animal traffic'>Wild animal traffic</option>
-                  <option value='Indiscriminate logging'>Indiscriminate logging</option>
-                  <option value='Electronic waste mismanagement'>Electronic waste mismanagement</option>
-                  <option value='Finning'>Finning</option>
-                  <option value='Dumping in rivers and aquifers'>Dumping in rivers and aquifers</option>
-                  <option value='Enter your own'>Enter your own</option>
+                  <option value='Wild animal traffic*'>Wild animal traffic</option>
+                  <option value='Indiscriminate logging*'>Indiscriminate logging</option>
+                  <option value='Electronic waste mismanagement*'>Electronic waste mismanagement</option>
+                  <option value='Finning*'>Finning</option>
+                  <option value='Dumping in rivers and aquifers*'>Dumping in rivers and aquifers</option>
+                  <option value='Enter'>Enter your own</option>
                 </Select>
                 {issue === 'Enter' &&
                   <Input type='text' onChange={e => setCustomIssue(e.target.value)} />}
@@ -53,7 +54,7 @@ const IssueModal = () => {
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' className='modal-submit-button' onClick={onClose}>Enter</Button>
+            <Button type='submit' className='modal-submit-button' onClick={handleSubmit}>Enter</Button>
             <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>

@@ -6,12 +6,12 @@ import '../../stylesheets/homePage.css';
 import IssueModal from '../modals/IssueModal';
 
 
-const Home = ({ user }) => {
+const Home = ({ userEmail }) => {
 
 
   return (
     <>
-      <WeatherBar user={user}/>
+      <WeatherBar userEmail={userEmail}/>
       <div className='post-buttons'>
         <TaskModal />
         <IssueModal />

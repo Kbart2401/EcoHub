@@ -19,6 +19,7 @@ const TaskModal = () => {
     if (customTask && task === 'Enter') sendTask = customTask
     else sendTask = task
     dispatch(sessionActions.addPost(sendTask, content))
+      .then(() => onClose())
   }
 
   return (
@@ -55,7 +56,7 @@ const TaskModal = () => {
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' className='modal-submit-button' onClick={onClose}>Enter</Button>
+            <Button type='submit' className='modal-submit-button' onClick={handleSubmit}>Enter</Button>
             <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>

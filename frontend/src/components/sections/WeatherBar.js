@@ -15,7 +15,7 @@ import lightRain from '../../images/light-rain.jpg';
 import thunderstorm from '../../images/thunderstorm.jpg';
 
 
-const WeatherBar = ({user}) => {
+const WeatherBar = ({userEmail}) => {
   const [weather, setWeather] = useState([]);
   const [region, setRegion] = useState({});
   const [air, setAir] = useState('');
@@ -29,7 +29,7 @@ const WeatherBar = ({user}) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (user && user.email === 'demo@aa.io') {
+    if (userEmail && userEmail === 'demo@aa.io') {
       let location = { coords: { latitude: 40.7831, longitude: -73.9712}}
       getWeather(location)
     }

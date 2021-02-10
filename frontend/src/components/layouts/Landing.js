@@ -38,6 +38,7 @@ const Landing = () => {
   }, [])
 
   useEffect(() => {
+    debugger
     if (user && user.email) {
       return history.push('/home');
     }
