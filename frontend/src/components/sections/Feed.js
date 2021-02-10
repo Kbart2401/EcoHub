@@ -26,7 +26,7 @@ const Feed = () => {
               <Grid key={idx} minH='120px' width='75%' templateRows='repeat(2, 1fr)'
                 templateColumns='repeat(3, 1fr)' gap={4}>
                 <GridItem className='feed-username-container' borderRadius='10px'
-                  rowSpan={2} colSpan={1} bg={post.category[post.category.length - 1] === '*' ? '#38A169' : 'tomato'} fontWeight='700' >
+                  rowSpan={2} colSpan={1} bg={post.category[post.category.length - 1] === '*' ? 'tomato' : '#48BB78'} fontWeight='700' >
                   <AspectRatio>
                     <Image borderRadius='10px' src={post.user.image} />
                   </AspectRatio>
@@ -38,10 +38,11 @@ const Feed = () => {
                 <GridItem className='post-text-container' borderRadius='10px' colSpan={2} bg='papayawhip'>
                   <div className='post-text-header'>{post.user.username}&nbsp;
                     {post.category[post.category.length - 1] === '*' ? 'reported an issue!' : 'completed a task!'}</div>
-                  <div className='post-task'>{post.category}</div>
+                  <div className='post-task' style={post.category[post.category.length - 1] === '*' ? { color: 'rgb(180, 72, 53)' } : { color: '#276749'}}
+                  >{post.category}</div>
                 </GridItem>
                 <GridItem className='post-text-container' borderRadius='10px' colSpan={2}
-                  bg={post.category[post.category.length - 1] === '*' ? '#38A169' : 'tomato'}>
+                  bg={post.category[post.category.length - 1] === '*' ? 'tomato' : '#48BB78'}>
                   <div className='post-text-header'>Here's what they said:</div>
                   <div className='post-text'>{post.content}</div></GridItem>
               </Grid>
