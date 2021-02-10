@@ -29,7 +29,7 @@ const IssueModal = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Report a recent Issue</ModalHeader>
+          <ModalHeader>Report Environmental Issue</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit}>
