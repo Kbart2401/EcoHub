@@ -35,7 +35,7 @@ const IssueModal = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <Select placeholder='Select option' value={issue} onChange={e => setIssue(e.target.value)}>
-                  <option value='*Wild animal traffic*'>Wild animal traffic</option>
+                  <option value='*Wild animal trafficking*'>Wild animal trafficking</option>
                   <option value='*Indiscriminate logging*'>Indiscriminate logging</option>
                   <option value='*Electronic waste mismanagement*'>Electronic waste mismanagement</option>
                   <option value='*Finning*'>Finning</option>
