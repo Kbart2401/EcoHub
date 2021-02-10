@@ -51,7 +51,6 @@ export const logUserIn = (username, password) => async dispatch => {
 }
 
 export const logUserOut = () => async dispatch => {
-  debugger
     const res = await fetch("/api/auth/logout", {
       headers: {
         "Content-Type": "application/json",
@@ -125,7 +124,6 @@ export const addPost = (category, content) => async (dispatch) => {
 }
 
 export const addComment = (content, post_id) => async (dispatch) => {
-  debugger
   let res = await fetch('/api/comments/', {
     headers: {
       'Content-Type': 'application/json'

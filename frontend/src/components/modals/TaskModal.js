@@ -51,12 +51,12 @@ const TaskModal = () => {
                 <Input name='content' type='text' placeholder='Content'
                   value={content} onChange={e => setContent(e.target.value)} />
               </div>
-              <Button type='submit' onClick={onClose}>Enter</Button>
             </form>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+          <ModalFooter className='modal-buttons'>
+            <Button type='submit' className='modal-submit-button' onClick={onClose}>Enter</Button>
+            <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

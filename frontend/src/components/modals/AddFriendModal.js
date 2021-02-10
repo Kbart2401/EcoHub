@@ -39,8 +39,8 @@ const AddFriendModal = ({ user }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button type='submit' onClick={handleClick(user.id)} >Submit</Button>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+            <Button type='submit' className='modal-submit-button' onClick={handleClick(user.id)} >Submit</Button>
+            <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

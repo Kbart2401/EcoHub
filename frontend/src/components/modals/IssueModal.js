@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
   ModalCloseButton, Button, useDisclosure, Select, Input
@@ -41,20 +41,20 @@ const IssueModal = () => {
                   <option value='Dumping in rivers and aquifers'>Dumping in rivers and aquifers</option>
                   <option value='Enter your own'>Enter your own</option>
                 </Select>
-                {issue==='Enter' &&
-                <Input type='text' onChange={e => setCustomIssue(e.target.value)}/>}
+                {issue === 'Enter' &&
+                  <Input type='text' onChange={e => setCustomIssue(e.target.value)} />}
               </div>
               <div>
                 <label htmlFor='content'>Content</label>
                 <Input name='content' type='text' placeholder='Content'
                   value={content} onChange={e => setContent(e.target.value)} />
               </div>
-              <Button type='submit' onClick={onClose}>Enter</Button>
             </form>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+          <ModalFooter className='modal-buttons'>
+            <Button type='submit' className='modal-submit-button' onClick={onClose}>Enter</Button>
+            <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

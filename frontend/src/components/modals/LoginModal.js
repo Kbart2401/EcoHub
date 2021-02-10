@@ -56,9 +56,9 @@ const LoginModal = () => {
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' onClick={demoLogin}>Demo</Button>
-            <Button type='submit' onClick={onLogin}>Login</Button>
-            <Button colorScheme="orange" mr={3} onClick={closeModal} >
+            <Button type='submit' className='modal-submit-button' onClick={demoLogin}>Demo</Button>
+            <Button type='submit' className='modal-submit-button' onClick={onLogin}>Login</Button>
+            <Button className='modal-close-button' mr={3} onClick={closeModal} >
               Close
             </Button>
           </ModalFooter>

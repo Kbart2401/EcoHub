@@ -99,7 +99,7 @@ const AirModal = ({ airQuality, particles }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="orange" mr={3} onClick={onClose}>
+            <Button className='modal-close-button' mr={3} onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

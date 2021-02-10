@@ -67,8 +67,8 @@ const EditProfileModal = () => {
           </ModalBody>
 
           <ModalFooter className='modal-buttons'>
-            <Button type='submit' onClick={onUpdate}>Update</Button>
-            <Button colorScheme="orange" mr={3} onClick={closeModal}>
+            <Button type='submit' className='modal-submit-button' onClick={onUpdate}>Update</Button>
+            <Button className='modal-close-button' mr={3} onClick={closeModal}>
               Close
             </Button>
           </ModalFooter>

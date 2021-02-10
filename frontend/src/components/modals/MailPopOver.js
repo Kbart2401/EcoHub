@@ -37,7 +37,7 @@ const MailPopOver = () => {
                   <div className='inbox-user'><div><Image borderRadius='full' boxSize='50px' src={friend[0].image} /></div>
                     <div className='inbox-username-middle'>{friend[0].username}</div><div></div></div>
                   <div>{friend[1].message}</div>
-                  <Button colorScheme="orange" onClick={handleClick(friend[0].id)}>Confirm</Button>
+                  <Button className='modal-close-button' onClick={handleClick(friend[0].id)}>Confirm</Button>
                 </div>
               )
             })}
