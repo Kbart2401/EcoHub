@@ -16,7 +16,7 @@ const IssueModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let sendIssue;
-    if (customIssue && issue === 'Enter') sendIssue = `${customIssue}*`
+    if (customIssue && issue === 'Enter') sendIssue = `*${customIssue}*`
     else sendIssue = issue
     dispatch(sessionActions.addPost(sendIssue, content))
       .then(() => onClose())
@@ -35,11 +35,11 @@ const IssueModal = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <Select placeholder='Select option' value={issue} onChange={e => setIssue(e.target.value)}>
-                  <option value='Wild animal traffic*'>Wild animal traffic</option>
-                  <option value='Indiscriminate logging*'>Indiscriminate logging</option>
-                  <option value='Electronic waste mismanagement*'>Electronic waste mismanagement</option>
-                  <option value='Finning*'>Finning</option>
-                  <option value='Dumping in rivers and aquifers*'>Dumping in rivers and aquifers</option>
+                  <option value='*Wild animal traffic*'>Wild animal traffic</option>
+                  <option value='*Indiscriminate logging*'>Indiscriminate logging</option>
+                  <option value='*Electronic waste mismanagement*'>Electronic waste mismanagement</option>
+                  <option value='*Finning*'>Finning</option>
+                  <option value='*Dumping in rivers and aquifers*'>Dumping in rivers and aquifers</option>
                   <option value='Enter'>Enter your own</option>
                 </Select>
                 {issue === 'Enter' &&
