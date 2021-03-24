@@ -1,8 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 
+#landing-1 {
+  /* height: 100vh;
+  width: 100vw; */
+}
+
 .alice-carousel {
-  margin: 0;
-  width: 1200px;
+  /* margin: 0;
+  width: 100%;
+  height: 100%; */
+}
+
+.alice-carousel img {
+  width: 100%;
+  z-index: -1;
+}
+
+.alice-carousel__wrapper {
+  height: 95vh;
 }
 
 .css-1nydx6f {
@@ -23,11 +38,12 @@
 }
 
 .carousel-container {
-  height: 400px;
+  /* height: 400px; */
 }
 
 .lower-landing {
   background-image: linear-gradient( #F0FFF4, #276749);
+  z-index: 1;
 }
 
 .lower-landing img {
