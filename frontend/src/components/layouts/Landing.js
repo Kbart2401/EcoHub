@@ -56,25 +56,32 @@ const Landing = () => {
     }, 5000);
   }, [])
 
+  const handleScroll = () => {
+    console.log('SCROLLING HERE!!')
+  }
+
   return (
     <>
       <section id='landing-1' className={image}>
-        <div className={`one-wrapper `}>
-          <div className='greeting'>Welcome To</div>
-          <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
-            <span><img class='landing' src={require("../../images/2d-leaf.png")} /></span>
-          </div>
-          <div className='lower-landing'>
-            <ul className='landing-list'>
-              <li className='header-1 invisible' ref={header1}>Contribute</li>
-              <li className='header-2 invisible' ref={header2}>Encourage</li>
-              <li className='header-3 invisible' ref={header3}>Inspire</li>
-            </ul>
+        <div className='one-wrapper'>
+          <div className='greeting-wrapper'>
+            <div className='greeting'>Welcome To</div>
+            <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
+              <span><img class='landing' src={require("../../images/2d-leaf.png")} /></span>
+            </div>
+            <div>Support Your Area</div>
+            <div>Support Our Planet</div>
           </div>
         </div>
       </section>
       <secion id='landing-2'>
-
+        <div className='lower-landing' onScroll={handleScroll}>
+          <ul className='landing-list'>
+            <li className='header-1 invisible' ref={header1}>Contribute</li>
+            <li className='header-2 invisible' ref={header2}>Encourage</li>
+            <li className='header-3 invisible' ref={header3}>Inspire</li>
+          </ul>
+        </div>
         <div className='landing-trees' ref={landingTrees}>
           <img id="tree1" src={require('../../images/2d-tree1.png')} />
           <img id="tree2" src={require('../../images/2d-tree2.png')} />
