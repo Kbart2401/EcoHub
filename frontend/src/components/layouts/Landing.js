@@ -51,23 +51,25 @@ const Landing = () => {
   })
 
   useEffect(() => {
-   setInterval(() => {
-     setImage(randomImage())
-   }, 5000);
+    setInterval(() => {
+      setImage(randomImage())
+    }, 5000);
   }, [])
 
   return (
     <>
-      <section id='landing-1'>
-        <div className={`one-wrapper ${image}`}>
+      <section id='landing-1' className={image}>
+        <div className={`one-wrapper `}>
+          <div className='greeting'>Welcome To</div>
+          <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
+            <span><img class='landing' src={require("../../images/2d-leaf.png")} /></span>
+          </div>
           <div className='lower-landing'>
             <ul className='landing-list'>
               <li className='header-1 invisible' ref={header1}>Contribute</li>
               <li className='header-2 invisible' ref={header2}>Encourage</li>
               <li className='header-3 invisible' ref={header3}>Inspire</li>
             </ul>
-            <div className='logo'><span id='one'>Eco</span><span id='two'>Hub</span>
-              <span><img src={require("../../images/2d-leaf.png")} /></span></div>
           </div>
         </div>
       </section>

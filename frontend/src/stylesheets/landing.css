@@ -1,10 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 
-.one-wrapper {
+#landing-1 {
   background-size: cover;
   background-position: center;
   height: 95vh;
   width: 100vw;
+}
+
+.one-wrapper {
+  backdrop-filter: contrast(50%);
+  height: 100%;
+}
+
+.one-wrapper .greeting {
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Potta One', cursive;
+  color: tomato;
+}
+
+.logo-landing {
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  
+}
+
+.logo-landing img.landing {
+  height: 60px;
+  width: 60px;
 }
 
 .boy {
@@ -14,7 +38,7 @@
 
 .lake {
   background-image: url('../images/lake.jpg');
-  animation: fadeIn ease 2s;
+  animation: fadeIn ease 1s;
 }
 
 .leaf {
