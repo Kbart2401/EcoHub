@@ -1,23 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 
-#landing-1 {
-  /* height: 100vh;
-  width: 100vw; */
+.one-wrapper {
+  background-size: cover;
+  background-position: center;
+  height: 95vh;
+  width: 100vw;
 }
 
-.alice-carousel {
-  /* margin: 0;
-  width: 100%;
-  height: 100%; */
+.boy {
+  background-image: url('../images/boy.jpg'); 
+  animation: fadeIn ease 2s;
+}
+
+.lake {
+  background-image: url('../images/lake.jpg');
+  animation: fadeIn ease 2s;
+}
+
+.leaf {
+  background-image: url('../images/leaf.jpg');
+  animation: fadeIn ease 2s;
+}
+
+.nature {
+  background-image: url('../images/nature.jpg');
+  animation: fadeIn ease 2s;
+}
+
+.park {
+  background-image: url('../images/park.jpg');
+  animation: fadeIn ease 2s;
+}
+
+.river {
+  background-image: url('../images/river.jpg');
+  animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 .alice-carousel img {
   width: 100%;
-  z-index: -1;
+  height: 100%;
+  object-fit: cover;
 }
 
 .alice-carousel__wrapper {
   height: 95vh;
+  position: absolute;
 }
 
 .css-1nydx6f {
@@ -35,15 +68,6 @@
   font-family: 'Potta One', cursive;
   color: tomato;
   text-shadow: 1px 5px black;
-}
-
-.carousel-container {
-  /* height: 400px; */
-}
-
-.lower-landing {
-  background-image: linear-gradient( #F0FFF4, #276749);
-  z-index: 1;
 }
 
 .lower-landing img {
