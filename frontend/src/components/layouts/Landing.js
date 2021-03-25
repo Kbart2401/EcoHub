@@ -54,7 +54,7 @@ const Landing = () => {
    setInterval(() => {
      setImage(randomImage())
    }, 5000);
-  }, [image])
+  }, [])
 
   return (
     <>
