@@ -57,6 +57,9 @@ const Landing = () => {
               <div>Support Our Planet</div>
             </div>
           </div>
+          <div className='learn-more-wrapper'>
+            <a href='#landing-2'>Learn More</a>
+            </div>
         </div>
       </section>
       <section id='landing-2'>
