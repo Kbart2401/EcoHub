@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Box, Image, AspectRatio, Flex } from '@chakra-ui/react';
-import AliceCarousel from 'react-alice-carousel';
+import VisibilitySensor from 'react-visibility-sensor';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../stylesheets/landing.css'
 import Mission from '../sections/Mission';
@@ -67,10 +66,12 @@ const Landing = () => {
           <div className='greeting-wrapper'>
             <div className='greeting'>Welcome To</div>
             <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
-              <span><img class='landing' src={require("../../images/2d-leaf.png")} /></span>
+              <span id='leaf-img'><img class='landing' src={require("../../images/2d-leaf.png")} /></span>
             </div>
-            <div>Support Your Area</div>
-            <div>Support Our Planet</div>
+            <div className='subtitle-wrapper'>
+              <div>Support Your Area</div>
+              <div>Support Our Planet</div>
+            </div>
           </div>
         </div>
       </section>

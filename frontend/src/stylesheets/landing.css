@@ -19,8 +19,10 @@
   align-items: center;
   height: 50%;
   font-size: 2rem;
-  color: #276749;
-  font-weight: 500;
+  /* color: #276749; */
+  color: rgb(230, 230, 230);
+  font-weight: 700;
+  -webkit-text-stroke: 1px #276749;
 }
 
 .one-wrapper .greeting {
@@ -45,8 +47,21 @@
 }
 
 .logo-landing img.landing {
-  height: 60px;
-  width: 60px;
+  height: 6rem;
+  width: 6rem;
+}
+
+#leaf-img {
+  display: flex;
+  align-items: center;
+  animation: 2s ease-in slideIn;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+.subtitle-wrapper {
+  /* background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .boy {
@@ -90,8 +105,8 @@
 }
 
 @keyframes slideIn {
-  0% {transform: translateY(-200%)}
-  100% {transform: translateY(0%)}
+  0% {transform: translateY(-200%); opacity: 0;}
+  100% {transform: translateY(0%); opacity: 1;}
 }
 
 .css-1nydx6f {
