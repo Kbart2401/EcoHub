@@ -19,7 +19,6 @@
   align-items: center;
   height: 50%;
   font-size: 2rem;
-  /* color: #276749; */
   color: rgb(230, 230, 230);
   font-weight: 700;
   -webkit-text-stroke: 1px #276749;
@@ -58,10 +57,6 @@
   animation-fill-mode: forwards;
   animation-delay: 3s;
   opacity: 0;
-}
-
-.subtitle-wrapper {
-  /* background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .boy {
@@ -109,6 +104,10 @@
   100% {transform: translateY(0%); opacity: 1;}
 }
 
+#landing-2 {
+  background-image: linear-gradient( #F0FFF4, #276749);
+}
+
 .css-1nydx6f {
   background-color: #276749;
 }
@@ -131,9 +130,10 @@
 }
 
 .landing-trees {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-right: 200px;
+  /* margin-right: 200px; */
   position: relative;
   bottom: -250px;
   opacity: 0;
@@ -143,6 +143,10 @@
 .landing-trees.trees-end {
   bottom: 0px;
   opacity: 1;
+}
+
+.landing-trees img {
+  width: 25%;
 }
 
 .header-1.invisible {

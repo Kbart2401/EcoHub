@@ -75,7 +75,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <secion id='landing-2'>
+      <section id='landing-2'>
         <div className='lower-landing' onScroll={handleScroll}>
           <ul className='landing-list'>
             <li className='header-1 invisible' ref={header1}>Contribute</li>
@@ -89,7 +89,7 @@ const Landing = () => {
           <img id="tree3" src={require('../../images/2d-tree3.png')} />
         </div>
         <Mission />
-      </secion>
+      </section>
     </>
   )
 }
