@@ -133,7 +133,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* margin-right: 200px; */
   position: relative;
   bottom: -250px;
   opacity: 0;
@@ -156,6 +155,7 @@
 .header-1 {
   opacity: 1;
   transition: opacity 2s;
+  transition-delay: .5s;
 }
 .header-2.invisible {
   opacity: 0;
@@ -164,6 +164,7 @@
 .header-2 {
   opacity: 1;
   transition: opacity 2s;
+  transition-delay: 1.5s;
 }
 .header-3.invisible {
   opacity: 0;
@@ -172,6 +173,7 @@
 .header-3 {
   opacity: 1;
   transition: opacity 2s;
+  transition-delay: 2.5s;
 }
 
 .mission-wrapper {
