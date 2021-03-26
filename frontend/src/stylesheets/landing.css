@@ -10,6 +10,14 @@
 .one-wrapper {
   backdrop-filter: contrast(60%);
   height: 100%;
+  width: 100%;
+}
+
+.one-wrapper img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -10;
 }
 
 .greeting-wrapper {
@@ -57,16 +65,23 @@
   animation-fill-mode: forwards;
   animation-delay: 3s;
   opacity: 0;
+  z-index: 2;
 }
 
 .boy {
-  background-image: url('../images/boy.jpg'); 
-  animation: fadeIn 2s;
+  /* animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate; */
 }
 
 .lake {
-  background-image: url('../images/lake.jpg');
-  animation: fadeIn 1s;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
 }
 
 .leaf {
@@ -90,8 +105,18 @@
 }
 
 @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+   0% {
+  opacity:1;
+  }
+  45% {
+  opacity:1;
+  }
+  55% {
+  opacity:0;
+  }
+  100% {
+  opacity:0;
+  }
 }
 
 @keyframes logoFade {

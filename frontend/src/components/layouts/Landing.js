@@ -45,8 +45,14 @@ const Landing = () => {
 
   return (
     <>
-      <section id='landing-1' className={image}>
+      <section id='landing-1'>
         <div className='one-wrapper'>
+          <img className='boy' src={require('../../images/boy.jpg')} />
+          <img className='lake' src={require('../../images/lake.jpg')} />
+          <img src={require('../../images/leaf.jpg')} />
+          <img src={require('../../images/nature.jpg')} />
+          <img src={require('../../images/park.jpg')} />
+          <img src={require('../../images/river.jpg')} />
           <div className='greeting-wrapper'>
             <div className='greeting'>Welcome To</div>
             <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
