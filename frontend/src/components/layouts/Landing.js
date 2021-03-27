@@ -47,12 +47,12 @@ const Landing = () => {
     <>
       <section id='landing-1'>
         <div className='one-wrapper'>
-          {/* <img className='boy' src={require('../../images/boy.jpg')} />
           <img className='lake' src={require('../../images/lake.jpg')} />
+          <img className='boy' src={require('../../images/boy.jpg')} />
           <img className='leaf' src={require('../../images/leaf.jpg')} />
-          <img className='nature' src={require('../../images/nature.jpg')} />
           <img className='park' src={require('../../images/park.jpg')} />
-          <img className='river' src={require('../../images/river.jpg')} /> */}
+          <img className='nature' src={require('../../images/nature.jpg')} />
+          <img className='river' src={require('../../images/river.jpg')} />
           <div className='greeting-wrapper'>
             <div className='greeting'>Welcome To</div>
             <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
