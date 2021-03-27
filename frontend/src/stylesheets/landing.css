@@ -54,8 +54,9 @@
 }
 
 .logo-landing img.landing {
-  height: 6rem;
-  width: 6rem;
+  height: 100px;
+  width: 100px;
+  z-index: 2;
 }
 
 #leaf-img {
@@ -64,20 +65,20 @@
   animation: 2s ease-in slideIn;
   animation-fill-mode: forwards;
   animation-delay: 3s;
-  opacity: 0;
+  /* opacity: 0; */
   z-index: 2;
 }
 
-.boy {
-  /* animation-name: fadeIn;
+/* .boy {
+  animation-name: backgroundFade;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 3s;
-  animation-direction: alternate; */
+  animation-direction: alternate;
 }
 
 .lake {
-  animation-name: fadeIn;
+  animation-name: backgroundFade;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 3s;
@@ -85,33 +86,108 @@
 }
 
 .leaf {
-  background-image: url('../images/leaf.jpg');
-  animation: fadeIn 2s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
 }
 
 .nature {
-  background-image: url('../images/nature.jpg');
-  animation: fadeIn 2s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
 }
 
 .park {
-  background-image: url('../images/park.jpg');
-  animation: fadeIn 2s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
 }
 
 .river {
-  background-image: url('../images/river.jpg');
-  animation: fadeIn 1s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
+} */
+
+/* .one-wrapper img:nth-of-type(1) {
+  animation-delay: 40s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}*/
+
+.one-wrapper img {
+  filter: contrast(80%);
 }
 
-@keyframes fadeIn {
+.one-wrapper img:nth-of-type(2) {
+  animation-delay: 40s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}
+
+.one-wrapper img:nth-of-type(3) {
+  animation-delay: 30s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}
+
+.one-wrapper img:nth-of-type(4) {
+  animation-delay: 20s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}
+
+.one-wrapper img:nth-of-type(5) {
+  animation-delay: 10s;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+  z-index: -10;
+} 
+
+.one-wrapper img:nth-of-type(6) {
+  animation-delay: 0;
+  animation-name: backgroundFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+  z-index: -10;
+}
+
+@keyframes backgroundFade {
    0% {
   opacity:1;
   }
-  45% {
+  13% {
   opacity:1;
   }
-  55% {
+  45% {
+  opacity:0;
+  }
+  96% {
   opacity:0;
   }
   100% {
