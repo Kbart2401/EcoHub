@@ -111,7 +111,6 @@ img.landing {
   animation-iteration-count: infinite;
   animation-duration: 10s;
   animation-direction: alternate;
-  z-index: -10;
 } 
 
 .one-wrapper img:nth-of-type(6) {
@@ -121,7 +120,6 @@ img.landing {
   animation-iteration-count: infinite;
   animation-duration: 10s;
   animation-direction: alternate;
-  z-index: -10;
 }
 
 @keyframes backgroundFade {

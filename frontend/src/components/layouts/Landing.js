@@ -13,13 +13,6 @@ const Landing = () => {
   const header1 = useRef(null)
   const header2 = useRef(null)
   const header3 = useRef(null)
-  const [image, setImage] = useState('lake')
-
-  const randomImage = () => {
-    let images = ['boy', 'lake', 'leaf', 'nature', 'park', 'river']
-    let random = Math.floor(Math.random() * (images.length - 0) + 0)
-    return images[random]
-  }
 
   useEffect(() => {
     if (user && user.email) {
@@ -27,14 +20,7 @@ const Landing = () => {
     }
   })
 
-  useEffect(() => {
-    setInterval(() => {
-      setImage(randomImage())
-    }, 5000);
-  }, [])
-
   const onVisible = (isVisible) => {
-    console.log(isVisible)
     if (isVisible) {
       header1.current.classList.remove('invisible')
       header2.current.classList.remove('invisible')
@@ -47,12 +33,12 @@ const Landing = () => {
     <>
       <section id='landing-1'>
         <div className='one-wrapper'>
-          <img className='lake' src={require('../../images/lake.jpg')} />
-          <img className='boy' src={require('../../images/boy.jpg')} />
-          <img className='leaf' src={require('../../images/leaf.jpg')} />
-          <img className='park' src={require('../../images/park.jpg')} />
-          <img className='nature' src={require('../../images/nature.jpg')} />
-          <img className='river' src={require('../../images/river.jpg')} />
+          <img src={require('../../images/lake.jpg')} />
+          <img src={require('../../images/boy.jpg')} />
+          <img src={require('../../images/leaf.jpg')} />
+          <img src={require('../../images/park.jpg')} />
+          <img src={require('../../images/nature.jpg')} />
+          <img src={require('../../images/river.jpg')} />
           <div className='greeting-wrapper'>
             <div className='greeting'>Welcome To</div>
             <div className='logo logo-landing'><span id='one'>Eco</span><span id='two'>Hub</span>
