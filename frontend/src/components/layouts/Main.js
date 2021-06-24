@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Home from './Home';

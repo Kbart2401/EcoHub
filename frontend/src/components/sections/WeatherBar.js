@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import AirModal from '../modals/AirModal';
 import '../../stylesheets/weatherLoad.css';

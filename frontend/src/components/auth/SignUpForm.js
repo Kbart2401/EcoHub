@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/actions/session';
 import { Button, Input } from '@chakra-ui/react';
 
 const SignUpForm = ({ setUsername, setEmail, setCity, setState, setCountry,
